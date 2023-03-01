@@ -1,0 +1,67 @@
+.nav {
+  font-family:ITANSANS ;
+  background-color: #f9f9f9;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem 20rem;
+
+
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    cursor: pointer;
+    & :hover{
+      color: #ef3a4f;
+    }
+    &__item {
+      font-size: 1.1rem;
+      color: #8e8e8e;
+   
+    
+    }
+
+    &__icons {
+      font-size: 1.7rem;
+      color: #8e8e8e;
+  
+  
+  
+    }
+  }
+
+ 
+
+
+  &__contact-us{
+    display: flex;
+    gap: 1.1rem;
+    align-items: center;
+    margin-right: 33rem;
+    &__QA{
+        font-size: 1rem;
+        background-color: #f1f1f2;
+        padding: 0.6rem;
+        border-radius: 1.5rem;
+
+    }
+    &__icon{
+        background-color: #f1f1f2;
+        padding: 0.6rem;
+        border-radius: 50%;
+    }
+
+  }
+}
+
+// .nav__link :hover{
+
+//   color: #ef3a4f;
+
+
+// }

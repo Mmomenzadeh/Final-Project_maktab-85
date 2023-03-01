@@ -1,0 +1,55 @@
+.CardProduct {
+    margin-top: 100px;
+  font-family: ITANSANS;
+  width: 250px;
+  height: 350px;
+  border-radius: 1rem;
+  border: 0.2rem solid #c6c6c6;
+  text-align: center;
+
+  &__head {
+    &__img {
+      width: 200px;
+      height: 220px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 0 2rem;
+    &__txt {
+      font-size: 1.1rem;
+      color: #a0a0a0;
+    }
+
+    &__heading {
+      font-size: 1.5rem;
+    }
+
+    .line-w{
+        width:100% ;
+        background-color: #c6c6c6a0;
+        height: 0.1rem;
+        margin-top: 1rem; 
+    }
+  }
+
+
+  &__footer{
+    // height: -webkit-fill-available;
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__price{
+        font-size: 1.3rem;
+        padding-right: 1.2rem;
+        color: #a0a0a0;
+        font-weight: bold;
+    }
+
+  }
+}
