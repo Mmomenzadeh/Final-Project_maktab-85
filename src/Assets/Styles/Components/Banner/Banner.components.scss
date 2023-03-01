@@ -1,13 +1,13 @@
 .banner-container {
-  font-family:ITANSANS ;
+  font-family: IRANSANS;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  &__banner{
+  &__banner {
     position: relative;
 
-    &__heading--first{
+    &__heading--first {
       position: absolute;
       color: #fff;
       font-size: 2.5rem;
@@ -18,24 +18,22 @@
       right: 3%;
     }
 
-    &__text--first{
+    &__text--first {
       position: absolute;
       color: #ffffffd5;
       font-size: 1.2rem;
       top: 55%;
       right: 3%;
       font-weight: bold;
-
     }
 
-    &__btn--first{
+    &__btn--first {
       position: absolute;
       top: 65%;
       right: 5%;
     }
 
-
-    &__heading--last{
+    &__heading--last {
       position: absolute;
       color: #fff;
       font-size: 2rem;
@@ -44,7 +42,7 @@
       right: 6%;
     }
 
-    &__text--last{
+    &__text--last {
       position: absolute;
       color: #ffffffd5;
       font-size: 1.2rem;
@@ -53,14 +51,14 @@
       font-weight: bold;
     }
 
-    &__btn--last{
+    &__btn--last {
       position: absolute;
       top: 80%;
       right: 25%;
 
-      .banner-btn{
+      .banner-btn {
         position: relative;
-        &__icon{
+        &__icon {
           position: absolute;
           left: 79%;
           top: 28%;
@@ -70,33 +68,32 @@
       }
     }
 
-    .banner__img{
+    .banner__img {
       border-radius: 2rem;
 
-      &--first{
+      &--first {
         width: 600px;
         height: 400px;
       }
 
-      &--middle{
+      &--middle {
         width: 250px;
         height: 190px;
       }
-      
-      &--last{
+
+      &--last {
         width: 250px;
         height: 400px;
       }
-
     }
 
-    &__middle{
+    &__middle {
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
       gap: 1.5rem;
       position: relative;
-     
-      .banner_middle__heading--first{
+
+      .banner_middle__heading--first {
         position: absolute;
         top: 40%;
         line-height: 1.2;
@@ -105,14 +102,13 @@
         font-size: 2rem;
         width: 180px;
         cursor: pointer;
-        
-        &:hover{
+
+        &:hover {
           color: #ffffff99;
           transition: 2s;
-
         }
       }
-      .banner_middle__txt--first{
+      .banner_middle__txt--first {
         position: absolute;
         top: 75%;
         right: 5%;
@@ -120,8 +116,7 @@
         font-size: 1rem;
       }
 
-
-      .banner_middle__heading--last{
+      .banner_middle__heading--last {
         position: absolute;
         top: 30%;
         font-size: 2rem;
@@ -130,23 +125,19 @@
         right: 5%;
         color: #fff;
         cursor: pointer;
- 
-        &:hover{
+
+        &:hover {
           color: #ffffff99;
           transition: 2s;
-
         }
       }
-      .banner_middle__txt--last{
+      .banner_middle__txt--last {
         position: absolute;
         top: 65%;
         right: 5%;
         color: #ffffffd5;
         font-size: 1rem;
       }
-    
     }
   }
-
-
 }

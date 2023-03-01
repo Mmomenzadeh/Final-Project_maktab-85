@@ -1,0 +1,38 @@
+.headingTitle {
+  margin-top: 100px;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+
+  &__title-fa {
+    font-family: IRANYEKAN-extrablod;
+
+    color: #727272;
+    font-size: 2rem;
+  }
+
+  &__title-en {
+    color: #727272;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.8rem;
+    background-color: #f5f5f5f5;
+    border-radius: 1.7rem;
+  }
+
+  &__link{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    color: #727272;
+    &:hover{
+        color: #ef3a4f;
+    }
+
+  }
+
+  .line{
+    border-bottom: 0.1rem dashed #444;
+    width: 69rem ; 
+  }
+}

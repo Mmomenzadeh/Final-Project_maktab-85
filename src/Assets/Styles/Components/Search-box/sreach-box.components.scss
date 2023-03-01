@@ -1,41 +1,37 @@
-.searchBox{
-    font-family:ITANSANS ;
-    padding-left: 0.8rem;
+.searchBox {
+  font-family: IRANSANS;
+  padding-left: 0.8rem;
+  background-color: #f7f8fa;
+  width: 55rem;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .searchBox__input {
+    font-family: IRANSANS;
+    border: none;
+    outline: none;
     background-color: #f7f8fa;
-    width: 55rem;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .searchBox__select {
+    font-family: IRANSANS;
+    border: none;
+    padding-right: 1rem;
+    height: 40px;
+    background-color: #ef3a4f;
+    color: #fff;
+    font-size: 1.2rem;
     border-radius: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    outline: none;
+    box-shadow: -4px 0 8px #ef3a4f40;
 
-    .searchBox__input{
-        font-family:ITANSANS ;
-        border: none;
-        outline: none;
-        background-color: #f7f8fa;
-        padding-right: 1rem;
-        font-size: 1.5rem;
+    option {
+      background-color: #fff;
+      color: rgb(55, 55, 55);
     }
-
-    .searchBox__select{
-        font-family:ITANSANS ;
-        border: none;
-        padding-right: 1rem ;
-        height: 40px;
-        background-color: #EF3A4F;
-        color: #fff;
-        font-size: 1.2rem;
-        border-radius: 5rem;
-        outline: none;
-        box-shadow: -4px 0 8px #ef3a4f40;
-        
-        option{
-            background-color: #fff;
-            color: rgb(55, 55, 55);
-
-
-        }
-        
-    }
+  }
 }
-
