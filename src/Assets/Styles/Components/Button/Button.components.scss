@@ -24,4 +24,21 @@
         font-size: 1.4rem;
         text-align: center;
     }
+
+
+    &--medium-p{
+        padding: 8px 24px 8px 14px;
+    }
+
+    &--btn-p{
+       
+        font-size: 1rem;
+        font-weight: normal;
+        // background-color: #F5F9FC;
+        background-color: #EF3A4F;
+        color: #fff;
+        border-radius: 0px 40px 40px 0px;
+    
+    }
+    
 }

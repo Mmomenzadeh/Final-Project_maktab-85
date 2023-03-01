@@ -1,4 +1,5 @@
 import { Button } from "Components";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import "../../Assets/Styles/Components/Card-Product/index.scss";
 export const CardProduct = () => {
   return (
@@ -16,7 +17,10 @@ export const CardProduct = () => {
       </div>
       <div className="CardProduct__footer">
         <p className="CardProduct__footer__price"> <span style={{color:"#EF3A4F" }}>780,000</span> تومان</p>
-        <Button/>
+        <div className="CardProduct__footer__btn">
+        <HiOutlineShoppingCart className="footer-btn__icon" />
+        <Button size="medium-p" style="btn-p" text="خرید محصول "/>
+        </div>
       </div>
     </div>
   );
