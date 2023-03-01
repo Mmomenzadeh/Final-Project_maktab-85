@@ -1,0 +1,29 @@
+@import "./reset.scss";
+
+
+@font-face {
+    font-family: ITANSANS;
+    src: url(./Fonts/IRANSans-web.woff);
+  }
+
+  @font-face {
+    font-family: ITANSANS-blod;
+    src: url(./Fonts/IRANSans-Bold-web.woff);
+  }
+
+  
+  @font-face {
+    font-family: ITANSANS-light;
+    src: url(./Fonts/IRANSans-Light-web.woff);
+  }
+
+  @font-face {
+    font-family: ITANSANS-medium;
+    src: url(./Fonts/IRANSans-Light-web.woff);
+  }
+
+html , body{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    font-family:ITANSANS ;
+}
