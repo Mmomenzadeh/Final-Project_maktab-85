@@ -1,6 +1,7 @@
 import { Banner, Button, CardProduct, HeadingTitle, ProductList } from "Components"
 import "../../Assets/Styles/Laylout/Main/index.scss"
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { Footer } from "Layouts";
 
 export const Main = () => {
   return (
@@ -12,6 +13,7 @@ export const Main = () => {
 
     <HeadingTitle titleEn="Products Categories" titleFa="دسته بندی محصولات"/>
 
+    <Footer/>
 
     </div>
     </main>

@@ -1,5 +1,5 @@
 @import "./reset.scss";
-
+@import"./styledSystem.scss";
 @font-face {
   font-family: IRANSANS;
   src: url(../Fonts/IRANSans-web.woff);
@@ -25,4 +25,9 @@ body {
   font-size: 62.5%;
   overflow-x: hidden;
   font-family: IRANSANS;
+}
+
+:root{
+  font-family: IRANSANS;
+  direction: rtl;
 }
