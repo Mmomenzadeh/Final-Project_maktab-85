@@ -1,11 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
+import { ProjectRoutes } from "Routes";
 
 function App() {
   return (
     <BrowserRouter>
-
-      
-    
+      <ProjectRoutes />
     </BrowserRouter>
   );
 }
