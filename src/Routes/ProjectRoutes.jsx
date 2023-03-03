@@ -1,3 +1,16 @@
+import { BLOG } from "Config";
+import { ABOUT } from "Config";
+import { BASKETSHOPPING } from "Config";
+import { PANLEMANAGEMENT } from "Config";
+import { ORDERS } from "Config";
+import { LOGIN } from "Config";
+import { CHECKOUT } from "Config";
+import { CONTACTUS } from "Config";
+import { NOTFOUND } from "Config";
+import { PAYMENT } from "Config";
+import { SINGLEPRODUCT } from "Config";
+import { ALLPRODUCTS } from "Config";
+import { HOME } from "Config";
 import {
   About,
   AllProducts,
@@ -18,19 +31,19 @@ import { Route, Routes } from "react-router-dom";
 export const ProjectRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/about" element={<About />} />
-      <Route path="AllProduc" element={<AllProducts />} />
-      <Route path="BasketShopping" element={<BasketShopping />} />
-      <Route path="SingleProduct" element={<SingleProduct />} />
-      <Route path="PanleManagement" element={<PanleManagement />} />
-      <Route path="Payment" element={<Payment />} />
-      <Route path="Orders" element={<Orders />} />
-      <Route path="NotFound" element={<NotFound />} />
-      <Route path="Login" element={<LogIn />} />
-      <Route path="ContactUs" element={<ContactUs />} />
-      <Route path="Checkout" element={<Checkout />} />
+      <Route path={HOME} element={<Home />} />
+      <Route path={BLOG} element={<Blog />} />
+      <Route path={ABOUT} element={<About />} />
+      <Route path={ALLPRODUCTS} element={<AllProducts />} />
+      <Route path={BASKETSHOPPING} element={<BasketShopping />} />
+      <Route path={SINGLEPRODUCT} element={<SingleProduct />} />
+      <Route path={PANLEMANAGEMENT} element={<PanleManagement />} />
+      <Route path={PAYMENT} element={<Payment />} />
+      <Route path={ORDERS} element={<Orders />} />
+      <Route path={NOTFOUND} element={<NotFound />} />
+      <Route path={LOGIN} element={<LogIn />} />
+      <Route path={CONTACTUS} element={<ContactUs />} />
+      <Route path={CHECKOUT} element={<Checkout />} />
     </Routes>
   );
 };
