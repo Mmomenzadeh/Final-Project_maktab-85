@@ -1,4 +1,26 @@
 @import "./reset.scss";
 @import "./variables.scss";
 @import "./styled-system.scss";
-@import"./public-class.scss";
+@import "./public-class.scss";
+
+@font-face {
+  font-family: IRANSANS;
+  src: url(../Fonts/IRANSans-web.woff);
+}
+
+@font-face {
+  font-family: IRANSANSBlod;
+  src: url(../Fonts/IRANSans-Bold-web.woff);
+}
+
+$font-family: IRANSANS;
+
+html,
+body {
+  font-size: 62.5%; // 10px
+}
+
+:root {
+  font-size: 62.5%; // 10px
+  font-family: $font-family;
+}

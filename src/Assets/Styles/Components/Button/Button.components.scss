@@ -1,0 +1,28 @@
+.btn {
+  border: none;
+  cursor: pointer;
+
+  // &--primary{
+
+  // }
+
+  &--login {
+    font-family: IRANSANSBlod;
+    background-color: var(--primary);
+    color: var(--white);
+    width: 27rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+
+
+    &:hover{
+      box-shadow: #f2475bb5 0px 5px 15px;
+    }
+  }
+}
