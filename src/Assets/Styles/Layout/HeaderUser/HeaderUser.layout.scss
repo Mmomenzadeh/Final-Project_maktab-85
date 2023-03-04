@@ -1,0 +1,20 @@
+.header {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__searchBox {
+    border-bottom: 0.1rem solid rgba(187, 187, 187, 0.452);
+    padding-bottom: 2rem;
+  }
+}
+
+.header-icon {
+  font-size: 2.6rem;
+  color: var(--gray-400);
+  cursor: pointer;
+}

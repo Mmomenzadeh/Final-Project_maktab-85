@@ -8,3 +8,8 @@
     background-color: #e6e6e6;
 }
 
+.hover{
+   &:hover{
+    color: var(--primary);
+   }
+}

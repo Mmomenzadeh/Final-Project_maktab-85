@@ -1,6 +1,7 @@
 .input {
   outline: none;
   border: none;
+  font-family: IRANSANS;
 
   &--login {
     border: 0.1rem solid var(--gray-100);
@@ -11,6 +12,16 @@
     &:focus {
       border: 0.15rem solid var(--blue-100);
     }
+  }
+
+  &--searchBox{
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--light);
+    font-size: 1.6rem;
+    color: var(--gray-300);
+    border-radius: 1rem;
+    
   }
 
 
