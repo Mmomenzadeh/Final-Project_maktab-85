@@ -1,0 +1,26 @@
+.headingTitle{
+    width: 100%;
+    margin-top: 5rem;
+    align-items: baseline;
+    &__title{
+        font-size: 1.6rem;
+        color: var(--gray-400);
+        font-weight: bolder;
+    }
+
+    &__link{
+        color: var(--gray-400);
+        text-decoration: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        &:hover{
+            color: var(--primary);
+        }
+    }
+}
+
+.dot{
+    width: 53%;
+    border-bottom: 0.1rem dashed var(--gray-400);
+    margin: 0 0.9rem;
+}

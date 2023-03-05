@@ -20,9 +20,26 @@
     justify-content: center;
     gap: 0.3rem;
 
-
-    &:hover{
+    &:hover {
       box-shadow: #f2475bb5 0px 5px 15px;
     }
+  }
+  &--productCard {
+    background-color: var(--gray-50);
+    color: var(--gray-200);
+    border-top-right-radius:1.5rem ;
+    border-bottom-right-radius:1.5rem ;
+    display: flex;
+    gap: 0.5rem;
+    &:hover{
+      background-color: var(--primary);
+      color: var(--light);
+    }
+  }
+
+  &--small {
+    padding: 0.8rem 0.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 }
