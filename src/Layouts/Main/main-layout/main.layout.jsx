@@ -21,7 +21,7 @@ export const MainLayout = () => {
         titleEn="Mobile"
         icon={<CiMobile3 style={{ fontSize: "1.5rem", color: "#EF3A4F" }} />}
       />
-      <ProductsList />
+      {/* <ProductsList /> */}
       <Separator
         img="https://www.uplooder.net/img/image/32/4df2927688cedac71b03c98529b3b61e/6a45272b7e841c93f80c3c075ed210db4288180f-1677415939-(1).jpg"
         titleFa="هدفون و هنذفری"
@@ -31,14 +31,14 @@ export const MainLayout = () => {
         }
       />
 
-      <ProductsList />
+      {/* <ProductsList /> */}
       <Separator
         img="https://www.uplooder.net/img/image/12/6186aa44c92b13f835d5e0249bb8e625/2کنسول.jpg"
         titleFa="کنسول بازی ایکس باس"
         titleEn=" XBOX"
         icon={<BsXbox style={{ fontSize: "1.5rem", color: "#EF3A4F" }} />}
       />
-      <ProductsList />
+      {/* <ProductsList /> */}
       <Toolbar/>
     </main>
   );
