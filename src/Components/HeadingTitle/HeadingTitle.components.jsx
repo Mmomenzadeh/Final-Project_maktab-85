@@ -5,7 +5,7 @@ export const HeadingTitle = ({ title }) => {
   return (
     <div className="headingTitle flex ">
       <p className="headingTitle__title">{title}</p>
-      <div className="dot"></div>
+      <div className="headingTitle__dot"></div>
       <Link className="headingTitle__link flex">
         <p>مشاهده همه </p>
         <MdOutlineKeyboardArrowLeft />

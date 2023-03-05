@@ -3,7 +3,7 @@
     margin-top: 5rem;
     align-items: baseline;
     &__title{
-        font-size: 1.6rem;
+        font-size: 1.85rem;
         color: var(--gray-400);
         font-weight: bolder;
     }
@@ -17,10 +17,12 @@
             color: var(--primary);
         }
     }
+
+    &__dot{
+        width: 50%;
+        border-bottom: 0.1rem dashed var(--gray-400);
+        margin: 0 0.9rem;
+    }
+    
 }
 
-.dot{
-    width: 53%;
-    border-bottom: 0.1rem dashed var(--gray-400);
-    margin: 0 0.9rem;
-}
