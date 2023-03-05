@@ -1,12 +1,11 @@
 .CardProduct {
-  margin-top: 3rem;
   border: 0.1rem solid var(--gray-100);
   &:hover {
     border: 0.1rem solid var(--primary);
   }
 
   &--small {
-    width: 100%;
+    width: 38rem;
     height: 17rem;
     border-radius: 1.5rem;
     display: flex;

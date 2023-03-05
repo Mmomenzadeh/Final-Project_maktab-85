@@ -2,13 +2,18 @@
     width: 100%;
     margin-top: 5rem;
     align-items: baseline;
+    display: flex;
+    gap: 0.8rem;
     &__title{
-        font-size: 1.85rem;
         color: var(--gray-400);
         font-weight: bolder;
+
+        font-size: 1.9rem;
+
     }
 
     &__link{
+      
         color: var(--gray-400);
         text-decoration: none;
         font-size: 1.1rem;
@@ -19,9 +24,21 @@
     }
 
     &__dot{
-        width: 50%;
+        &--small{
+            width: 32%;
+        }
+
+        &--medium{
+            width: 57%;
+        }
+
+
+        &--large{
+            width: 60%;
+        }
+       
         border-bottom: 0.1rem dashed var(--gray-400);
-        margin: 0 0.9rem;
+       
     }
     
 }
