@@ -5,6 +5,8 @@ import { PANLEMANAGEMENT } from "Config";
 import { ORDERS } from "Config";
 import { LOGIN } from "Config";
 import { CHECKOUT } from "Config";
+import { CATEGORIES } from "Config";
+import { USERACCOUNT } from "Config";
 import { CONTACTUS } from "Config";
 import { NOTFOUND } from "Config";
 import { PAYMENT } from "Config";
@@ -16,6 +18,7 @@ import {
   AllProducts,
   BasketShopping,
   Blog,
+  Categories,
   Checkout,
   ContactUs,
   Home,
@@ -25,6 +28,7 @@ import {
   PanleManagement,
   Payment,
   SingleProduct,
+  UserAccount,
 } from "Pages";
 import { Route, Routes } from "react-router-dom";
 
@@ -44,6 +48,9 @@ export const ProjectRoutes = () => {
       <Route path={LOGIN} element={<LogIn />} />
       <Route path={CONTACTUS} element={<ContactUs />} />
       <Route path={CHECKOUT} element={<Checkout />} />
+      <Route path={USERACCOUNT} element={<UserAccount/>}/>
+      <Route path={CATEGORIES} element={<Categories/>}/>
+
     </Routes>
   );
 };

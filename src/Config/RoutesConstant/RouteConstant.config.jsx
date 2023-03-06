@@ -11,4 +11,7 @@ export const NOTFOUND = "notFound";
 export const CONTACTUS ="contactUs";
 export const CHECKOUT ="checkOut";
 export const ABOUT ="about";
+export const CATEGORIES ="categories";
+export const USERACCOUNT ="useraccount";
+
 

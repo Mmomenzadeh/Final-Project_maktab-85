@@ -38,7 +38,7 @@ export const MainLayout = () => {
         titleEn=" XBOX"
         icon={<BsXbox style={{ fontSize: "1.5rem", color: "#EF3A4F" }} />}
       />
-      {/* <ProductsList /> */}
+      <ProductsList />
       <Toolbar/>
     </main>
   );
