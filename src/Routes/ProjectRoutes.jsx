@@ -23,9 +23,9 @@ import {
   ContactUs,
   Home,
   LogIn,
+  ManagementPanle,
   NotFound,
   Orders,
-  PanleManagement,
   Payment,
   SingleProduct,
   UserAccount,
@@ -41,7 +41,7 @@ export const ProjectRoutes = () => {
       <Route path={ALLPRODUCTS} element={<AllProducts />} />
       <Route path={BASKETSHOPPING} element={<BasketShopping />} />
       <Route path={SINGLEPRODUCT} element={<SingleProduct />} />
-      <Route path={PANLEMANAGEMENT} element={<PanleManagement />} />
+      <Route path={PANLEMANAGEMENT} element={<ManagementPanle />} />
       <Route path={PAYMENT} element={<Payment />} />
       <Route path={ORDERS} element={<Orders />} />
       <Route path={NOTFOUND} element={<NotFound />} />
