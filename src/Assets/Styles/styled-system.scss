@@ -29,7 +29,9 @@
 .wrap{
     flex-wrap: wrap;
 }
-
+.gap{
+  gap: 0.5rem;
+}
 .gap-1 {
   gap: 1rem;
 }
@@ -48,6 +50,10 @@
 
 .gap-5{
     gap: 5rem ;
+}
+
+.gap-7{
+  gap: 7rem ;
 }
 
 .full-h{

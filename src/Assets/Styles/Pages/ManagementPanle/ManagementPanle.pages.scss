@@ -1,4 +1,13 @@
-.managementPanle{
-    height: 100vh;
-    overflow-y: hidden;
+.managementPanle {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--light);
+  overflow-x: hidden;
+  overflow-y: hidden;
+&__main{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 2rem;
+}
 }

@@ -27,11 +27,11 @@
   &--productCard {
     background-color: var(--gray-50);
     color: var(--gray-200);
-    border-top-right-radius:1.5rem ;
-    border-bottom-right-radius:1.5rem ;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
     display: flex;
     gap: 0.5rem;
-    &:hover{
+    &:hover {
       background-color: var(--primary);
       color: var(--light);
     }
@@ -41,5 +41,32 @@
     padding: 0.8rem 0.8rem;
     font-size: 1.2rem;
     font-weight: bold;
+  }
+
+  &--table-btn {
+    width: 7rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: 1rem;
+    background-color: var(--white);
+    color: var(--white);
+  }
+
+  &--outline-red {
+    color: var(--primary);
+
+    border: 0.1rem solid var(--primary);
+    &:hover {
+      box-shadow: #f2475b88 3px 3px 3px;
+    }
+  }
+
+  &--outline-blue {
+    color: var(--blue-100);
+    border: 0.1rem solid var(--blue-100);
+    &:hover {
+      box-shadow: #19c0d3bd 3px 3px 3px;
+    }
   }
 }

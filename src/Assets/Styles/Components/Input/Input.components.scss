@@ -24,6 +24,17 @@
     
   }
 
+  &--searchBoxAdmin{
+    width: 30rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    border: 0.1rem solid rgba(229, 229, 229, 0.5);
+    &:focus {
+      border: 0.15rem solid var(--blue-100);
+    }
+  }
+
 
 }
 

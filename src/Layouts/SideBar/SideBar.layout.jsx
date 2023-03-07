@@ -1,6 +1,11 @@
 import { FaRegUser } from "react-icons/fa";
 import { MdAccountCircle, MdOutlineInventory } from "react-icons/md";
-import { TbBookmarks, TbCategory, TbFileInvoice, TbReportSearch } from "react-icons/tb";
+import {
+  TbBookmarks,
+  TbCategory,
+  TbFileInvoice,
+  TbReportSearch,
+} from "react-icons/tb";
 import { TfiComments } from "react-icons/tfi";
 import { IoIosPaper } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -11,32 +16,37 @@ import { BiSupport } from "react-icons/bi";
 export const SideBar = () => {
   return (
     <div className="sideBar">
-      <Link to="" className="sideBar__logo">
-        <span className="sideBar__logo__title-one">MARVEL</span><span className="sideBar__logo__title-sec">Digist</span>
-      </Link>
+      <div className="sideBar__account">
+        <MdAccountCircle className="sideBar__account__icon" />
+        <div className="flex col gap-1">
+          <span className="sideBar__account__txt-one">مهسا مومن زاده</span>
+          <span className="sideBar__account__txt-sec">Admin</span>
+        </div>
+      </div>
+
       <Link to="" className="sideBar__item">
         <TbCategory className="sideBar__item__icon" />
-        <span className="sideBar__item__title">کالاها</span>
+        <span className="sideBar__item__title">مدیریت کالاها</span>
       </Link>
 
       <Link to="" className="sideBar__item">
         <MdOutlineInventory className="sideBar__item__icon" />
-        <span className="sideBar__item__title">موجودی و قیمت ها</span>
+        <span className="sideBar__item__title">    مدیریت انبار</span>
       </Link>
 
       <Link to="" className="sideBar__item">
         <TbFileInvoice className="sideBar__item__icon" />
-        <span className="sideBar__item__title">سفارش ها</span>
+        <span className="sideBar__item__title"> مدیریت سفارش ها</span>
       </Link>
 
       <Link to="" className="sideBar__item">
         <FaRegUser className="sideBar__item__icon" />
-        <span className="sideBar__item__title">کاربران</span>
+        <span className="sideBar__item__title">مدیریت کاربران</span>
       </Link>
 
       <Link to="" className="sideBar__item">
         <TfiComments className="sideBar__item__icon" />
-        <span className="sideBar__item__title">دیدگاه ها</span>
+        <span className="sideBar__item__title"> مدیریت دیدگاه ها</span>
       </Link>
 
       <Link to="" className="sideBar__item">
@@ -68,12 +78,17 @@ export const SideBar = () => {
 
       <div className="sideBar__line-h"></div>
 
-      <div className="flex j-c ">
+      <Link to="/" className="sideBar__logo">
+        <span className="sideBar__logo__title-one">MARVEL</span>
+        <span className="sideBar__logo__title-sec">Digist</span>
+      </Link>
+
+      {/* <div className="flex j-c ">
         <Link to="" className="sideBar__StoreLink">
           <IoStorefrontSharp style={{ fontSize: "2.5rem" }} />
           <span style={{ fontSize: "1.5rem" }}>فروشگاه</span>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
