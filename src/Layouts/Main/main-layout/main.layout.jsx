@@ -1,4 +1,4 @@
-import { HeadingTitle, ProductsList, Separator, Toolbar } from "Components";
+import { HeadingTitle, ProductsList, Separator, Slider, Toolbar } from "Components";
 import { BsLaptop, BsXbox } from "react-icons/bs";
 import { CiMobile3 } from "react-icons/ci";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
@@ -7,6 +7,7 @@ import "../../../Assets/Styles/Layout/MainUser/index.scss";
 export const MainLayout = () => {
   return (
     <main className="main ">
+      <Slider/>
       <Separator
         img="https://www.uplooder.net/img/image/87/746bb312a87a5fe53e0edb5a7ed95f20/2db150d462088e95bcb9dcd2f31742409b5a8117-1674631788.jpg"
         titleFa="لپ تاپ "
