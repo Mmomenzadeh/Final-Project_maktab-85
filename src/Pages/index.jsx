@@ -9,7 +9,7 @@ export * from "./Home/Home.pages";
 export * from "./Nofound/NotFound.pages";
 export * from "./Orders/Orders.pages";
 export * from "./Payment/Payment.pages";
-export * from "./Panle-management/ManagementPanle.pages";
 export * from "./Single-Product/SingleProduct.pages";
 export * from "./Categories/Categories.pages";
 export * from "./UserAccount/UserAccount.pages";
+export * from "./Panle-management/RoutsManagementPanel";

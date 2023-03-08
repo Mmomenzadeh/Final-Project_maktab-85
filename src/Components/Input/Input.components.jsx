@@ -6,6 +6,8 @@ export const Input = ({
   value,
   inpType,
   className,
+  id ,
+  name
 }) => {
   return (
     <input
@@ -14,6 +16,8 @@ export const Input = ({
       placeholder={holder}
       onChange={onChange}
       value={value}
+      id={id}
+      name={name}
     />
   );
 };

@@ -1,31 +1,45 @@
-.adminHeader {
-  min-width: 88vw;
-  width: -webkit-fill-available;
+header {
+  background-color: var(--white);
+  height: 8rem;
   display: flex;
-  justify-content: space-between;
-  padding: 1.5rem;
+  justify-content: space-around;
+  align-items: center;
+ 
 
-  // border-bottom: 0.1rem solid rgba(239, 239, 239, 0.736);
+  .header-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
 
-  &__account {
+
+  .header-left {
     display: flex;
     align-items: center;
-    padding-left: 3rem;
-    // gap: 0.5rem;
-    color: var(--gray-200);
-    cursor: pointer;
-    &__txt {
-      font-size: 1.4rem;
-      color: var(--gray-300);
+    gap: 0.9rem;
+
+    &__p {
+      font-size: 1.2rem;
+      color: rgb(128, 126, 126);
+      cursor: pointer;
+      filter: brightness(0.5);
+      &:hover {
+        filter: brightness(1.3);
+      }
     }
 
-    &__icon-one {
-      font-size: 4rem;
-    }
-
-    &__icon-sec {
-      font-weight: bolder;
-      font-size: 2rem;
+    &__icon {
+      cursor: pointer;
+      filter: brightness(1);
+      &:hover {
+        filter: brightness(1.5);
+      }
     }
   }
+}
+
+.line-h {
+  height: 18px;
+  background-color: rgba(177, 177, 177, 0.482);
+  padding: 0.5px;
 }

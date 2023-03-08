@@ -4,7 +4,7 @@ import "../../../Assets/Styles/Layout/MainAdmin/index.scss";
 export const AdminMain = () => {
   return (
     <div className="adminMain">
-      <div className="adminMain__header">
+      {/* <div className="adminMain__header">
        <div className="flex gap-2">
        <div className="flex gap-1 a-c">
           <label className="adminMain__header__label">جستجو : </label>
@@ -20,7 +20,7 @@ export const AdminMain = () => {
        </div>
 
        <BsPlusSquare className="adminMain__header__icon"/>
-      </div>
+      </div> */}
       <div className="adminMain__main">
         <Table />
       </div>

@@ -7,12 +7,14 @@ import {
   TbReportSearch,
 } from "react-icons/tb";
 import { TfiComments } from "react-icons/tfi";
-import { IoIosPaper } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "../../Assets/Styles/Layout/SideBar/index.scss";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { SlSettings } from "react-icons/sl";
 import { BiSupport } from "react-icons/bi";
+import { PANLEMANAGEMENT_ORDERS } from "Config";
+import { PANLEMANAGEMENT_STOCK } from "Config";
+import { PANLEMANAGEMENT } from "Config";
 export const SideBar = () => {
   return (
     <div className="sideBar">
@@ -29,12 +31,12 @@ export const SideBar = () => {
         <span className="sideBar__item__title">مدیریت کالاها</span>
       </Link>
 
-      <Link to="" className="sideBar__item">
+      <Link to={PANLEMANAGEMENT_STOCK} className="sideBar__item">
         <MdOutlineInventory className="sideBar__item__icon" />
         <span className="sideBar__item__title">    مدیریت انبار</span>
       </Link>
 
-      <Link to="" className="sideBar__item">
+      <Link to={PANLEMANAGEMENT_ORDERS} className="sideBar__item">
         <TbFileInvoice className="sideBar__item__icon" />
         <span className="sideBar__item__title"> مدیریت سفارش ها</span>
       </Link>

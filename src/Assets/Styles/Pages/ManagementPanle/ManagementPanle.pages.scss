@@ -1,13 +1,47 @@
 .managementPanle {
   height: 100vh;
-  width: 100vw;
+  // width: 100vw;
   background-color: var(--light);
   overflow-x: hidden;
   overflow-y: hidden;
-&__main{
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding-top: 2rem;
-}
+  
+  &__header{
+    margin-bottom: 2rem;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 2rem;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0rem 1rem 1.5rem 1.5rem;
+  
+      &__label {
+        color: var(--gray-300);
+        font-size: 1.3rem;
+      }
+  
+      &__select {
+        border: none;
+        outline: none;
+        padding: 0.8rem;
+        width: 10rem;
+        border-radius: 1rem;
+        font-size: 1.5rem;
+      }
+  
+      &__icon {
+        cursor: pointer;
+        font-size: 2.5rem;
+        color: var(--gray-400);
+      }
+    }
+  }
+
+ 
 }

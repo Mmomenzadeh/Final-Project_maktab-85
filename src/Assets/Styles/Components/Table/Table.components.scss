@@ -7,7 +7,7 @@ table {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-color: #f6f6f693;
 
-  thead {
+  thead .thead__tr {
     font-size: 1.5rem;
     height: 5rem;
     text-align: right;
@@ -21,7 +21,7 @@ table {
     }
   }
 
-  tr {
+  tbody .tbody__tr {
     background-color: var(--white);
     border-top: 0.1rem solid var(--gray-100);
 
@@ -41,9 +41,9 @@ table {
 }
 
 .td-productName {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
   &__img-container {
     width: 6rem;
@@ -60,12 +60,11 @@ table {
     height: 4.5rem;
   }
 
-  &__title{
+  &__title {
     font-size: 1.4rem;
-
   }
 
-  &__model{
+  &__model {
     font-size: 1.2rem;
     color: var(--gray-200);
   }
