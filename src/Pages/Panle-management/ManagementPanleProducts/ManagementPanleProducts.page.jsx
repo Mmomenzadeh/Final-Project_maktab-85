@@ -1,14 +1,23 @@
 import { Input } from "Components";
 import { AdminHeader, AdminMain, SideBar } from "Layouts";
 import { BsPlusSquare } from "react-icons/bs";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
+import { fetchProducts } from "Redux/Slices/ProductSlice";
+import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
+
 export const ManagementPanleProducts = () => {
+  const { productData } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+
   return (
     <div className="managementPanle">
-
-        <div className="managementPanle__header">
-          {/* <AdminHeader/> */}
-        </div>
+      <div className="managementPanle__header">{/* <AdminHeader/> */}</div>
 
       <div className="managementPanle__main">
         <SideBar />
@@ -40,7 +49,7 @@ export const ManagementPanleProducts = () => {
             <BsPlusSquare className="managementPanle__main__header__icon" />
           </div>
 
-          <AdminMain />
+          <AdminMain data={productData} status="product" />
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import {
   TbReportSearch,
 } from "react-icons/tb";
 import { TfiComments } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../../Assets/Styles/Layout/SideBar/index.scss";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { SlSettings } from "react-icons/sl";
@@ -26,70 +26,70 @@ export const SideBar = () => {
         </div>
       </div>
 
-      <Link to="" className="sideBar__item">
-        <TbCategory className="sideBar__item__icon" />
-        <span className="sideBar__item__title">مدیریت کالاها</span>
-      </Link>
-
-      <Link to={PANLEMANAGEMENT_STOCK} className="sideBar__item">
-        <MdOutlineInventory className="sideBar__item__icon" />
-        <span className="sideBar__item__title">    مدیریت انبار</span>
-      </Link>
-
-      <Link to={PANLEMANAGEMENT_ORDERS} className="sideBar__item">
+      <NavLink excat to="/managementPanle" className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
         <TbFileInvoice className="sideBar__item__icon" />
         <span className="sideBar__item__title"> مدیریت سفارش ها</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="/managementPanle/products"  className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
+        <TbCategory className="sideBar__item__icon" />
+        <span className="sideBar__item__title">مدیریت کالاها</span>
+      </NavLink>
+
+      <NavLink to="/managementPanle/stock"  className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
+        <MdOutlineInventory className="sideBar__item__icon" />
+        <span className="sideBar__item__title"> مدیریت انبار</span>
+      </NavLink>
+
+      <NavLink to="/users"  className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
         <FaRegUser className="sideBar__item__icon" />
         <span className="sideBar__item__title">مدیریت کاربران</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <TfiComments className="sideBar__item__icon" />
         <span className="sideBar__item__title"> مدیریت دیدگاه ها</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <TbReportSearch className="sideBar__item__icon" />
         <span className="sideBar__item__title">گزارشات</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <TbBookmarks className="sideBar__item__icon" />
         <span className="sideBar__item__title">راهنما</span>
-      </Link>
+      </NavLink>
 
       <div className="sideBar__line-h"></div>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <SlSettings className="sideBar__item__icon" />
         <span className="sideBar__item__title">تنظیمات</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <BiSupport className="sideBar__item__icon" />
         <span className="sideBar__item__title">پشتیبانی</span>
-      </Link>
+      </NavLink>
 
-      <Link to="" className="sideBar__item">
+      <NavLink to="" className="sideBar__item">
         <MdAccountCircle className="sideBar__item__icon" />
         <span className="sideBar__item__title">حساب کاربری</span>
-      </Link>
+      </NavLink>
 
       <div className="sideBar__line-h"></div>
 
-      <Link to="/" className="sideBar__logo">
+      <NavLink to="/" className="sideBar__logo">
         <span className="sideBar__logo__title-one">MARVEL</span>
         <span className="sideBar__logo__title-sec">Digist</span>
-      </Link>
+      </NavLink>
 
       {/* <div className="flex j-c ">
-        <Link to="" className="sideBar__StoreLink">
+        <NavLink to="" className="sideBar__StoreNavLink">
           <IoStorefrontSharp style={{ fontSize: "2.5rem" }} />
           <span style={{ fontSize: "1.5rem" }}>فروشگاه</span>
-        </Link>
+        </NavLink>
       </div> */}
     </div>
   );

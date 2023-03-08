@@ -1,7 +1,7 @@
 import { Input, Table } from "Components";
 import { BsPlusSquare } from "react-icons/bs";
 import "../../../Assets/Styles/Layout/MainAdmin/index.scss";
-export const AdminMain = () => {
+export const AdminMain = ({ data , status }) => {
   return (
     <div className="adminMain">
       {/* <div className="adminMain__header">
@@ -22,7 +22,9 @@ export const AdminMain = () => {
        <BsPlusSquare className="adminMain__header__icon"/>
       </div> */}
       <div className="adminMain__main">
-        <Table />
+        <Table data={data} >
+          
+        </Table>
       </div>
       <div className="adminMain__footer"></div>
     </div>
