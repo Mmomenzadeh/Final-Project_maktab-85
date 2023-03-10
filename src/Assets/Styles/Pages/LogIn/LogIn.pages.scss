@@ -34,3 +34,28 @@
   font-family: IRANSANSBlod;
   font-weight: bolder;
 }
+
+.login-link{
+  text-decoration: none;
+}
+
+.error-form{
+  color: var(--warning);
+}
+
+.login-form{
+  font-family: IRANSANS;
+    outline: none;
+  border: none;
+  border: 0.1rem solid var(--gray-100);
+  padding: 1rem;
+  padding-left: 0.5rem;
+  width: 27rem;
+  border-radius: 1rem;
+  &:focus {
+    border: 0.15rem solid var(--blue-100);
+  }
+
+
+
+}

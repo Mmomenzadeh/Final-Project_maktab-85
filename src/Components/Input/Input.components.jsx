@@ -6,6 +6,7 @@ export const Input = ({
   value,
   inpType,
   className,
+  validate
 }) => {
   return (
     <input
@@ -14,6 +15,7 @@ export const Input = ({
       placeholder={holder}
       onChange={onChange}
       value={value}
+      {...validate}
     />
   );
 };
