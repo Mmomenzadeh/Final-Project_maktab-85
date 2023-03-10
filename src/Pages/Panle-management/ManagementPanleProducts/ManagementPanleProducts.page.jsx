@@ -60,10 +60,20 @@ export const ManagementPanleProducts = () => {
                 name="category"
                 value={filterParams}
                 onChange={(e) => {
-                  dispatch(
-                    fetchFilterData(`products?category=${e.target.value}`)
-                  );
-                  setFilterParams(e.target.value);
+                  if (e.target.value ) {
+                    dispatch(
+                      fetchFilterData(`products?category=${e.target.value}`)
+                    );
+                    setFilterParams(e.target.value);
+                  }else{
+
+                    dispatch(
+                      fetchFilterData(`products`)
+                    );
+                    setFilterParams(e.target.value);
+
+                  }
+               
                 }}
               >
                 <option value="">همه </option>

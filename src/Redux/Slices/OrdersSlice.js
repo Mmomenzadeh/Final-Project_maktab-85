@@ -10,9 +10,10 @@ export const fetchOrders = createAsyncThunk("fetch/ordersList", async () => {
   }
 });
 
-export const fetchFilterData = createAsyncThunk(
+export const fetchFilterData2 = createAsyncThunk(
   "filterData/ordersList",
   async (params) => {
+    console.log(params);
     try { 
       const res = await FilterData(params);
       return res.data;
@@ -57,15 +58,15 @@ const OrderSlice = createSlice({
     });
 
     /// Filter Data :
-    builder.addCase(fetchFilterData.pending, (state) => {
+    builder.addCase(fetchFilterData2.pending, (state) => {
       return {
         ...state,
         loading: true,
       };
     });
 
-    builder.addCase(fetchFilterData.fulfilled, (state, action) => {
-      console.log(action.payload);
+    builder.addCase(fetchFilterData2.fulfilled, (state, action) => {
+      console.log(action.payload);  
       return {
         ...state,
         ordersData: action.payload,
@@ -73,7 +74,7 @@ const OrderSlice = createSlice({
       };
     });
 
-    builder.addCase(fetchFilterData.rejected, (state) => {
+    builder.addCase(fetchFilterData2.rejected, (state) => {
       return {
         ...state,
         error: "something went wrong",

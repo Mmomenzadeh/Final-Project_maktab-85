@@ -6,18 +6,22 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFilterData } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
-import { fetchOrders } from "../../../Redux/Slices/OrdersSlice";
+import {
+  fetchFilterData2,
+  fetchOrders,
+} from "../../../Redux/Slices/OrdersSlice";
 
 export const ManagementPanleOrders = () => {
-  //  const [filterParams, setFilterParams] = useState(false);
-
+  const [filterParams, setFilterParams] = useState(false);
+  console.log(filterParams);
   const { ordersData } = useSelector((state) => state.orders);
-  const dispatch = useDispatch();
   console.log(ordersData);
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchOrders());
-    // dispatch(fetchFilterData(`orders?delivered=true`));
-  }, [dispatch]);
+    // dispatch(fetchOrders());
+    dispatch(fetchFilterData2(`orders?delivered=${filterParams}`));
+  }, [dispatch, filterParams]);
 
   // --------------------------------------------------------------------------------------------------------
 
@@ -63,9 +67,7 @@ export const ManagementPanleOrders = () => {
               type="radio"
               name="delivered"
               id="delivered"
-              onChange={(e) => {
-                dispatch(fetchFilterData(`orders?delivered=${true}`));
-              }}
+              onChange={() => setFilterParams(true)}
             />
             <label
               className="managementPanle__table-header__label"
@@ -77,9 +79,7 @@ export const ManagementPanleOrders = () => {
               type="radio"
               name="delivered"
               id="notDelivered"
-              onChange={(e) => {
-                dispatch(fetchFilterData(`orders?delivered=${false}`));
-              }}
+              onChange={() => setFilterParams(false)}
             />
           </div>
         </div>

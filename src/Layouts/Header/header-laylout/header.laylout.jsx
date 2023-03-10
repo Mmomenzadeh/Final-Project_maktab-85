@@ -7,11 +7,11 @@ import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
 export const Header = () => {
   return (
     <>
-      <header className="header ">
+      <header className="header flex col ">
         <div className="header__snackbar">
         <Snackbar />
         </div>
-        <div className="header__body">
+        <div className="header__body ">
         <div className="flex j-sb a-c ">
           <BiMenu className="header-icon hover" />
           <Logo />

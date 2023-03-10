@@ -3,7 +3,7 @@
   border: 0.1rem solid var(--gray-100);
   border-radius: 1.5rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  height: 35rem;
+  // height: 35rem;
   width: 30rem;
   padding: 2rem;
   gap: 3rem;
@@ -37,11 +37,14 @@
 
 .login-link{
   text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+
 }
 
-.error-form{
-  color: var(--warning);
-}
+
 
 .login-form{
   font-family: IRANSANS;
@@ -57,5 +60,17 @@
   }
 
 
+
+}
+
+
+.error-form{
+  color: red ; 
+  font-size: 0.5rem;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 0px;
+  padding-top: 0px;
 
 }

@@ -9,3 +9,4 @@ export * from "./Separator/Separator.components";
 export * from "./HeadingTitle/HeadingTitle.components";
 export * from "./Toolbar/Toolbar.components";
 export * from "./Table/Table.components";
+export * from "./Slider/Slider.components"

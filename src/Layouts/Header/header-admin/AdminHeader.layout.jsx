@@ -9,7 +9,7 @@ export const AdminHeader = () => {
     <header>
     <div className="header-right">
      <Logo/>
-      <SearchBox_fashion/>
+
     </div>
     <div className="header-left">
       <VscAccount size="2.3rem" color="gray"  className="header-left__icon" />
