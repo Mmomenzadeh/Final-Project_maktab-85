@@ -11,6 +11,7 @@ import { BLOG } from "Config";
 import { BASKETSHOPPING } from "Config";
 import { USERACCOUNT } from "Config";
 import { CATEGORIES } from "Config";
+import { LOGIN } from "Config";
 export const Toolbar = () => {
   return (
     <div className="toolbar">
@@ -35,9 +36,9 @@ export const Toolbar = () => {
         <span className="toolbar__item__title">سبد خرید</span>
       </Link>
 
-      <Link to={USERACCOUNT} className="toolbar__item">
+      <Link to={LOGIN} className="toolbar__item">
         <IoPersonOutline className="toolbar__item__icon" />
-        <span className="toolbar__item__title">حساب من</span>
+        <span className="toolbar__item__title"> مدیریت </span>
       </Link>
     </div>
   );

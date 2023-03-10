@@ -6,8 +6,12 @@ export const Input = ({
   value,
   inpType,
   className,
+<<<<<<< HEAD
   id ,
   name
+=======
+  validate
+>>>>>>> develop
 }) => {
   return (
     <input
@@ -16,8 +20,12 @@ export const Input = ({
       placeholder={holder}
       onChange={onChange}
       value={value}
+<<<<<<< HEAD
       id={id}
       name={name}
+=======
+      {...validate}
+>>>>>>> develop
     />
   );
 };

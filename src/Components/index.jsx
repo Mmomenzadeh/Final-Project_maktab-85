@@ -9,5 +9,3 @@ export * from "./Separator/Separator.components";
 export * from "./HeadingTitle/HeadingTitle.components";
 export * from "./Toolbar/Toolbar.components";
 export * from "./Table/Table.components";
-export * from "./SearchBox/SearchBox-fashion.components";
-export * from "./Pagination/Pagination.components";
