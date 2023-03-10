@@ -13,6 +13,7 @@ import { PAYMENT } from "Config";
 import { SINGLEPRODUCT } from "Config";
 import { ALLPRODUCTS } from "Config";
 import { HOME } from "Config";
+import { AdminMain } from "Layouts";
 import {
   About,
   AllProducts,
@@ -23,7 +24,6 @@ import {
   ContactUs,
   Home,
   LogIn,
-  
   NotFound,
   Orders,
   Payment,
@@ -31,6 +31,11 @@ import {
   SingleProduct,
   UserAccount,
 } from "Pages";
+import {
+  ManagementPanleOrders,
+  ManagementPanleProducts,
+  ManagementPanleStock,
+} from "Pages/Panle-management";
 import { Route, Routes } from "react-router-dom";
 
 export const ProjectRoutes = () => {
@@ -42,16 +47,20 @@ export const ProjectRoutes = () => {
       <Route path={ALLPRODUCTS} element={<AllProducts />} />
       <Route path={BASKETSHOPPING} element={<BasketShopping />} />
       <Route path={SINGLEPRODUCT} element={<SingleProduct />} />
-      <Route path={PANLEMANAGEMENT} element={<RoutsManagementPanel/>} />
+      {/* <Route path={PANLEMANAGEMENT} element={<RoutsManagementPanel/>} /> */}
+      <Route path="/managementPanle" element={<AdminMain />}>
+        <Route index element={<ManagementPanleOrders />} />
+        <Route path="products" element={<ManagementPanleProducts />} />
+        <Route path="stock" element={<ManagementPanleStock />} />
+      </Route>
       <Route path={PAYMENT} element={<Payment />} />
       <Route path={ORDERS} element={<Orders />} />
       <Route path={NOTFOUND} element={<NotFound />} />
       <Route path={LOGIN} element={<LogIn />} />
       <Route path={CONTACTUS} element={<ContactUs />} />
       <Route path={CHECKOUT} element={<Checkout />} />
-      <Route path={USERACCOUNT} element={<UserAccount/>}/>
-      <Route path={CATEGORIES} element={<Categories/>}/>
-
+      <Route path={USERACCOUNT} element={<UserAccount />} />
+      <Route path={CATEGORIES} element={<Categories />} />
     </Routes>
   );
 };

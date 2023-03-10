@@ -26,7 +26,7 @@ export const SideBar = () => {
         </div>
       </div>
 
-      <NavLink excat to="/managementPanle" className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
+      <NavLink  to="/managementPanle" className={(navData)=>navData.isActive ? "sideBar__item  sideBar-active" : "sideBar__item"}>
         <TbFileInvoice className="sideBar__item__icon" />
         <span className="sideBar__item__title"> مدیریت سفارش ها</span>
       </NavLink>

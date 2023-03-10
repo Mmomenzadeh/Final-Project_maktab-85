@@ -12,4 +12,4 @@ export * from "./Payment/Payment.pages";
 export * from "./Single-Product/SingleProduct.pages";
 export * from "./Categories/Categories.pages";
 export * from "./UserAccount/UserAccount.pages";
-export * from "./Panle-management/RoutsManagementPanel";
+

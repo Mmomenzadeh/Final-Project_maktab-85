@@ -16,6 +16,8 @@ table {
     background-color: #f9fafb;
     th {
       vertical-align: middle;
+      text-align: right;
+
       padding-right: 2rem;
       color: var(--gray-300);
     }
@@ -33,6 +35,7 @@ table {
     td {
       font-size: 1.5rem;
       text-align: right;
+
       vertical-align: middle;
 
       padding: 1.4rem 1rem 0.5rem 0;
