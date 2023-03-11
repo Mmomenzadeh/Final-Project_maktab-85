@@ -12,9 +12,7 @@ import {
 
 export const ManagementPanleOrders = () => {
   const [filterParams, setFilterParams] = useState(false);
-  console.log(filterParams);
   const { ordersData } = useSelector((state) => state.orders);
-  console.log(ordersData);
 
   const dispatch = useDispatch();
   useEffect(() => {

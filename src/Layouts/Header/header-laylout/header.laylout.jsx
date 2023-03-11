@@ -7,7 +7,7 @@ import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
 export const Header = () => {
   return (
     <>
-      <header className="header flex col ">
+      <header className="header ">
         <div className="header__snackbar">
         <Snackbar />
         </div>
