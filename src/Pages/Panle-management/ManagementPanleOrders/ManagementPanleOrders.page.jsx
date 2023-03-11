@@ -27,13 +27,13 @@ export const ManagementPanleOrders = () => {
   //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
   const [itemOffset, setItemOffset] = useState(0);
 
-  const endOffset = itemOffset + 8;
+  const endOffset = itemOffset + 12;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = ordersData.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(ordersData.length / 8);
+  const pageCount = Math.ceil(ordersData.length / 12);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * 8) % ordersData.length;
+    const newOffset = (event.selected * 12) % ordersData.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -50,7 +50,7 @@ export const ManagementPanleOrders = () => {
             </label>
             <Input
               type="search"
-              holder="18 رکورد ...."
+              holder="112 رکورد ...."
               inpType="searchBoxAdmin"
             />
           </div>
