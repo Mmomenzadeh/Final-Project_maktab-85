@@ -19,13 +19,13 @@ export const ManagementPanleStock = () => {
   //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
   const [itemOffset, setItemOffset] = useState(0);
 
-  const endOffset = itemOffset + 8;
+  const endOffset = itemOffset + 12;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = productData.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(productData.length / 8);
+  const pageCount = Math.ceil(productData.length / 12);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * 8) % productData.length;
+    const newOffset = (event.selected * 12) % productData.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -44,7 +44,7 @@ export const ManagementPanleStock = () => {
               </label>
               <Input
                 type="search"
-                holder="18 رکورد ...."
+                holder="112 رکورد ...."
                 inpType="searchBoxAdmin"
               />
             </div>
