@@ -148,13 +148,15 @@ export const ManagementPanleProducts = () => {
 
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel=" < next "
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="< previous"
+          previousLabel="previous > "
           renderOnZeroPageCount={null}
           className="pagination flex gap-5 mt-5 j-c a-c"
+          activeClassName="activePage"
+
         />
       </div>
     </div>

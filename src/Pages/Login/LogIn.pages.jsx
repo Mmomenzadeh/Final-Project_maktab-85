@@ -40,12 +40,14 @@ export const LogIn = () => {
             inpType="login"
             type="text"
             holder="نام کاربری خود را وارد نمایید "
-            {...register("username", {
-              required: true,
-              // minLength: 4,
-              // pattern:
-              //   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            })}
+            validate={{
+              ...register("username", {
+                required: true,
+                // minLength: 4,
+                // pattern:
+                //   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              }),
+            }}
           />
           {errors.username && (
             <p className="error-form">وارد کردن نام کاربری الزامی ست</p>
@@ -55,11 +57,11 @@ export const LogIn = () => {
               inpType="login"
               type="password"
               holder="رمز عبور خود را وارد نمایید"
-              {...register("password", {
+            validate={  {...register("password", {
                 required: true,
                 // minLength: 8,
                 // pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
-              })}
+              })}}
             />
             <BsEyeFill className="login-icon" />
           </div>

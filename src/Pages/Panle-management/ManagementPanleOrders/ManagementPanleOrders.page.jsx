@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFilterData } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 import {
-  fetchFilterData2,
-  fetchOrders,
+  fetchFilterOrders,
 } from "../../../Redux/Slices/OrdersSlice";
 
 export const ManagementPanleOrders = () => {
@@ -20,7 +19,7 @@ export const ManagementPanleOrders = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(fetchOrders());
-    dispatch(fetchFilterData2(`orders?delivered=${filterParams}`));
+    dispatch(fetchFilterOrders(`orders?delivered=${filterParams}`));
   }, [dispatch, filterParams]);
 
   // --------------------------------------------------------------------------------------------------------
@@ -127,13 +126,15 @@ export const ManagementPanleOrders = () => {
 
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="< next "
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel=" previous >"
         renderOnZeroPageCount={null}
-        className="pagination flex gap-5 mt-5 j-c a-c"
+        className="pagination activePage-w flex gap-5 j-c a-c  "
+        activeClassName="activePage  "
+
       />
     </div>
   );

@@ -31,6 +31,26 @@
   font-size: 2rem;
   cursor: pointer;
   flex-direction: row-reverse;
-  color: plum;
+  // color: plum;
+  color: var(--gray-200);
+  background-color: var(--white);
+  margin: 40px auto;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 
+.activePage{
+  // background-color: plum;
+  background-color: var(--blue-100);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  color: white;
+}
+
+.activePage-w{
+  width: 40rem;
+}
