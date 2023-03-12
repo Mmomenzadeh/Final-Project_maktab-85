@@ -2,6 +2,7 @@
   outline: none;
   border: none;
   font-family: IRANSANS;
+  position: relative;
 
   &--login {
     border: 0.1rem solid var(--gray-100);
@@ -22,6 +23,14 @@
     color: var(--gray-300);
     border-radius: 1rem;
     
+  }
+
+  &--searchBox-Home-large{
+    background-color: transparent;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    width: 45rem;
+
   }
 
 
