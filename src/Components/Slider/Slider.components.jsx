@@ -9,7 +9,6 @@ import "swiper/css/autoplay";
 // import required modules
 import { Autoplay, Pagination } from "swiper";
 import "../../Assets/Styles/Components/Slider/index.scss";
-import one from "../../Assets/Slider/oneExtraSmall.gif"
 
 export const Slider = () => {
   return (
