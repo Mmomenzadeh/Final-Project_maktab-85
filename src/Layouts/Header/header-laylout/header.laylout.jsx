@@ -20,7 +20,7 @@ export const Header = () => {
             <VscAccount size="3rem" />
           </Link>
 
-          <Link className="header-left__Link">ورود / ثبت نام</Link>
+          <Link to="/login" className="header-left__Link">ورود / ثبت نام</Link>
           <div className="line-h"></div>
           <BsHeart size="2.5rem" className="header-left__icon" />
           <div className="line-h"></div>
