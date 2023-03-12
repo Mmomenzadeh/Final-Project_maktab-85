@@ -1,37 +1,36 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 // import required modules
-import { Pagination, EffectCoverflow } from "swiper";
-
+import { Autoplay, Pagination } from "swiper";
 import "../../Assets/Styles/Components/Slider/index.scss";
+import one from "../../Assets/Slider/oneExtraSmall.gif"
 
 export const Slider = () => {
   return (
-    <div className="slider-container">
+    <div className="slider-container ">
       <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        pagination={true}
-        modules={[Pagination]}
+        pagination={{ clickable: true }}
+        slidesPerView={1}
+        autoplay={{
+          delay: 2000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, Pagination]}
+        
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://pre-websites.ir/elementor/digital/wp-content/uploads/2022/01/banner1.jpg" alt="" />
+          1
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://www.uplooder.net/img/image/73/d0699b45abed988d27ccd1a65a65891a/کنسول.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://www.uplooder.net/img/image/59/edd04537384e22d65a3022b8f735dbf6/22b9006f6908606e9b5732dbb2392944db5ef12f-1660459495.jpg" alt="" />
-        </SwiperSlide>
+        <SwiperSlide>2</SwiperSlide>
+        <SwiperSlide>3</SwiperSlide>
       </Swiper>
     </div>
   );
