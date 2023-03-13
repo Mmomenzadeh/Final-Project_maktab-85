@@ -1,7 +1,7 @@
 .ProductsList{
-    overflow-x: hidden;
     display: flex;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding-top: 3rem;
+    justify-content: center;
     gap: 3rem;
 }

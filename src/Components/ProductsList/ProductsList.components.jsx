@@ -1,13 +1,11 @@
 import { CardProduct } from "Components";
-import "../../Assets/Styles/Components/ProductsList/index.scss"
-export const ProductsList = () => {
+import "../../Assets/Styles/Components/ProductsList/index.scss";
+export const ProductsList = ({productData}) => {
   return (
     <div className="ProductsList">
-      <CardProduct type="small" />
-      <CardProduct type="small" />
-      <CardProduct type="small" />
-      <CardProduct type="small" />
-      <CardProduct type="small" />
+      {productData.map((product) => {
+        return <CardProduct product={product} size="Large" />;
+      })}
     </div>
   );
 };

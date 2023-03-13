@@ -1,27 +1,40 @@
-import {
-  Banner,
-  HeadingTitle,
-  ProductsList,
-  Separator,
-  Slider,
-  Toolbar,
-} from "Components";
-import { BsLaptop, BsXbox } from "react-icons/bs";
-import { CiMobile3 } from "react-icons/ci";
-import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { Banner, HeadingTitle, ProductsList } from "Components";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Layout/MainUser/index.scss";
 
 export const MainLayout = () => {
+  const { productData } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  const mobiles = productData.filter((item) => item.category === 1);
+  const laptops = productData.filter((item) => item.category === 2);
+  const headPhones = productData.filter((item) => item.category === 3);
+  const console = productData.filter((item) => item.category === 4);
   return (
     <main className="main ">
       <Banner />
-      <HeadingTitle size="100rem" titleEn="Mobiles" titleFa="گوشی موبایل " />
+      <HeadingTitle size="115rem" titleEn="Mobiles" titleFa="گوشی موبایل " />
+      <ProductsList productData={mobiles} />
+      <HeadingTitle size="120rem" titleEn="Laptops" titleFa=" لپ تاپ " />
+      <ProductsList productData={laptops} />
 
-      <HeadingTitle  size="106rem" titleEn="Laptops" titleFa=" لپ تاپ " />
+      <HeadingTitle
+        size="100rem"
+        titleEn="HeadPhone & Handsfree"
+        titleFa=" هدفون و هندزفری "
+      />
+      <ProductsList productData={headPhones} />
 
-      <HeadingTitle size="85rem" titleEn="HeadPhone & Handsfree" titleFa=" هدفون و هندزفری " />
-
-      <HeadingTitle  size="98rem"titleEn="Console game" titleFa="کنسول بازی  " />
+      <HeadingTitle
+        size="110rem"
+        titleEn="Console game"
+        titleFa="کنسول بازی  "
+      />
+      <ProductsList productData={console} />
     </main>
   );
 };
