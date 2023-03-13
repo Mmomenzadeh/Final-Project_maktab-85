@@ -1,7 +1,7 @@
 .slider-container {
-  margin: 2.5rem 0;
-  height: 100%;
-
+  // margin: 2.5rem 0;
+  width: 700px;
+  height: 500px;
 }
 html,
 body {
@@ -23,19 +23,28 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  // &__name {
+  //   position: absolute;
+  //   left: 150px;
+  // }
+
+  // &__heading{
+  //   position: absolute;
+  //   left: 150px;
+
+  // }
 }
 
 .swiper-slide img {
   display: block;
-  width: 390px;
-  height: 200px;
+  width: 700px;
+  height: 500px;
   object-fit: cover;
   border-radius: 1.4rem;
 }
 
-
-@media (min-width: 960px) {
-  .hide-extra-small {
-    display: none;
-  }
-}
+// @media (min-width: 960px) {
+//   .hide-extra-small {
+//     display: none;
+//   }
+// }

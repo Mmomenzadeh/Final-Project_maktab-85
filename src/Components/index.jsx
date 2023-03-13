@@ -7,7 +7,9 @@ export * from "./SearchBox/SearchBox.components";
 export * from "./snackbar/Snackbar.components";
 export * from "./Separator/Separator.components";
 export * from "./HeadingTitle/HeadingTitle.components";
-export * from "./Toolbar/Toolbar.components"
-export * from "./SearchBox/SearchBox-large.components"
-export * from "./Table/Table.components"
-export * from "./Social media/SocialMedia.components"
+export * from "./Toolbar/Toolbar.components";
+export * from "./SearchBox/SearchBox-large.components";
+export * from "./Table/Table.components";
+export * from "./Social media/SocialMedia.components";
+export * from "./Banner/Banner.components";
+export * from "./Slider/Slider.components"
