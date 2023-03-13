@@ -7,13 +7,18 @@ import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { BASE_URL } from "Config";
 import ReactPaginate from "react-paginate";
+import { fetchSubCategory } from "Redux/Slices/SubCategorySlice";
 
 export const ManagementPanleProducts = () => {
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
+  const { categoryData } = useSelector((state) => state.category);
+  const {subcategoryData} = useSelector(state => state.subCategory)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchProductCategory());
+    dispatch(fetchSubCategory())
     // dispatch(fetchFilterData(`products?_page=1&_limit=3`));
   }, [dispatch]);
 
@@ -60,20 +65,15 @@ export const ManagementPanleProducts = () => {
                 name="category"
                 value={filterParams}
                 onChange={(e) => {
-                  if (e.target.value ) {
+                  if (e.target.value) {
                     dispatch(
                       fetchFilterData(`products?category=${e.target.value}`)
                     );
                     setFilterParams(e.target.value);
-                  }else{
-
-                    dispatch(
-                      fetchFilterData(`products`)
-                    );
+                  } else {
+                    dispatch(fetchFilterData(`products`));
                     setFilterParams(e.target.value);
-
                   }
-               
                 }}
               >
                 <option value="">همه </option>
@@ -99,6 +99,19 @@ export const ManagementPanleProducts = () => {
           <tbody>
             {/* میگذاریم currentItems بجایی دیتایی که از سمت سرور میگریم و میخوایم مپ بزنیم  */}
             {currentItems.map((data) => {
+              const categoryName = categoryData.map((item) => {
+                if (item.id === data.category) {
+                  return item.name;
+                }
+                
+              });
+
+              const subCategoryName = subcategoryData.map(item=>{
+                if (item.id === data.subcategory) {
+                  return item.name
+                  
+                }
+              })
               return (
                 <tr key={data.id} className="tbody__tr">
                   <td style={{ width: "55rem" }} className="td-productName">
@@ -124,9 +137,9 @@ export const ManagementPanleProducts = () => {
                   </td>
 
                   <td style={{ width: "45rem" }}>
-                    {data.category +
+                    {categoryName +
                       " / " +
-                      data.subcategory +
+                      subCategoryName +
                       " / " +
                       data.brand}
                   </td>
@@ -156,7 +169,6 @@ export const ManagementPanleProducts = () => {
           renderOnZeroPageCount={null}
           className="pagination flex gap-5 mt-5 j-c a-c"
           activeClassName="activePage"
-
         />
       </div>
     </div>
