@@ -77,10 +77,10 @@ export const ManagementPanleProducts = () => {
                 }}
               >
                 <option value="">همه </option>
-                <option value="موبایل">موبایل </option>
-                <option value="لپ تاپ">لپ تاپ </option>
-                <option value="هدفون">هدفون </option>
-                <option value="کنسول بازی">کنسول بازی </option>
+                <option value="1">موبایل </option>
+                <option value="2">لپ تاپ </option>
+                <option value="3">هدفون </option>
+                <option value="4">کنسول بازی </option>
               </select>
             </div>
           </div>
