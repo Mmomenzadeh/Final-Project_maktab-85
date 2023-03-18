@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { FilterData, GetProduct } from "API";
+import { FilterData, GetProduct, PostProduct } from "API";
+import { toast } from "react-toastify";
 
 export const fetchProducts = createAsyncThunk("fetch/productList", async () => {
   try {
@@ -22,6 +23,13 @@ export const fetchFilterData = createAsyncThunk(
   }
 );
 
+export const createProduct = createAsyncThunk(
+  "postProduct/productList",
+  async (data) => {
+    const res = await PostProduct(data)
+    return res.data
+  }
+);
 
 const ProductSlice = createSlice({
   name: "productList",
@@ -30,6 +38,7 @@ const ProductSlice = createSlice({
     loading: "idle",
     error: "",
   },
+
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       return { ...state, loading: true };
@@ -43,10 +52,15 @@ const ProductSlice = createSlice({
     });
 
     builder.addCase(fetchProducts.rejected, (state) => {
-      return { ...state , error: "some thing wrong", productData: [], loading: "idel" };
+      return {
+        ...state,
+        error: "some thing wrong",
+        productData: [],
+        loading: "idel",
+      };
     });
 
-    /// Filtering : 
+    /// Filtering :
 
     builder.addCase(fetchFilterData.pending, (state) => {
       return {
@@ -72,9 +86,26 @@ const ProductSlice = createSlice({
       };
     });
 
-
+    // post data _ create Product
+    builder.addCase(createProduct.pending, (state) => {
+      return { ...state, loading: true };
+    });
+    builder.addCase(createProduct.fulfilled, (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        productData: [...state.productData, action.payload],
+      };
+    });
+    builder.addCase(createProduct.rejected, (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        productData: [],
+        error: action.payload,
+      };
+    });
   },
 });
 
-
-export default ProductSlice.reducer
+export default ProductSlice.reducer;

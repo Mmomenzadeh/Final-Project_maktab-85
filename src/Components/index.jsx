@@ -12,4 +12,5 @@ export * from "./SearchBox/SearchBox-large.components";
 export * from "./Table/Table.components";
 export * from "./Social media/SocialMedia.components";
 export * from "./Banner/Banner.components";
-export * from "./Slider/Slider.components"
+export * from "./Slider/Slider.components";
+export * from "./TextEditor/TextEditor";

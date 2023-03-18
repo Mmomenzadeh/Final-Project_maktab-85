@@ -2,22 +2,22 @@ import "../../Assets/Styles/Components/Input/index.scss";
 export const Input = ({
   type,
   holder,
-  onChange,
   value,
   inpType,
   className,
   validate ,
-  name
+  name,
+  ...rest
 }) => {
   return (
     <input
-      className={`input input--${inpType} ${className}`}
+      className={`input input--${inpType} input--${className}`}
       type={type}
       placeholder={holder}
-      onChange={onChange}
       value={value}
       name ={name}
       {...validate}
+      {...rest}
     />
   );
 };

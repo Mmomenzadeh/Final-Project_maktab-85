@@ -1,3 +1,3 @@
 import { HttpService } from "Services/HttpService";
 
-export const FilterData = async (params) => HttpService.get(params)
+export const FilterData = async (params) => await HttpService.get(params)

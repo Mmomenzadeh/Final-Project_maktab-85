@@ -1,4 +1,4 @@
-table {
+.adminTabel {
   width: 130rem;
   border: 0.1rem solid var(--gray-100);
   border-collapse: collapse;
@@ -6,39 +6,43 @@ table {
   overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-color: #f6f6f693;
-
-  thead .thead__tr {
-    font-size: 1.5rem;
-    height: 5rem;
-    text-align: right;
-    border-bottom: 0.2rem solid var(--blue-100);
-
-    background-color: #f9fafb;
-    th {
-      vertical-align: middle;
+  &__thead {
+    &__tr {
+      font-size: 1.5rem;
+      height: 5rem;
       text-align: right;
+      border-bottom: 0.2rem solid var(--blue-100);
 
-      padding-right: 2rem;
-      color: var(--gray-300);
+      background-color: #f9fafb;
+
+      &__td {
+        vertical-align: middle;
+        text-align: right;
+
+        padding-right: 2rem;
+        color: var(--gray-300);
+      }
     }
   }
 
-  tbody .tbody__tr {
-    background-color: var(--white);
-    border-top: 0.1rem solid var(--gray-100);
+  &__tbody {
+    &__tr {
+      background-color: var(--white);
+      border-top: 0.1rem solid var(--gray-100);
 
-    height: 5rem;
+      height: 5rem;
 
-    &:hover {
-      background-color: #f6f6f693;
-    }
-    td {
-      font-size: 1.5rem;
-      text-align: right;
+      &:hover {
+        background-color: #f6f6f693;
+      }
+      &__td {
+        font-size: 1.5rem;
+        text-align: right;
 
-      vertical-align: middle;
+        vertical-align: middle;
 
-      padding: 1.4rem 1rem 0.5rem 0;
+        padding: 1.4rem 1rem 0.5rem 0;
+      }
     }
   }
 }
@@ -70,5 +74,45 @@ table {
   &__model {
     font-size: 1.2rem;
     color: var(--gray-200);
+  }
+}
+
+.modalTable {
+  width: 50rem;
+  border: 0.1rem solid #fff;
+  border-collapse: collapse;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  color: #444;
+  // background-color: #f6f6f693;
+  &__thead {
+    &__tr {
+      // border: 0.1rem solid var(--gray-100);
+      &__td {
+        
+        padding: 1rem;
+        vertical-align: middle;
+        text-align: right;
+        
+        padding-right: 2rem;
+        color: var(--gray-300);
+      }
+    }
+  }
+  
+  &__tbody {
+    &__tr {
+      border: 0.1rem solid var(--gray-100);
+      height: 5rem;
+
+      &:hover {
+        background-color: #f6f6f693;
+      }
+      &__td {
+        vertical-align: middle;
+
+        padding: 1.4rem 1rem 0.5rem 0;
+      }
+    }
   }
 }

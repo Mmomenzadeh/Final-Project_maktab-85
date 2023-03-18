@@ -1,4 +1,4 @@
-import { Button, Input, Pagination, Table } from "Components";
+import { Button, Input, Table } from "Components";
 import { BsPlusSquare } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,17 +8,29 @@ import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { BASE_URL } from "Config";
 import ReactPaginate from "react-paginate";
 import { fetchSubCategory } from "Redux/Slices/SubCategorySlice";
+import { AddEditeProductModal, DeleteModal } from "Components/Modal";
+import { useForm } from "react-hook-form";
 
 export const ManagementPanleProducts = () => {
+  const [showProductModal, setShowProductModal] = useState({
+    status: false,
+    data : {} ,
+    type : ""
+  });
+  const [showDeleteModal, setShowDeleteModal] = useState({
+    status: false,
+    id: "",
+  });
+  ////------------------------------------------------------------------------------------------
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
-  const {subcategoryData} = useSelector(state => state.subCategory)
+  const { subcategoryData } = useSelector((state) => state.subCategory);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchProductCategory());
-    dispatch(fetchSubCategory())
+    dispatch(fetchSubCategory());
     // dispatch(fetchFilterData(`products?_page=1&_limit=3`));
   }, [dispatch]);
 
@@ -26,20 +38,27 @@ export const ManagementPanleProducts = () => {
 
   //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
   const [itemOffset, setItemOffset] = useState(0);
-
   const endOffset = itemOffset + 7;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = productData.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(productData.length / 7);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 7) % productData.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
+  ///----------------------------------------------------------------------------------------------
 
+  const handleAddProduct = () => {
+    setShowProductModal({ ...showProductModal, status: true  , type : "addProduct"});
+  };
+
+  const handleEditeProduct = (data) => {
+    setShowProductModal({ status: true , data , type:"edite"});
+  };
+  
+  const handleDeleteProduct = (id) => {
+    setShowDeleteModal({ status: true, id });
+  };
   return (
     <div className="managementPanle">
       <div className="flex col">
@@ -85,79 +104,138 @@ export const ManagementPanleProducts = () => {
             </div>
           </div>
 
-          <BsPlusSquare className="managementPanle__table-header__icon" />
+          <BsPlusSquare
+            onClick={handleAddProduct}
+            className="managementPanle__table-header__icon"
+          />
         </div>
-        <Table>
-          <thead>
-            <tr className="thead__tr">
-              <th>نام کالا</th>
-              <th>دسته بندی </th>
-              <th>ویرایش</th>
-              <th>حذف</th>
+        <Table className="adminTabel">
+          <thead className="adminTabel__thead">
+            <tr className="adminTabel__thead__tr">
+              <th className="adminTabel__thead__tr__td">نام کالا</th>
+              <th className="adminTabel__thead__tr__td">دسته بندی </th>
+              <th className="adminTabel__thead__tr__td">ویرایش</th>
+              <th className="adminTabel__thead__tr__td">حذف</th>
             </tr>
           </thead>
           <tbody>
             {/* میگذاریم currentItems بجایی دیتایی که از سمت سرور میگریم و میخوایم مپ بزنیم  */}
-            {currentItems.map((data) => {
-              const categoryName = categoryData.map((item) => {
-                if (item.id === data.category) {
-                  return item.name;
+            {currentItems.map((data , index) => {
+              
+              // debugger
+              
+
+              // const categoryName = categoryData.find(item => item.id == data.category);
+              // const subCategoryName = subcategoryData.find(item => item.id == data.subcategory);
+
+                let categoryName ;       
+                categoryData.forEach(item => {
+                if (item.id == data.category) {
+                  categoryName = item.name;
                 }
-                
               });
 
-              const subCategoryName = subcategoryData.map(item=>{
-                if (item.id === data.subcategory) {
-                  return item.name
-                  
-                }
-              })
-              return (
-                <tr key={data.id} className="tbody__tr">
-                  <td style={{ width: "55rem" }} className="td-productName">
-                    <div className="td-productName__img-container ">
-                      <img
-                        className="td-productName__img"
-                        src={`${BASE_URL}/files/${data.img[0]}`}
-                        alt={data.name}
-                      />
-                    </div>
-                    <div className="flex col gap-1">
-                      <p className="td-productName__title">
-                        {data.name.length > 30
-                          ? data.name.substring(0, 35) + " ..."
-                          : data.name}
-                      </p>
-                      <span className="td-productName__model">
-                        {data.model.length > 25
-                          ? data.model.substring(0, 25) + " ..."
-                          : data.model}
-                      </span>
-                    </div>
-                  </td>
+              let subCategoryName ;       
+              subcategoryData.forEach(item => {
+              if (item.id == data.subcategory) {
+                subCategoryName = item.name;
+              }
+            });
+              
 
-                  <td style={{ width: "45rem" }}>
-                    {categoryName +
-                      " / " +
-                      subCategoryName +
-                      " / " +
-                      data.brand}
-                  </td>
-                  <td style={{ width: "10rem" }}>
-                    <Button type="table-btn" outline="outline-blue">
-                      ویرایش
-                    </Button>
-                  </td>
-                  <td style={{ width: "10rem" }}>
-                    <Button type="table-btn" outline="outline-red">
-                      حذف
-                    </Button>
-                  </td>
-                </tr>
+              // const categoryName = categoryData.map((item) => {
+              //   if (item.id == data.category) {
+              //     return item.name;
+              //   }
+              // });
+
+              // const subCategoryName = subcategoryData.map((item) => {
+              //   if (item.id == data.subcategory) {
+              //     return item.name;
+              //   }
+              // });
+
+
+              return (
+                <>
+                  <tr key={data.id} className="adminTabel__tbody__tr">
+                    <td
+                      style={{ width: "55rem" }}
+                      className="adminTabel__tbody__tr__td td-productName"
+                    >
+                      <div className="td-productName__img-container ">
+                        <img
+                          className="td-productName__img"
+                          src={`${BASE_URL}/files/${data.img[0]}`}
+                          alt={data.name}
+                        />
+                      </div>
+                      <div className="flex col gap-1">
+                        <p className="td-productName__title">
+                          {data.name.length > 30
+                            ? data.name.substring(0, 35) + " ..."
+                            : data.name}
+                        </p>
+                        <span className="td-productName__model">
+                          {data.model.length > 25
+                            ? data.model.substring(0, 25) + " ..."
+                            : data.model}
+                        </span>
+                      </div>
+                    </td>
+
+                    <td
+                      style={{ width: "45rem" }}
+                      className="adminTabel__tbody__tr__td"
+                    >
+                      {categoryName +
+                        " / " +
+                        subCategoryName+
+                        " / " +
+                        data.brand}
+                    </td>
+                    <td
+                      style={{ width: "10rem" }}
+                      className="adminTabel__tbody__tr__td"
+                    >
+                      <Button
+                        type="table-btn"
+                        outline="outline-blue"
+                        onClick={() => handleEditeProduct(data)}
+                      >
+                        ویرایش
+                      </Button>
+                    </td>
+                    <td
+                      style={{ width: "10rem" }}
+                      className="adminTabel__tbody__tr__td"
+                    >
+                      <Button
+                        type="table-btn"
+                        outline="outline-red"
+                        onClick={() => handleDeleteProduct(data.id)}
+                      >
+                        حذف
+                      </Button>
+                    </td>
+                  </tr>
+                </>
               );
             })}
           </tbody>
         </Table>
+
+        {showProductModal.status ? (
+          <AddEditeProductModal
+            setShowProductModal={setShowProductModal}
+            showProductModal={showProductModal}
+          />
+        ) : showDeleteModal.status ? (
+          <DeleteModal
+            setShowDeleteModal={setShowDeleteModal}
+            showDeleteModal={showDeleteModal}
+          />
+        ) : null}
 
         <ReactPaginate
           breakLabel="..."

@@ -75,22 +75,22 @@ export const ManagementPanleStock = () => {
           </Button>
         </div>
 
-        <Table>
-          <thead>
-            <tr className="thead__tr">
-              <th>نام کالا</th>
-              <th> قیمت </th>
-              <th>موجودی</th>
+        <Table className="adminTabel">
+          <thead className="adminTabel__thead">
+            <tr className="adminTabel__thead__tr">
+              <th className="adminTabel__thead__tr__td">نام کالا</th>
+              <th className="adminTabel__thead__tr__td"> قیمت </th>
+              <th className="adminTabel__thead__tr__td">موجودی</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((data) => {
               return (
-                <tr key={data.id} className="tbody__tr">
-                  <td style={{ width: "45rem" }}>{data.name}</td>
+                <tr key={data.id} className="adminTabel__tbody__tr">
+                  <td style={{ width: "45rem" }} className="adminTabel__tbody__tr__td ">{data.name}</td>
 
-                  <td style={{ width: "5rem" }}>{data.price}</td>
-                  <td style={{ width: "5rem", paddingRight: "5rem" }}>
+                  <td style={{ width: "5rem" }} className="adminTabel__tbody__tr__td">{data.price}</td>
+                  <td style={{ width: "5rem", paddingRight: "5rem" }} className="adminTabel__tbody__tr__td">
                     {data.quantity}
                   </td>
                 </tr>
