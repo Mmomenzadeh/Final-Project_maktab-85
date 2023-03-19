@@ -1,20 +1,37 @@
+import { DeliveryNote } from "API";
 import { Button, Table } from "Components";
+import { useState } from "react";
 import { CgCloseR } from "react-icons/cg";
-import { MdOutlineAccountCircle } from "react-icons/md";
-import { RiAccountCircleFill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { fetchFilterOrders } from "Redux/Slices/OrdersSlice";
 import "../../../Assets/Styles/Components/Modal/index.scss";
+
 export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
-  const {ORDERDATA} = showOrderModal
-  console.log(ORDERDATA);
+  const { ORDERDATA } = showOrderModal;
+  const [delivery, setDelivery] = useState(false);
+  const dispatch = useDispatch()
+
   const deliveryBtn = () => {
-    setshowOrderModal({ ...showOrderModal, status: false });
+    DeliveryNote(ORDERDATA)
+      .then(() => {
+        toast.success("با مو فقیت ثبت شد")
+        setDelivery(true) 
+      })
+      .catch((err) => {
+        toast.error("ثبت ناموفق ")
+        console.log(err.message);
+      }).finally(()=>{
+          dispatch(fetchFilterOrders('/orders?delivered=false'))
+      })
+    // setshowOrderModal({ ...showOrderModal, status: false });
   };
   return (
     <div className="modal">
       <div className="background"></div>
       <div className="modalContainer">
-        <di className="modalContainer__header">
+        <div className="modalContainer__header">
           <p className="modalContainer__header__title">جزئیات سفارش</p>
           <CgCloseR
             onClick={() =>
@@ -22,7 +39,7 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
             }
             className="modalContainer__header__icon"
           />
-        </di>
+        </div>
         <div className="line-h"></div>
         <div className="modalContainer__body">
           <div className="modalContainer__body__orderInfo">
@@ -33,14 +50,14 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                 {" "}
                 تحویل گرینده :
               </label>
-              <span>مهسا مومن زاده</span>
+              <span>{ORDERDATA.username + " " + ORDERDATA.lastname }</span>
             </div>
             <div className="flex gap-1 a-c">
               <label className="modalContainer__body__orderInfo__lbl">
                 {" "}
                 شماره موبایل :
               </label>
-              <span> 09178166087 </span>
+              <span> {ORDERDATA.phone} </span>
             </div>
             {/* time */}
 
@@ -49,14 +66,14 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                 {" "}
                 تاریخ ثبت سفارش :
               </label>
-              <span> 01/02/1401 </span>
+              <span> {new Date(ORDERDATA.createdAt).toLocaleDateString("fa")} </span>
             </div>
             <div className="flex gap-1 a-c">
               <label className="modalContainer__body__orderInfo__lbl">
                 {" "}
                 زمان تحویل :
               </label>
-              <span> 05/02/1401 </span>
+              <span> {new Date(ORDERDATA.expectAt).toLocaleDateString("fa")} </span>
             </div>
 
             <div className="flex gap-1 a-c">
@@ -65,8 +82,9 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                 ادرس گرینده:
               </label>
               <span className="modalContainer__body__orderInfo__address">
-                استان فارس / شیراز / شهرک صدرا / خیابان بیستون / ساختمان نیما
-                استان فارس / شیراز /
+                {
+                  ORDERDATA.address
+                }
               </span>
             </div>
 
@@ -81,37 +99,36 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {ORDERDATA.map((data) => {
-                    console.log(data);
-                    return (
-                      <tr key={data.id} className="modalTable__tbody__tr">
-                        <td
-                          style={{ width: "15rem" }}
-                          className="modalTable__tbody__tr__td "
-                        >
-                          <Link
-                            to={``}
-                            className="link"
-                            style={{ color: "#444" }}
+                  {ORDERDATA.products.map((data) => {
+                       return (
+                        <tr key={data.id} className="modalTable__tbody__tr">
+                          <td
+                            style={{ width: "15rem" }}
+                            className="modalTable__tbody__tr__td "
                           >
-                            {data.username + " " +  data.lastname}
-                          </Link>
-                        </td>
+                            <Link
+                              to={``}
+                              className="link"
+                              style={{ color: "#444" }}
+                            >
+                              {data.name.substring(30) + "...."}
+                            </Link>
+                          </td>
 
-                        <td
-                          style={{ width: "2rem" }}
-                          className="modalTable__tbody__tr__td"
-                        >
-                          {data.prices}
-                        </td>
-                        <td
-                          style={{ width: "2rem", paddingRight: "3rem" }}
-                          className="modalTable__tbody__tr__td"
-                        >
-                          {data.products[0].count}
-                        </td>
-                      </tr>
-                    );
+                          <td
+                            style={{ width: "2rem" }}
+                            className="modalTable__tbody__tr__td"
+                          >
+                            {data.price}
+                          </td>
+                          <td
+                            style={{ width: "2rem", paddingRight: "3rem" }}
+                            className="modalTable__tbody__tr__td"
+                          >
+                            {data.count}
+                          </td>
+                        </tr>
+                      );
                   })}
                 </tbody>
               </Table>
@@ -119,9 +136,18 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
           </div>
         </div>
         <div className="modalContainer__footer">
-          <Button type="modalBtn" size="full" onClick={deliveryBtn}>
-            تحویل شد{" "}
-          </Button>
+          {delivery || ORDERDATA.delivered ? (
+            <p className="delivery">
+              {" "}
+              <span style={{ color: "#EF3A4F" }}>
+                زمان تحویل :{" "}
+              </span> {new Date(ORDERDATA.expectAt).toLocaleDateString("fa")}
+            </p>
+          ) : (
+            <Button type="modalBtn" size="full" onClick={deliveryBtn}>
+              تحویل شد{" "}
+            </Button>
+          )}
         </div>
       </div>
     </div>

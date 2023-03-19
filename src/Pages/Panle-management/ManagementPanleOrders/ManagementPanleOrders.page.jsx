@@ -11,7 +11,7 @@ import { fetchFilterOrders } from "../../../Redux/Slices/OrdersSlice";
 
 export const ManagementPanleOrders = () => {
   const [filterParams, setFilterParams] = useState(false);
-  const [showOrderModal , setshowOrderModal] = useState({status : false , ORDERDATA:[]})
+  const [showOrderModal , setshowOrderModal] = useState({status : false , ORDERDATA:{}})
   const { ordersData } = useSelector((state) => state.orders);
 
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export const ManagementPanleOrders = () => {
 
 
   const actionHandle = (data)=>{
-    setshowOrderModal({status: true , ORDERDATA : [data]})
+    setshowOrderModal({status: true , ORDERDATA : data})
   }
 
   // --------------------------------------------------------------------------------------------------------
