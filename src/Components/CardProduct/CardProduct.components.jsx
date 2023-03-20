@@ -1,11 +1,12 @@
 import { Button } from "Components";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { SlBasket } from "react-icons/sl";
+import { Link } from "react-router-dom";
 import "../../Assets/Styles/Components/CardProduct/index.scss";
 
 export const CardProduct = ({  size ,product }) => {
   return (
-    <div className={`CardProduct${size}`}>
+    <Link to={`/products/${product.id}`} className={`CardProduct${size} pointer`}>
       <div className={`CardProduct${size}__head`}>
         <img
           className={`CardProduct${size}__head__img`}
@@ -16,7 +17,7 @@ export const CardProduct = ({  size ,product }) => {
       <div className={`CardProduct${size}__body`}>
         <span className={`CardProduct${size}__body__txt`}>{product.model}</span>
         <p className={`CardProduct${size}__body__heading`}>{product.name}</p>
-        <div className="line-h"></div>
+        <div className="line"></div>
       </div>
       <div className={`CardProduct${size}__footer`}>
         <p className={`CardProduct${size}__footer__price`}>
@@ -30,6 +31,6 @@ export const CardProduct = ({  size ,product }) => {
           </Button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
