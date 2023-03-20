@@ -1,13 +1,14 @@
 .footer{
+    padding: 0 45rem;
     margin-top: 5rem;
     &__link{
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 3rem;
 
         &__item{
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             text-decoration: none;
             color: #797979;
 
@@ -48,4 +49,8 @@
     }
 }
 
-
+.line-footer{
+    height: 1px;
+    background-color: rgba(177, 177, 177, 0.482);
+    margin: 5rem 0 ;
+}

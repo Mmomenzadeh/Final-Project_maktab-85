@@ -4,8 +4,8 @@ import "../../Assets/Styles/Layout/Footer/index.scss"
 export const Footer = () => {
     return (
       <>
-        <div className="line"></div>
         <footer className="footer">
+        <div className="line-footer"></div>
           <div className="footer__link">
             <Link to="" className="footer__link__item">
               <span>درباره ما</span>
@@ -39,7 +39,7 @@ export const Footer = () => {
           <div className="footer__icons">
            <SocialMedia/>
              
-          <span style={{fontSize:"0.8rem" , marginTop:"3rem"}}> مارول دیجست در شبکه های اجتماعی و پیام رسان ها</span>
+          <span style={{fontSize:"1.1rem" , marginTop:"3rem"}}> مارول دیجست در شبکه های اجتماعی و پیام رسان ها</span>
           </div>
           <div className="footer__copyRight">
           <p style={{display:"block"}}>  کلیه حقوق برای <span style={{color:"#ef3a4f"}}>مارول دیجیست</span> محفوظ می باشد.</p>
