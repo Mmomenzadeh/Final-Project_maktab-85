@@ -93,33 +93,57 @@
     text-align: center;
   }
 
-  &--full{
+  &--full {
     width: 100%;
     text-align: center;
   }
 
-  &--modalBtn{
+  &--modalBtn {
     background-color: var(--primary);
     color: var(--white);
     padding: 1rem;
     border-radius: 1rem;
     font-weight: bold;
-    
   }
 
-  &--deleteModalBtn{
+  &--deleteModalBtn {
     width: 13rem;
     padding: 1rem;
     border-radius: 1rem;
     font-weight: bold;
     color: var(--white);
   }
-  &--red{
+  &--red {
     background-color: var(--primary);
   }
 
-  &--green{
+  &--green {
     background-color: var(--gray-300);
-
   }
+
+  &--stockPage {
+    color: var(--blue-100);
+    border: 0.1rem solid var(--blue-100);
+  }
+
+  &--disabled {
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &--nonDisabled {
+
+    
+
+    background-color: var(--blue-100);
+    color: var(--light);
+  }
+
+  // &--nonDisabled :hover {
+  //   background-color: var(--blue-100);
+  //   color: var(--light);
+  // }
+
+
 }

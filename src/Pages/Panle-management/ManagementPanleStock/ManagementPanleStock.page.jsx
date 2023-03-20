@@ -6,7 +6,6 @@ import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
-
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ export const ManagementPanleStock = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-   // --------------------------------------------------------------------------------------------------------
+  // -----------------------------------------Pagination---------------------------------------------------------------
 
   //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
   const [itemOffset, setItemOffset] = useState(0);
@@ -32,6 +31,20 @@ export const ManagementPanleStock = () => {
     setItemOffset(newOffset);
   };
 
+  ///------------------------------------------------------------------------------
+
+  const [inputValue, setInputValue] = useState({ price: "", quantity: "" });
+  const [stockList, setStockList] = useState([]);
+
+  const saveBtnHandler = () => {
+    setStockList([...stockList, inputValue]);
+  };
+
+  console.log(stockList);
+
+  ////------------------------------searchBox------------------------------------------------
+  
+  const searchHandler = (queryString)=>{}
 
   return (
     <div className="managementPanle">
@@ -46,6 +59,7 @@ export const ManagementPanleStock = () => {
                 type="search"
                 holder="112 رکورد ...."
                 inpType="searchBoxAdmin"
+                onChange={(e)=>searchHandler(e.target.value)}
               />
             </div>
             <div className="flex gap-1 a-c">
@@ -58,7 +72,9 @@ export const ManagementPanleStock = () => {
                 name="category"
                 value={filterParams}
                 onChange={(e) => {
-                  dispatch(fetchFilterData(`products?category=${e.target.value}`))
+                  dispatch(
+                    fetchFilterData(`products?category=${e.target.value}`)
+                  );
                   setFilterParams(e.target.value);
                 }}
               >
@@ -70,7 +86,13 @@ export const ManagementPanleStock = () => {
               </select>
             </div>
           </div>
-          <Button type="table-btn" outline="outline-blue">
+          <Button
+            type="table-btn"
+            outline="stockPage"
+            onClick={saveBtnHandler}
+            className ={inputValue.price === "" &&  inputValue.quantity ==="" ?   "disabled" : "nonDisabled"}
+            disabled={!(inputValue.price || inputValue.quantity)}
+          >
             ذخیره
           </Button>
         </div>
@@ -87,11 +109,39 @@ export const ManagementPanleStock = () => {
             {currentItems.map((data) => {
               return (
                 <tr key={data.id} className="adminTabel__tbody__tr">
-                  <td style={{ width: "45rem" }} className="adminTabel__tbody__tr__td ">{data.name}</td>
+                  <td
+                    style={{ width: "45rem" }}
+                    className="adminTabel__tbody__tr__td "
+                  >
+                    {data.name}
+                  </td>
 
-                  <td style={{ width: "5rem" }} className="adminTabel__tbody__tr__td">{data.price}</td>
-                  <td style={{ width: "5rem", paddingRight: "5rem" }} className="adminTabel__tbody__tr__td">
-                    {data.quantity}
+                  <td
+                    style={{ width: "5rem" }}
+                    className="adminTabel__tbody__tr__td"
+                  >
+                    <Input
+                      defaultValue={data.price}
+                      className="stock"
+                      onChange={(e) =>
+                        setInputValue({ ...inputValue, price: e.target.value })
+                      }
+                    />
+                  </td>
+                  <td
+                    style={{ width: "5rem", paddingRight: "3rem" }}
+                    className="adminTabel__tbody__tr__td"
+                  >
+                    <Input
+                      defaultValue={data.quantity}
+                      className="stock"
+                      onChange={(e) =>
+                        setInputValue({
+                          ...inputValue,
+                          quantity: e.target.value,
+                        })
+                      }
+                    />
                   </td>
                 </tr>
               );

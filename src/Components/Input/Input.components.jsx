@@ -3,6 +3,8 @@ export const Input = ({
   type,
   holder,
   value,
+  defaultValue,
+  onChange , 
   inpType,
   className,
   validate ,
@@ -15,6 +17,8 @@ export const Input = ({
       type={type}
       placeholder={holder}
       value={value}
+      defaultValue={defaultValue}
+      onChange={onChange}
       name ={name}
       {...validate}
       {...rest}
