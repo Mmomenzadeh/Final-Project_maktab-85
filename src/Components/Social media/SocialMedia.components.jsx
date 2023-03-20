@@ -17,7 +17,7 @@ export const SocialMedia = () => {
         <FaLinkedinIn className="hover" />
       </Link>
       <Link className="socialMedia__link" to="">
-        <TbBrandTelegram className="hover" />
+        <TbBrandTelegram className="hover"  size="2.7rem" />
       </Link>
     </div>
   );
