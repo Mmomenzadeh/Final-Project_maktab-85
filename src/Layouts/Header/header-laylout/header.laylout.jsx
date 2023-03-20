@@ -16,7 +16,7 @@ export const Header = () => {
           <SearchBoxLarge />
         </div>
         <div className="header-left">
-          <Link className="header-left__icon">
+          <Link to="/login" className="header-left__icon">
             <VscAccount size="3rem" />
           </Link>
 
