@@ -7,3 +7,4 @@ export * from "./Shop/DeleteProduct";
 export * from "./Shop/PostProduct";
 export * from "./Shop/EditeProduct";
 export * from "./Shop/DeliveryNote";
+export * from "./Shop/GetSingleProduct";

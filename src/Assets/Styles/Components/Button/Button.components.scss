@@ -133,9 +133,6 @@
   }
 
   &--nonDisabled {
-
-    
-
     background-color: var(--blue-100);
     color: var(--light);
   }
@@ -145,5 +142,11 @@
   //   color: var(--light);
   // }
 
-
+  &--basketBtn {
+    margin-top: 1.5rem;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }
