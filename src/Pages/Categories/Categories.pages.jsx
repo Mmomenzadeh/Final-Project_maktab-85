@@ -1,7 +1,14 @@
-import React from 'react'
-
+import { CategorasMenu } from "Components";
+import { Footer, Header } from "Layouts";
+import "../../Assets/Styles/Pages/Categories/index.scss";
 export const Categories = () => {
   return (
-    <div>Categories</div>
-  )
-}
+    <div className="categoriePage">
+      <Header />
+      <div className="categoriePage__body">
+        <CategorasMenu />
+      </div>
+      <Footer />
+    </div>
+  );
+};

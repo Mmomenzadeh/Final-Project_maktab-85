@@ -14,3 +14,4 @@ export * from "./Social media/SocialMedia.components";
 export * from "./Banner/Banner.components";
 export * from "./Slider/Slider.components";
 export * from "./TextEditor/TextEditor";
+export * from "./CategorasMenu/CategorasMenu.components";

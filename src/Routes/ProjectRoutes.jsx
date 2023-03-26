@@ -60,7 +60,7 @@ export const ProjectRoutes = () => {
       <Route path={CONTACTUS} element={<ContactUs />} />
       <Route path={CHECKOUT} element={<Checkout />} />
       <Route path={USERACCOUNT} element={<UserAccount />} />
-      <Route path={CATEGORIES} element={<Categories />} />
+      <Route path="/category/:id" element={<Categories />} />
     </Routes>
   );
 };
