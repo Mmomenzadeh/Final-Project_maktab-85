@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 import { fetchProductCategory } from "../../Redux/Slices/ProductCategorySlice";
 import "../../Assets/Styles/Components/CategorasMenu/index.scss";
 
-export const CategorasMenu = () => {
+export const  CategorasMenu = () => {
   const { categoryData } = useSelector((state) => state.category);
-  console.log(categoryData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export const CategorasMenu = () => {
         <li key={item.id} className="categorasMenu__li">
           <NavLink
             to={`/category/${item.id}`}
-            className={`categorasMenu__li__link`}
+            className={(navData) => navData.isActive ?`navActive categorasMenu__li__link` : "nonNavActive categorasMenu__li__link "}
           >
             <img
               className="categorasMenu__li__link__img"
