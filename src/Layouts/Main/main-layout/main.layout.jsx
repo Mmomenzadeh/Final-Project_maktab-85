@@ -33,18 +33,23 @@ export const MainLayout = () => {
 
       <div className="flex mt-10 j-c gap-10">
         <CategoryLogo
-          img="https://www.uplooder.net/img/image/28/e9c0185f97325d9c786493ed93920793/icons8-discount-100.png"
+          img="https://www.uplooder.net/img/image/44/de43a5ce0e6d888bf3834cebf72ee992/icons8-discount-100-(1).png"
           txt="تخفیف ها"
         />
         <CategoryLogo
-          img="https://www.uplooder.net/img/image/68/fbe2269c813245f8014b2171aa2d9fc1/icons8-ereader-100.png"
+          img="https://www.uplooder.net/img/image/74/e0ac1997526763abf1d1a5ad2cf9a829/icons8-ereader-100-(1).png"
           txt="وبلاگ"
         />
         {categoryData.map((item) => (
-          <CategoryLogo key={item.id} txt={item.name} img={item.icon} categoryId={item.id} />
+          <CategoryLogo
+            key={item.id}
+            txt={item.name}
+            img={item.icon}
+            categoryId={item.id}
+          />
         ))}
         <CategoryLogo
-          img="https://www.uplooder.net/img/image/20/c65ffa9e791bb9c86d1be881a7b5d575/icons8-vinyl-100.png"
+        img="https://www.uplooder.net/img/image/38/71f30fea2f4abdf97bf583165f532bb7/icons8-vinyl-100-(1).png"
           txt="پادکست"
         />
       </div>
@@ -88,7 +93,7 @@ export const MainLayout = () => {
       <ProductsList productData={headPhones} />
 
       <BannerHorizontal
-        img="https://dkstatics-public.digikala.com/digikala-adservice-banners/5668dea95a68668f943d325aff14e34f7bf9c9e9_1673600968.jpg?x-oss-process=image/quality,q_95/format,webp"
+        img="https://www.uplooder.net/img/image/11/cc0e73369bfb8de5565c2b03b09bc634/1667124027-POsELfLfZvo0a8Ke.jpg"
         size="full"
         className="space"
       />
