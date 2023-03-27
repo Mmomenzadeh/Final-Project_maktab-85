@@ -31,7 +31,7 @@ export const MainLayout = () => {
     <main className="main ">
       <Banner />
 
-      <div className="flex mt-5 j-c gap-10">
+      <div className="flex mt-10 j-c gap-10">
         <CategoryLogo
           img="https://www.uplooder.net/img/image/28/e9c0185f97325d9c786493ed93920793/icons8-discount-100.png"
           txt="تخفیف ها"
