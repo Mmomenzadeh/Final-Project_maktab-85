@@ -10,7 +10,7 @@
   position: relative;
   &__img {
     border-radius: 2rem;
-
+    filter: brightness(0.5);
     width: 300px;
     height: 500px;
   }
@@ -41,10 +41,12 @@
 
 .BannerSmall {
   position: relative;
+
   &__img {
     border-radius: 2rem;
     width: 290px;
     height: 240px;
+    filter: brightness(0.5);
   }
 
   &__link {
@@ -55,8 +57,14 @@
     right: 5%;
     color: #fff;
     font-size: 1.8rem;
+    line-height: 1.5;
     width: 180px;
     cursor: pointer;
+    &--fs{
+      font-size: 1.35rem;
+    line-height: 1.8;
+
+    }
 
     &:hover {
       color: #ffffff99;
@@ -70,5 +78,6 @@
         right: 5%;
         color: #ffffffd5;
         font-size: 1.1rem;
+      
   }
 }
