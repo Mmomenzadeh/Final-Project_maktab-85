@@ -1,5 +1,5 @@
 .Banner {
-  margin-top: 5rem;  
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,41 +66,45 @@
 
   &__txt {
     position: absolute;
-        top: 75%;
-        right: 5%;
-        color: #ffffffd5;
-        font-size: 1.1rem;
+    top: 75%;
+    right: 5%;
+    color: #ffffffd5;
+    font-size: 1.1rem;
   }
 }
 
-
-.bannerHorizontal{
+.bannerHorizontal {
   position: relative;
-  
+
   cursor: pointer;
-  &__img{
+  &__img {
     border-radius: 1.5rem;
-   
-    &--large{
+
+    &--large {
       width: 55rem;
       height: 22rem;
     }
 
-    &--small{
+    &--small {
       width: 36rem;
       height: 23rem;
     }
 
-    
-  &--filter{
+    &--full {
+      width: 100rem;
+      
+    }
 
-    filter: brightness(0.5);
+    &--space{
+      margin-top: 10rem;
+    }
 
-
+    &--filter {
+      filter: brightness(0.5);
+    }
   }
-  }
 
-  &__txt{
+  &__txt {
     position: absolute;
     right: 2.5rem;
     bottom: 5rem;
@@ -108,5 +112,4 @@
     color: #fff;
     font-weight: bolder;
   }
-
 }
