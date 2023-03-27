@@ -22,7 +22,7 @@ export const  CategorasMenu = () => {
           >
             <img
               className="categorasMenu__li__link__img"
-              src={`http://localhost:3002/files/${item.icon}`}
+              src={`${item.icon}`}
               alt={item.name}
             />
             <span className="">{item.name}</span>
