@@ -14,7 +14,8 @@ export const  CategorasMenu = () => {
 
   return (
     <div className="categorasMenu">
-      {categoryData.map((item) => (
+      {
+      categoryData.map((item) => (
         <li key={item.id} className="categorasMenu__li">
           <NavLink
             to={`/category/${item.id}`}
@@ -35,7 +36,10 @@ export const  CategorasMenu = () => {
             ))}
           </ul>
         </li>
-      ))}
+      ))
+      
+      
+      }
     </div>
   );
 };
