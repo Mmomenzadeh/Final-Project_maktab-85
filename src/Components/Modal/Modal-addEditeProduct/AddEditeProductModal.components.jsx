@@ -36,15 +36,15 @@ export const AddEditeProductModal = ({
   const onSubmit = (data) => {
     if (type === "addProduct") {
       dispatch(createProduct(data));
-      debugger
+      debugger;
       setShowProductModal({ ...showProductModal, status: false });
     } else {
       EditeProductService(data.id, data)
         .then(() => {
-          toast.success("با موفقیت ویرایش شد")
+          toast.success("با موفقیت ویرایش شد");
         })
         .catch((err) => {
-          toast.error("ویرایش نا موفق")
+          toast.error("ویرایش نا موفق");
           console.log(err);
         })
         .finally(() => {
@@ -58,7 +58,10 @@ export const AddEditeProductModal = ({
   return (
     <div className="modal">
       <div className="background"></div>
-      <form className="modalContainer" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="modalContainer scroll  "
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="modalContainer__header">
           <p className="modalContainer__header__title">افزودن / ویرایش کالا</p>
           <CgCloseR
@@ -97,6 +100,23 @@ export const AddEditeProductModal = ({
               }}
             />
             {errors.name && <p className="error">{errors.name.message}</p>}
+          </div>
+          {/* Ename */}
+          <div className="modalContainer__body__nameProduct flex col gap-1">
+            <label className="modalContainer__body__lbl"> نام کالا به لاتین : </label>
+            <Input
+              type="text"
+              holder="نام کالا را وارد کنید "
+              className="modal"
+              validate={{
+                ...register("EnName", {
+                  required: "وارد کردن نام به حروف لاتین کالا الزامی ست",
+                  pattern: /^[A-Za-z]+$/i ,
+                  // minLength: 3,
+                }),
+              }}
+            />
+            {errors.EnName && <p className="error">{errors.EnName.message}</p>}
           </div>
           <div className="flex gap-1">
             <div className="modalContainer__body__nameProduct flex col gap-1">
@@ -218,6 +238,132 @@ export const AddEditeProductModal = ({
               />
               {errors.quantity && (
                 <p className="error">{errors.quantity.message}</p>
+              )}
+            </div>
+          </div>
+          {/* part two */}
+          <div className="flex j-sb">
+          <div
+              className="modalContainer__body__categoryProduct flex col gap-1"
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl">  سایز کالا : </label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                validate={{
+                  ...register("size", {
+                    required: "وارد کردن  سایز کالا الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.size && <p className="error">{errors.size.message}</p>}
+            </div>
+            <div
+              className="modalContainer__body__categoryProduct flex col gap-1"
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl"> سیستم عامل : </label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                validate={{
+                  ...register("os", {
+                    required: "وارد کردن سیتم عامل کالا الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.os && <p className="error">{errors.os.message}</p>}
+            </div>
+            <div
+              className="modalContainer__body__nameProduct flex col gap-1"
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl"> رنگ کالا :</label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                validate={{
+                  ...register("colors", {
+                    required: "وارد کردن رنگ کالا الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.colors && <p className="error">{errors.colors.message}</p>}
+            </div>
+            <div
+              className="modalContainer__body__nameProduct flex col gap-1"
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl">
+                {" "}
+                صحفه نمایش  :
+              </label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                validate={{
+                  ...register("display", {
+                    required: "وارد کردن صحفه نمایش  الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.display && (
+                <p className="error">{errors.display.message}</p>
+              )}
+            </div>
+          </div>
+          {/* part three */}
+          <div className="flex  gap-20">
+            <div
+              className="modalContainer__body__nameProduct flex col gap-1 "
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl"> گارانتی کالا :</label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                inpType="medium"
+                validate={{
+                  ...register("guarantee", {
+                    required: "وارد کردن گرانتی کالا الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.guarantee && <p className="error">{errors.guarantee.message}</p>}
+            </div>
+            <div
+              className="modalContainer__body__nameProduct flex col gap-1"
+              style={{ width: "13rem" }}
+            >
+              <label className="modalContainer__body__lbl">
+                {" "}
+               : Resolution   
+              </label>
+              <Input
+                type="text"
+                holder=" "
+                className="modal"
+                inpType="medium"
+                validate={{
+                  ...register("resolution", {
+                    required: "وارد کردن resolution   الزامی ست",
+                    // minLength: 3,
+                  }),
+                }}
+              />
+              {errors.resolution && (
+                <p className="error">{errors.resolution.message}</p>
               )}
             </div>
           </div>
