@@ -11,26 +11,16 @@ import { MegaMenu } from "Components/MegaMenu/MegaMenu.components";
 
 export const Nav = () => {
   const [showMegaMenu, setShowMegaMenu] = useState(false);
-  console.log(showMegaMenu);
   return (
     <nav className="nav">
       <div
         className="nav__category"
-        // onMouseEnter={() => {
-        //   setShowMegaMenu(true)
-        //   console.log(showMegaMenu);
-
-        // }}
-        // onMouseLeave={() => {
-        //   setShowMegaMenu(false) 
-        //   console.log(showMegaMenu);
-        // }}
-
-    
+        onMouseEnter={() => setShowMegaMenu(true)}
+        onMouseLeave={() => setShowMegaMenu(false)}
       >
         <BiCategoryAlt className="nav__category__icon" />
         <span className="nav__category__title">دسته بندی کالاها</span>
-        {showMegaMenu ? <MegaMenu showMegaMenu={showMegaMenu} setShowMegaMenu ={setShowMegaMenu} /> : null}
+        {showMegaMenu ? <MegaMenu setShowMegaMenu={setShowMegaMenu} /> : null}
       </div>
 
       <Link className="nav__link">

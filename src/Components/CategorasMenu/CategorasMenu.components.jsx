@@ -13,7 +13,7 @@ export const  CategorasMenu = () => {
   }, [dispatch]);
 
   return (
-    <div className="categorasMenu">
+    <div className="categorasMenu" data-id="categorasMenu">
       {
       categoryData.map((item) => (
         <li key={item.id} className="categorasMenu__li">
