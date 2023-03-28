@@ -1,5 +1,5 @@
 import { Button, Input, TextEditor } from "Components";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CgCloseR } from "react-icons/cg";
 import { useForm } from "react-hook-form";
 import "../../../Assets/Styles/Components/Modal/index.scss";
@@ -9,13 +9,17 @@ import {
   editeProduct,
   fetchProducts,
 } from "Redux/Slices/ProductSlice";
-import { EditeProductService } from "API";
+import { EditeProductService, UploadImgService } from "API";
 import { toast } from "react-toastify";
 
 export const AddEditeProductModal = ({
   setShowProductModal,
   showProductModal,
 }) => {
+
+  const [img , setImg] = useState([])
+
+
   const dispatch = useDispatch();
 
   const {
@@ -35,8 +39,13 @@ export const AddEditeProductModal = ({
 
   const onSubmit = (data) => {
     if (type === "addProduct") {
+      console.log(data);
       dispatch(createProduct(data));
-      debugger;
+      // setImg([...data.img])
+
+
+      
+      // debugger;
       setShowProductModal({ ...showProductModal, status: false });
     } else {
       EditeProductService(data.id, data)
@@ -59,8 +68,9 @@ export const AddEditeProductModal = ({
     <div className="modal">
       <div className="background"></div>
       <form
-        className="modalContainer scroll  "
+        className="modalContainer scroll "
         onSubmit={handleSubmit(onSubmit)}
+        encType="multipart/form-data"
       >
         <div className="modalContainer__header">
           <p className="modalContainer__header__title">افزودن / ویرایش کالا</p>
@@ -78,6 +88,8 @@ export const AddEditeProductModal = ({
             <Input
               type="file"
               className="modal"
+              accept=".jpg, .jpeg, .png"
+
               validate={{
                 ...register("img", {
                   required: "وارد کردن عکس کالا الزامی ست ",
@@ -103,7 +115,10 @@ export const AddEditeProductModal = ({
           </div>
           {/* Ename */}
           <div className="modalContainer__body__nameProduct flex col gap-1">
-            <label className="modalContainer__body__lbl"> نام کالا به لاتین : </label>
+            <label className="modalContainer__body__lbl">
+              {" "}
+              نام کالا به لاتین :{" "}
+            </label>
             <Input
               type="text"
               holder="نام کالا را وارد کنید "
@@ -111,7 +126,7 @@ export const AddEditeProductModal = ({
               validate={{
                 ...register("EnName", {
                   required: "وارد کردن نام به حروف لاتین کالا الزامی ست",
-                  pattern: /^[A-Za-z]+$/i ,
+                  pattern: /^[A-Za-z]+$/i,
                   // minLength: 3,
                 }),
               }}
@@ -243,11 +258,11 @@ export const AddEditeProductModal = ({
           </div>
           {/* part two */}
           <div className="flex j-sb">
-          <div
+            <div
               className="modalContainer__body__categoryProduct flex col gap-1"
               style={{ width: "13rem" }}
             >
-              <label className="modalContainer__body__lbl">  سایز کالا : </label>
+              <label className="modalContainer__body__lbl"> سایز کالا : </label>
               <Input
                 type="text"
                 holder=" "
@@ -265,7 +280,10 @@ export const AddEditeProductModal = ({
               className="modalContainer__body__categoryProduct flex col gap-1"
               style={{ width: "13rem" }}
             >
-              <label className="modalContainer__body__lbl"> سیستم عامل : </label>
+              <label className="modalContainer__body__lbl">
+                {" "}
+                سیستم عامل :{" "}
+              </label>
               <Input
                 type="text"
                 holder=" "
@@ -295,16 +313,15 @@ export const AddEditeProductModal = ({
                   }),
                 }}
               />
-              {errors.colors && <p className="error">{errors.colors.message}</p>}
+              {errors.colors && (
+                <p className="error">{errors.colors.message}</p>
+              )}
             </div>
             <div
               className="modalContainer__body__nameProduct flex col gap-1"
               style={{ width: "13rem" }}
             >
-              <label className="modalContainer__body__lbl">
-                {" "}
-                صحفه نمایش  :
-              </label>
+              <label className="modalContainer__body__lbl"> صحفه نمایش :</label>
               <Input
                 type="text"
                 holder=" "
@@ -327,7 +344,10 @@ export const AddEditeProductModal = ({
               className="modalContainer__body__nameProduct flex col gap-1 "
               style={{ width: "13rem" }}
             >
-              <label className="modalContainer__body__lbl"> گارانتی کالا :</label>
+              <label className="modalContainer__body__lbl">
+                {" "}
+                گارانتی کالا :
+              </label>
               <Input
                 type="text"
                 holder=" "
@@ -340,16 +360,15 @@ export const AddEditeProductModal = ({
                   }),
                 }}
               />
-              {errors.guarantee && <p className="error">{errors.guarantee.message}</p>}
+              {errors.guarantee && (
+                <p className="error">{errors.guarantee.message}</p>
+              )}
             </div>
             <div
               className="modalContainer__body__nameProduct flex col gap-1"
               style={{ width: "13rem" }}
             >
-              <label className="modalContainer__body__lbl">
-                {" "}
-               : Resolution   
-              </label>
+              <label className="modalContainer__body__lbl"> : Resolution</label>
               <Input
                 type="text"
                 holder=" "

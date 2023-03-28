@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { FilterData, GetProduct, PostProduct } from "API";
+import { FilterData, GetProduct, PostProduct, UploadImgService } from "API";
 import { toast } from "react-toastify";
 
 export const fetchProducts = createAsyncThunk("fetch/productList", async () => {
@@ -10,6 +10,19 @@ export const fetchProducts = createAsyncThunk("fetch/productList", async () => {
     console.log(error.message);
   }
 });
+
+
+
+
+// export const PostImg = createAsyncThunk("post/productList", async (data) => {
+//   try {
+//     const res = await UploadImgService(data);
+//     console.log(res.data);
+//     return res.data;
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
 
 export const fetchFilterData = createAsyncThunk(
   "filterData/productList",

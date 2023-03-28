@@ -14,8 +14,8 @@ import { useForm } from "react-hook-form";
 export const ManagementPanleProducts = () => {
   const [showProductModal, setShowProductModal] = useState({
     status: false,
-    data : {} ,
-    type : ""
+    data: {},
+    type: "",
   });
   const [showDeleteModal, setShowDeleteModal] = useState({
     status: false,
@@ -49,13 +49,17 @@ export const ManagementPanleProducts = () => {
   ///----------------------------------------------------------------------------------------------
 
   const handleAddProduct = () => {
-    setShowProductModal({ ...showProductModal, status: true  , type : "addProduct"});
+    setShowProductModal({
+      ...showProductModal,
+      status: true,
+      type: "addProduct",
+    });
   };
 
   const handleEditeProduct = (data) => {
-    setShowProductModal({ status: true , data , type:"edite"});
+    setShowProductModal({ status: true, data, type: "edite" });
   };
-  
+
   const handleDeleteProduct = (id) => {
     setShowDeleteModal({ status: true, id });
   };
@@ -120,28 +124,25 @@ export const ManagementPanleProducts = () => {
           </thead>
           <tbody>
             {/* میگذاریم currentItems بجایی دیتایی که از سمت سرور میگریم و میخوایم مپ بزنیم  */}
-            {currentItems.map((data , index) => {
-              
+            {currentItems.map((data, index) => {
               // debugger
-              
 
               // const categoryName = categoryData.find(item => item.id == data.category);
               // const subCategoryName = subcategoryData.find(item => item.id == data.subcategory);
 
-                let categoryName ;       
-                categoryData.forEach(item => {
+              let categoryName;
+              categoryData.forEach((item) => {
                 if (item.id == data.category) {
                   categoryName = item.name;
                 }
               });
 
-              let subCategoryName ;       
-              subcategoryData.forEach(item => {
-              if (item.id == data.subcategory) {
-                subCategoryName = item.name;
-              }
-            });
-              
+              let subCategoryName;
+              subcategoryData.forEach((item) => {
+                if (item.id == data.subcategory) {
+                  subCategoryName = item.name;
+                }
+              });
 
               // const categoryName = categoryData.map((item) => {
               //   if (item.id == data.category) {
@@ -155,71 +156,68 @@ export const ManagementPanleProducts = () => {
               //   }
               // });
 
-
               return (
-                <>
-                  <tr key={data.id} className="adminTabel__tbody__tr">
-                    <td
-                      style={{ width: "55rem" }}
-                      className="adminTabel__tbody__tr__td td-productName"
-                    >
-                      <div className="td-productName__img-container ">
-                        <img
-                          className="td-productName__img"
-                          src={`${BASE_URL}/files/${data.img[0]}`}
-                          alt={data.name}
-                        />
-                      </div>
-                      <div className="flex col gap-1">
-                        <p className="td-productName__title">
-                          {data.name.length > 30
-                            ? data.name.substring(0, 35) + " ..."
-                            : data.name}
-                        </p>
-                        <span className="td-productName__model">
-                          {data.model.length > 25
-                            ? data.model.substring(0, 25) + " ..."
-                            : data.model}
-                        </span>
-                      </div>
-                    </td>
+                <tr key={data.id} className="adminTabel__tbody__tr">
+                  <td
+                    style={{ width: "55rem" }}
+                    className="adminTabel__tbody__tr__td td-productName"
+                  >
+                    <div className="td-productName__img-container ">
+                      <img
+                        className="td-productName__img"
+                        src={`${BASE_URL}/files/${data.img[0]}`}
+                        alt={data.name}
+                      />
+                    </div>
+                    <div className="flex col gap-1">
+                      <p className="td-productName__title">
+                        {data.name.length > 30
+                          ? data.name.substring(0, 35) + " ..."
+                          : data.name}
+                      </p>
+                      <span className="td-productName__model">
+                        {data.model.length > 25
+                          ? data.model.substring(0, 25) + " ..."
+                          : data.model}
+                      </span>
+                    </div>
+                  </td>
 
-                    <td
-                      style={{ width: "45rem" }}
-                      className="adminTabel__tbody__tr__td"
+                  <td
+                    style={{ width: "45rem" }}
+                    className="adminTabel__tbody__tr__td"
+                  >
+                    {categoryName +
+                      " / " +
+                      subCategoryName +
+                      " / " +
+                      data.brand}
+                  </td>
+                  <td
+                    style={{ width: "10rem" }}
+                    className="adminTabel__tbody__tr__td"
+                  >
+                    <Button
+                      type="table-btn"
+                      outline="outline-blue"
+                      onClick={() => handleEditeProduct(data)}
                     >
-                      {categoryName +
-                        " / " +
-                        subCategoryName+
-                        " / " +
-                        data.brand}
-                    </td>
-                    <td
-                      style={{ width: "10rem" }}
-                      className="adminTabel__tbody__tr__td"
+                      ویرایش
+                    </Button>
+                  </td>
+                  <td
+                    style={{ width: "10rem" }}
+                    className="adminTabel__tbody__tr__td"
+                  >
+                    <Button
+                      type="table-btn"
+                      outline="outline-red"
+                      onClick={() => handleDeleteProduct(data.id)}
                     >
-                      <Button
-                        type="table-btn"
-                        outline="outline-blue"
-                        onClick={() => handleEditeProduct(data)}
-                      >
-                        ویرایش
-                      </Button>
-                    </td>
-                    <td
-                      style={{ width: "10rem" }}
-                      className="adminTabel__tbody__tr__td"
-                    >
-                      <Button
-                        type="table-btn"
-                        outline="outline-red"
-                        onClick={() => handleDeleteProduct(data.id)}
-                      >
-                        حذف
-                      </Button>
-                    </td>
-                  </tr>
-                </>
+                      حذف
+                    </Button>
+                  </td>
+                </tr>
               );
             })}
           </tbody>

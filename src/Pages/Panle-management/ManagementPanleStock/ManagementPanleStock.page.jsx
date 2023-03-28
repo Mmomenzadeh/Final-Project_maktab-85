@@ -1,3 +1,4 @@
+import { EditeStockService } from "API";
 import { Button, Input, Table } from "Components";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -6,9 +7,16 @@ import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
+  ///---------------------------------Input Value---------------------------------------------
+  const [inputValue, setInputValue] = useState({});
+  const [stockList, setStockList] = useState([]);
+  console.log(stockList);
+
+  ///------------------------- fetch data ---------------------------------------------
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -19,32 +27,31 @@ export const ManagementPanleStock = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + 12;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = productData.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(productData.length / 12);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 12) % productData.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
-
-  ///------------------------------------------------------------------------------
-
-  const [inputValue, setInputValue] = useState({ price: "", quantity: "" });
-  const [stockList, setStockList] = useState([]);
+  ////-------------------------------------
 
   const saveBtnHandler = () => {
-    setStockList([...stockList, inputValue]);
+    EditeStockService(stockList)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        dispatch(fetchProducts());
+      });
   };
 
-  console.log(stockList);
-
   ////------------------------------searchBox------------------------------------------------
-  
-  const searchHandler = (queryString)=>{}
+
+  const searchHandler = (queryString) => {};
 
   return (
     <div className="managementPanle">
@@ -59,7 +66,7 @@ export const ManagementPanleStock = () => {
                 type="search"
                 holder="112 رکورد ...."
                 inpType="searchBoxAdmin"
-                onChange={(e)=>searchHandler(e.target.value)}
+                onChange={(e) => searchHandler(e.target.value)}
               />
             </div>
             <div className="flex gap-1 a-c">
@@ -90,7 +97,11 @@ export const ManagementPanleStock = () => {
             type="table-btn"
             outline="stockPage"
             onClick={saveBtnHandler}
-            className ={inputValue.price === "" &&  inputValue.quantity ==="" ?   "disabled" : "nonDisabled"}
+            className={
+              inputValue.price === "" && inputValue.quantity === ""
+                ? "disabled"
+                : "nonDisabled"
+            }
             disabled={!(inputValue.price || inputValue.quantity)}
           >
             ذخیره
@@ -123,9 +134,14 @@ export const ManagementPanleStock = () => {
                     <Input
                       defaultValue={data.price}
                       className="stock"
-                      onChange={(e) =>
-                        setInputValue({ ...inputValue, price: e.target.value })
-                      }
+                      onChange={(e) => {
+                        setInputValue({
+                          ...inputValue,
+                          price: e.target.value,
+                          id: data.id,
+                        });
+                      }}
+                      onBlur={() => setStockList([...stockList, inputValue])}
                     />
                   </td>
                   <td
@@ -135,12 +151,14 @@ export const ManagementPanleStock = () => {
                     <Input
                       defaultValue={data.quantity}
                       className="stock"
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setInputValue({
                           ...inputValue,
                           quantity: e.target.value,
-                        })
-                      }
+                          id: data.id,
+                        });
+                      }}
+                      onBlur={() => setStockList([...stockList, inputValue])}
                     />
                   </td>
                 </tr>
