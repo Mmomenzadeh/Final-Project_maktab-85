@@ -4,14 +4,9 @@ import { CgCloseR } from "react-icons/cg";
 import { useForm } from "react-hook-form";
 import "../../../Assets/Styles/Components/Modal/index.scss";
 import { useDispatch } from "react-redux";
-import {
-  createProduct,
-  editeProduct,
-  fetchProducts,
-} from "Redux/Slices/ProductSlice";
-import { EditeProductService, UploadImg, UploadImgService } from "API";
+import { createProduct, fetchProducts } from "Redux/Slices/ProductSlice";
+import { EditeProductService, UploadImg } from "API";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 export const AddEditeProductModal = ({
   setShowProductModal,
@@ -25,7 +20,7 @@ export const AddEditeProductModal = ({
     reset,
     formState: { errors },
   } = useForm();
- 
+
   ///-----------------------------set data to the modal -----------------------------------------------
   const { data, type } = showProductModal;
   useEffect(() => {
@@ -36,12 +31,10 @@ export const AddEditeProductModal = ({
   //-----------------------------createProduct and EditeProductService------------------------------------
   const onSubmit = async (data) => {
     if (type === "addProduct") {
-      console.log(data.img[0]);
-
       ////send request to endponit /upload and pick up filename from response
-      const imgName  = await UploadImg(data.img[0])
-      
-      dispatch(createProduct({...data , img : [imgName]}));
+      const imgName = await UploadImg(Object.values(data.img));
+
+      dispatch(createProduct({ ...data, img: imgName }));
       setShowProductModal({ ...showProductModal, status: false });
     } else {
       EditeProductService(data.id, data)

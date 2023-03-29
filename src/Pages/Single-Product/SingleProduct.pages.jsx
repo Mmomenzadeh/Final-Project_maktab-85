@@ -47,7 +47,7 @@ export const SingleProduct = () => {
     }
   }
 
-  console.log(productDetails.img);
+  // console.log(productDetails.img);
   return (
     <div className="singleProduct">
       <Header />
