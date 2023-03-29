@@ -1,6 +1,7 @@
 import { BannerHorizontal, CategorasMenu, ProductsList } from "Components";
 import { Footer, Header } from "Layouts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
@@ -35,6 +36,19 @@ export const Categories = () => {
     }
   }
 
+  // --------------------------------------------------------------------------------------------------------
+
+  //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + 10;
+  const currentItems = productData.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(productData.length / 10);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * 10) % productData.length;
+    setItemOffset(newOffset);
+  };
+
 
   return (
     <div className="categoriePage">
@@ -48,32 +62,39 @@ export const Categories = () => {
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[0]}`}
                 size="large"
+                className={categoryStyle[0]}
+
               />
 
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[1]}`}
                 size="large"
+                className={categoryStyle[1]}
+
               />
             </div>
 
             {/* small */}
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[2]}`}
                 // txt=" لپتاپ لنوو Legion 5؛ تقریبا بی‌نقص، اما گران‌قیمت"
                 size="small"
-                // className="filter"
+                className={categoryStyle[2]}
               />
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[3]}`}
                 size="small"
                 // txt=" هدفون بی‌سیم سامسونگ;صدای خوب و دیگر هیچ"
-                // className="filter"
+                className={categoryStyle[3]}
+
               />
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[4]}`}
                 size="small"
                 // txt="خرید دسته‌ بازی سونی; جذاب ولی گران‌قیمت"
+                className={categoryStyle[4]}
+
               />
             </div>
           </div>
@@ -88,9 +109,21 @@ export const Categories = () => {
         <div className="line "></div>
         {/* product card part */}
         <div className="">
-          <ProductsList productData={productData} />
+          <ProductsList productData={currentItems} />
      
         </div>
+
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=" < next "
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="previous > "
+          renderOnZeroPageCount={null}
+          className="pagination-category flex gap-5 mt-10 j-c a-c"
+          activeClassName="activePage-category"
+        />
       </div>
       <Footer />
     </div>
