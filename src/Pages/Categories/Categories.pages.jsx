@@ -13,7 +13,7 @@ export const Categories = () => {
   const { categoryData } = useSelector((state) => state.category);
   const { productData } = useSelector((state) => state.products);
 
-  console.log(productData);
+  // console.log(productData);
 
   const dispatch = useDispatch();
 

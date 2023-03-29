@@ -8,12 +8,17 @@ import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
-  ///---------------------------------Input Value---------------------------------------------
-  const [inputValue, setInputValue] = useState({
-    quantity: "",
-    price: "",
-    id: "",
+  ///----------------------------------state for change txt to input--------------------------
+  const [inputMode, setInputMode] = useState({
+    Pricestatus: false,
+    QuantityStatus: false,
+    Priceid: "",
+    quantityId: "",
   });
+
+  const [toggleBtn, setToggleBtn] = useState({ price: false, quantity: false });
+  ///---------------------------------Input Value---------------------------------------------
+  const [inputValue, setInputValue] = useState({});
   const [stockList, setStockList] = useState([]);
   ///------------------------- fetch data ---------------------------------------------
   const [filterParams, setFilterParams] = useState("");
@@ -49,6 +54,8 @@ export const ManagementPanleStock = () => {
       })
       .finally(() => {
         dispatch(fetchProducts());
+        setInputMode({ Pricestatus: false, QuantityStatus: false });
+        setToggleBtn({ price: false, quantity: false });
       });
   };
 
@@ -56,6 +63,13 @@ export const ManagementPanleStock = () => {
 
   const searchHandler = (queryString) => {};
 
+  //--------------------------------------EscapeFunc-------------------------------------------
+  const EscapeFunc = (e) => {
+    let KEYCODE = e.keyCode;
+    if (KEYCODE == 27) {
+      setInputMode({ Pricestatus: false, QuantityStatus: false });
+    }
+  };
   return (
     <div className="managementPanle">
       <div className="flex col">
@@ -65,6 +79,7 @@ export const ManagementPanleStock = () => {
               <label className="managementPanle__table-header__label">
                 جستجو :{" "}
               </label>
+
               <Input
                 type="search"
                 holder={`${productData.length} رکورد ....`}
@@ -102,13 +117,13 @@ export const ManagementPanleStock = () => {
             onMouseDown={() => setStockList([...stockList, inputValue])}
             onClick={saveBtnHandler}
             className={
-              inputValue.price === "" && inputValue.quantity === ""
+              toggleBtn.price === false && toggleBtn.quantity === false
                 ? "disabled"
                 : "nonDisabled"
             }
-            disabled={!(inputValue.price || inputValue.quantity)}
+            disabled={!(toggleBtn.price || toggleBtn.quantity)}
           >
-            {inputValue.price === "" && inputValue.quantity === ""
+            {toggleBtn.price === false && toggleBtn.quantity === false
               ? "ویرایش موجودی / قیمت"
               : "ذخیره تغییرات موجودی / قیمت"}
           </Button>
@@ -127,43 +142,75 @@ export const ManagementPanleStock = () => {
               return (
                 <tr key={data.id} className="adminTabel__tbody__tr">
                   <td
-                    style={{ width: "45rem" }}
+                    style={{ width: "75rem" }}
                     className="adminTabel__tbody__tr__td "
                   >
                     {data.name}
                   </td>
 
                   <td
-                    style={{ width: "5rem" }}
+                    style={{ width: "15rem" }}
                     className="adminTabel__tbody__tr__td"
                   >
-                    <Input
-                      defaultValue={data.price}
-                      className="stock"
-                      onChange={(e) => {
-                        setInputValue({
-                          ...inputValue,
-                          price: e.target.value,
-                          id: data.id,
-                        });
-                      }}
-                    />
+                    {inputMode.Pricestatus && inputMode.Priceid == data.id ? (
+                      <Input
+                        defaultValue={data.price ? data.price : 0}
+                        holder="0"
+                        className="stock"
+                        onChange={(e) => {
+                          setInputValue({
+                            ...inputValue,
+                            price: e.target.value,
+                            id: data.id,
+                          });
+                          setToggleBtn({ price: true });
+                        }}
+                        onkeydown={(e) => EscapeFunc(e)}
+                      />
+                    ) : (
+                      <p
+                        style={{ width: "8rem" }}
+                        onClick={() =>
+                          setInputMode({ Pricestatus: true, Priceid: data.id })
+                        }
+                      >
+                        {data.price}
+                      </p>
+                    )}
                   </td>
                   <td
-                    style={{ width: "5rem", paddingRight: "3rem" }}
+                    style={{ width: "15rem", paddingRight: "3rem" }}
                     className="adminTabel__tbody__tr__td"
                   >
-                    <Input
-                      defaultValue={data.quantity}
-                      className="stock"
-                      onChange={(e) => {
-                        setInputValue({
-                          ...inputValue,
-                          quantity: e.target.value,
-                          id: data.id,
-                        });
-                      }}
-                    />
+                    {inputMode.QuantityStatus &&
+                    inputMode.quantityId == data.id ? (
+                      <Input
+                        defaultValue={data.quantity ? data.quantity : 0}
+                        className="stock"
+                        holder="0"
+                        onChange={(e) => {
+                          setInputValue({
+                            ...inputValue,
+                            quantity: e.target.value,
+                            id: data.id,
+                          });
+                          setToggleBtn({ quantity: true });
+                        }}
+                        onkeydown={(e) => EscapeFunc(e)}
+                      />
+                    ) : (
+                      <p
+                        style={{ width: "8rem" }}
+                        onClick={() =>
+                          setInputMode({
+                            QuantityStatus: true,
+                            quantityId: data.id,
+                          })
+                        }
+                      >
+                        {data.quantity}
+                      </p>
+                    )}
                   </td>
                 </tr>
               );
