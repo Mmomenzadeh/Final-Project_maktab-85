@@ -54,7 +54,7 @@ export const ManagementPanleOrders = () => {
               </label>
               <Input
                 type="search"
-                holder="112 رکورد ...."
+                holder={`${ordersData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
               />
             </div>

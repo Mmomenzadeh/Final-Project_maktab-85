@@ -74,7 +74,7 @@ export const ManagementPanleProducts = () => {
               </label>
               <Input
                 type="search"
-                holder="17 رکورد ...."
+                holder={`${productData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
               />
             </div>

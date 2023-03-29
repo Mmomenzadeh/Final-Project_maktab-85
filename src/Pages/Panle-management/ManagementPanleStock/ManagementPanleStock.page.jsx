@@ -68,6 +68,8 @@ export const ManagementPanleStock = () => {
     let KEYCODE = e.keyCode;
     if (KEYCODE == 27) {
       setInputMode({ Pricestatus: false, QuantityStatus: false });
+      setToggleBtn({ price: false, quantity: false });
+
     }
   };
   return (
