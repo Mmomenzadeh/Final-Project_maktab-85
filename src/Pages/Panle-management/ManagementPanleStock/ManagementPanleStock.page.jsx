@@ -3,15 +3,18 @@ import { Button, Input, Table } from "Components";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
   ///---------------------------------Input Value---------------------------------------------
-  const [inputValue, setInputValue] = useState({});
+  const [inputValue, setInputValue] = useState({
+    quantity: "",
+    price: "",
+    id: "",
+  });
   const [stockList, setStockList] = useState([]);
-  console.log(stockList);
-
   ///------------------------- fetch data ---------------------------------------------
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
@@ -64,7 +67,7 @@ export const ManagementPanleStock = () => {
               </label>
               <Input
                 type="search"
-                holder="112 رکورد ...."
+                holder={`${productData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
                 onChange={(e) => searchHandler(e.target.value)}
               />
@@ -96,6 +99,7 @@ export const ManagementPanleStock = () => {
           <Button
             type="table-btn"
             outline="stockPage"
+            onMouseDown={() => setStockList([...stockList, inputValue])}
             onClick={saveBtnHandler}
             className={
               inputValue.price === "" && inputValue.quantity === ""
@@ -104,7 +108,9 @@ export const ManagementPanleStock = () => {
             }
             disabled={!(inputValue.price || inputValue.quantity)}
           >
-            ذخیره
+            {inputValue.price === "" && inputValue.quantity === ""
+              ? "ویرایش موجودی / قیمت"
+              : "ذخیره تغییرات موجودی / قیمت"}
           </Button>
         </div>
 
@@ -141,7 +147,6 @@ export const ManagementPanleStock = () => {
                           id: data.id,
                         });
                       }}
-                      onBlur={() => setStockList([...stockList, inputValue])}
                     />
                   </td>
                   <td
@@ -158,7 +163,6 @@ export const ManagementPanleStock = () => {
                           id: data.id,
                         });
                       }}
-                      onBlur={() => setStockList([...stockList, inputValue])}
                     />
                   </td>
                 </tr>
