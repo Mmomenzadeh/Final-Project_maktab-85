@@ -8,5 +8,5 @@ export * from "./Shop/PostProduct";
 export * from "./Shop/EditeProduct";
 export * from "./Shop/DeliveryNote";
 export * from "./Shop/GetSingleProduct";
-export * from "./Shop/UploadImg";
 export * from "./Shop/EditeStockService";
+export * from "./Shop/UploadImg";

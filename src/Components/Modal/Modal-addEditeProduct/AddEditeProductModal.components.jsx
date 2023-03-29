@@ -9,17 +9,14 @@ import {
   editeProduct,
   fetchProducts,
 } from "Redux/Slices/ProductSlice";
-import { EditeProductService, UploadImgService } from "API";
+import { EditeProductService, UploadImg, UploadImgService } from "API";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export const AddEditeProductModal = ({
   setShowProductModal,
   showProductModal,
 }) => {
-
-  const [img , setImg] = useState([])
-
-
   const dispatch = useDispatch();
 
   const {
@@ -28,24 +25,23 @@ export const AddEditeProductModal = ({
     reset,
     formState: { errors },
   } = useForm();
-
-  ///----------------------------------------------------------------------------
+ 
+  ///-----------------------------set data to the modal -----------------------------------------------
   const { data, type } = showProductModal;
   useEffect(() => {
     if (type === "edite") {
       reset(data);
     }
   }, [reset]);
-
-  const onSubmit = (data) => {
+  //-----------------------------createProduct and EditeProductService------------------------------------
+  const onSubmit = async (data) => {
     if (type === "addProduct") {
-      console.log(data);
-      dispatch(createProduct(data));
-      // setImg([...data.img])
+      console.log(data.img[0]);
 
-
+      ////send request to endponit /upload and pick up filename from response
+      const imgName  = await UploadImg(data.img[0])
       
-      // debugger;
+      dispatch(createProduct({...data , img : [imgName]}));
       setShowProductModal({ ...showProductModal, status: false });
     } else {
       EditeProductService(data.id, data)
@@ -89,7 +85,6 @@ export const AddEditeProductModal = ({
               type="file"
               className="modal"
               accept=".jpg, .jpeg, .png"
-
               validate={{
                 ...register("img", {
                   required: "وارد کردن عکس کالا الزامی ست ",

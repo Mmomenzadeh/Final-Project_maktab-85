@@ -1,21 +1,27 @@
 import { HttpService } from "Services/HttpService";
 
-export const UploadImgService = (data) => {
-  const formDataImg = data.map((item) => {
-    const fDataImg = new FormData();
-    fDataImg.append("img", item);
-    return fDataImg;
+export const UploadImg = async (img) => {
+  let formData = new FormData();
+  formData.append("image", img);
+
+  const res = await HttpService.post("/upload", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
-
-  let allPromises = [];
-
-  for (const formdata of formDataImg) {
-    allPromises.push(
-      HttpService.post("/upload", formdata, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-    );
-  }
-
-  return Promise.all(allPromises);
+  console.log(res.data);
+  return res.data.filename ;
 };
+
+
+
+
+  // const uploadImg = async (img) => {
+  //   let formData = new FormData();
+  //   formData.append("image", img);
+  //   const res = await axios.post("http://localhost:3002/upload", formData, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data"
+  //     },
+  //   });
+  //   console.log(res);
+  //   return {data : res.data.filename};
+  // };
