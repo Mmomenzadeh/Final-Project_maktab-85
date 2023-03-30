@@ -56,6 +56,7 @@ export const ManagementPanleStock = () => {
         dispatch(fetchProducts());
         setInputMode({ Pricestatus: false, QuantityStatus: false });
         setToggleBtn({ price: false, quantity: false });
+        toast.success("تغییرات با موفقیت ثبت شد ")
       });
   };
 

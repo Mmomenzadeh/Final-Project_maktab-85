@@ -376,7 +376,9 @@ export const AddEditeProductModal = ({
           </div>
           <div className="modalContainer__body__descProduct flex col gap-1">
             <label className="modalContainer__body__lbl">توضیحات : </label>
+         
             <textarea
+            style={{width:"62rem"}}
               className="txtArea"
               rows="8"
               cols="50"
