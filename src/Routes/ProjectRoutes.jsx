@@ -61,6 +61,7 @@ export const ProjectRoutes = () => {
       <Route path={CHECKOUT} element={<Checkout />} />
       <Route path={USERACCOUNT} element={<UserAccount />} />
       <Route path="/category/:id" element={<Categories />} />
+      
     </Routes>
   );
 };

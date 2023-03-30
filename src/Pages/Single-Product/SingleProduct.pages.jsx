@@ -47,7 +47,7 @@ export const SingleProduct = () => {
     }
   }
 
-  // console.log(productDetails.img);
+  console.log(productDetails?.img?.[0]);
   return (
     <div className="singleProduct">
       <Header />
@@ -66,7 +66,7 @@ export const SingleProduct = () => {
               </div>
               <img
                 className="singleProduct__body__img__imgSize"
-                src={`http://localhost:3002/files/${productDetails.img}`}
+                src={`http://localhost:3002/files/${productDetails?.img?.[0]}`}
                 alt={productDetails.name}
               />
             </div>
@@ -320,8 +320,10 @@ export const SingleProduct = () => {
           </div>
           <div className="line mt-2 mb-2"></div>
 
-          <div className="singleProduct__body__description__txt">
-            {active.introduction ? productDetails.description : null}
+          <div
+            className="singleProduct__body__description__txt"
+            dangerouslySetInnerHTML={{ __html:active.introduction ? productDetails.description : null  }}
+          >
           </div>
         </div>
       </div>
