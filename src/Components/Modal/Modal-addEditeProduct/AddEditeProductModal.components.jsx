@@ -37,7 +37,9 @@ export const AddEditeProductModal = ({
       dispatch(createProduct({ ...data, img: imgName }));
       setShowProductModal({ ...showProductModal, status: false });
     } else {
-      EditeProductService(data.id, data)
+      const imgName = await UploadImg(Object.values(data.img));
+
+      EditeProductService({ ...data, img: imgName })
         .then(() => {
           toast.success("با موفقیت ویرایش شد");
         })
@@ -114,7 +116,6 @@ export const AddEditeProductModal = ({
               validate={{
                 ...register("EnName", {
                   required: "وارد کردن نام به حروف لاتین کالا الزامی ست",
-                  pattern: /^[A-Za-z]+$/i,
                   // minLength: 3,
                 }),
               }}
@@ -376,9 +377,9 @@ export const AddEditeProductModal = ({
           </div>
           <div className="modalContainer__body__descProduct flex col gap-1">
             <label className="modalContainer__body__lbl">توضیحات : </label>
-         
+
             <textarea
-            style={{width:"62rem"}}
+              style={{ width: "62rem" }}
               className="txtArea"
               rows="8"
               cols="50"

@@ -47,7 +47,7 @@ export const SingleProduct = () => {
     }
   }
 
-  console.log(productDetails?.img?.[0]);
+  // console.log(productDetails?.img?.[0]);
   return (
     <div className="singleProduct">
       <Header />
@@ -66,7 +66,7 @@ export const SingleProduct = () => {
               </div>
               <img
                 className="singleProduct__body__img__imgSize"
-                src={`http://localhost:3002/files/${productDetails?.img?.[0]}`}
+                src={`http://localhost:3002/files/${productDetails.img}`}
                 alt={productDetails.name}
               />
             </div>
@@ -103,7 +103,7 @@ export const SingleProduct = () => {
                   </div>
 
                   <div className="flex col gap-1 mt-2">
-                    <span style={{ fontSize: "1.5rem" }}>رنگ : ابی</span>
+                    {/* <span style={{ fontSize: "1.5rem" }}>رنگ : {productDetails.colors[0]}</span> */}
                     <div className="flex gap-1 mb-1 mt-1">
                       {/* {productDetails.colors.map((item , index) => {
                     return <div key={index} className="colors-item" style={{ backgroundColor: `${item}` }}></div>;

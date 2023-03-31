@@ -8,22 +8,31 @@ export const MegaMenu = ({ showMegaMenu, setShowMegaMenu }) => {
   //   setShowMegaMenu(false)
   // }  }
 
-  // const trackMouse = (e) => {
-  //   e.target.getAttribute("data-id") === " background"
-  //     ? setShowMegaMenu(false)
-  //     : setShowMegaMenu(true);
-  // };
+  const trackMouse = (e) => {
+    console.log(e.target.dataset.id);
+    console.log(e.target.getAttribute("data-id"));
+    if (e.target.dataset.id === "background") {
+      setShowMegaMenu(false)
+    } else {
+      console.log("true");
+    }
+    // e.target.getAttribute("data-id") === " background"
+    //   ? console.log('false')
+    //   : console.log('true');
+  };
 
   return (
     <div className="MegaMenu">
-      {/* <div
+      <div
         className="MegaMenu__background"
         data-id="background"
-        onMouseEnter={() => setShowMegaMenu(false)}
-      ></div> */}
+        onMouseEnter={(e) => trackMouse(e)}
+      ></div>
+      {/* <div style={{height :"65rem"  , zIndex : "12" }}> */}
       <div className="MegaMenu__MegaMenuContainer" data-id="MegaMenuContainer">
         <CategorasMenu />
       </div>
+      {/* </div> */}
     </div>
   );
 };

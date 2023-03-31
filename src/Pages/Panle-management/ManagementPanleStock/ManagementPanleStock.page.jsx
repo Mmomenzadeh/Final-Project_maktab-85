@@ -9,17 +9,18 @@ import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
   ///----------------------------------state for change txt to input--------------------------
-  const [inputMode, setInputMode] = useState({
-    Pricestatus: false,
-    QuantityStatus: false,
-    Priceid: "",
-    quantityId: "",
-  });
+  // const [inputMode, setInputMode] = useState({
+  //   Pricestatus: false,
+  //   QuantityStatus: false,
+  //   priceId: "",
+  //   quantityId: "",
+  // });
 
   const [toggleBtn, setToggleBtn] = useState({ price: false, quantity: false });
   ///---------------------------------Input Value---------------------------------------------
   const [inputValue, setInputValue] = useState({});
   const [stockList, setStockList] = useState([]);
+  console.log(stockList);
   ///------------------------- fetch data ---------------------------------------------
   const [filterParams, setFilterParams] = useState("");
   const { productData } = useSelector((state) => state.products);
@@ -54,9 +55,9 @@ export const ManagementPanleStock = () => {
       })
       .finally(() => {
         dispatch(fetchProducts());
-        setInputMode({ Pricestatus: false, QuantityStatus: false });
-        setToggleBtn({ price: false, quantity: false });
-        toast.success("تغییرات با موفقیت ثبت شد ")
+        // setInputMode({ Pricestatus: false, QuantityStatus: false });
+        // setToggleBtn({ price: false, quantity: false });
+        toast.success("تغییرات با موفقیت ثبت شد ");
       });
   };
 
@@ -65,14 +66,14 @@ export const ManagementPanleStock = () => {
   const searchHandler = (queryString) => {};
 
   //--------------------------------------EscapeFunc-------------------------------------------
-  const EscapeFunc = (e) => {
-    let KEYCODE = e.keyCode;
-    if (KEYCODE == 27) {
-      setInputMode({ Pricestatus: false, QuantityStatus: false });
-      setToggleBtn({ price: false, quantity: false });
+  // const EscapeFunc = (e) => {
+  //   let KEYCODE = e.keyCode;
+  //   if (KEYCODE == 27) {
+  //     setInputMode({ Pricestatus: false, QuantityStatus: false });
+  //     setToggleBtn({ price: false, quantity: false });
 
-    }
-  };
+  //   }
+  // };
   return (
     <div className="managementPanle">
       <div className="flex col">
@@ -117,7 +118,6 @@ export const ManagementPanleStock = () => {
           <Button
             type="table-btn"
             outline="stockPage"
-            onMouseDown={() => setStockList([...stockList, inputValue])}
             onClick={saveBtnHandler}
             className={
               toggleBtn.price === false && toggleBtn.quantity === false
@@ -155,65 +155,72 @@ export const ManagementPanleStock = () => {
                     style={{ width: "15rem" }}
                     className="adminTabel__tbody__tr__td"
                   >
-                    {inputMode.Pricestatus && inputMode.Priceid == data.id ? (
-                      <Input
-                        defaultValue={data.price ? data.price : 0}
-                        holder="0"
-                        className="stock"
-                        onChange={(e) => {
-                          setInputValue({
-                            ...inputValue,
-                            price: e.target.value,
-                            id: data.id,
-                          });
-                          setToggleBtn({ price: true });
-                        }}
-                        onkeydown={(e) => EscapeFunc(e)}
-                      />
-                    ) : (
-                      <p
-                        style={{ width: "8rem" }}
-                        onClick={() =>
-                          setInputMode({ Pricestatus: true, Priceid: data.id })
+                    <Input
+                      defaultValue={data.price}
+                      holder="0"
+                      className="stock"
+                      onChange={(e) => {
+                        setInputValue({
+                          ...inputValue,
+                          price: e.target.value,
+                          id: data.id,
+                        });
+                        setToggleBtn({ price: true });
+                      }}
+                      onBlur={() => {
+                        const copystockList = [...stockList];
+                        
+                        const index = stockList.findIndex((item) => {
+                          console.log("Id" ,  item.id === data.id);
+                          return item.id === data.id;
+                        });
+
+                        console.log(index);
+
+                        if (index !== -1) {
+                          copystockList[index] = inputValue;
+                          setStockList(copystockList)
+                        } else {
+                          setStockList([...stockList, inputValue]);
                         }
-                      >
-                        {data.price}
-                      </p>
-                    )}
+                      }}
+                    />
                   </td>
                   <td
                     style={{ width: "15rem", paddingRight: "3rem" }}
                     className="adminTabel__tbody__tr__td"
                   >
-                    {inputMode.QuantityStatus &&
-                    inputMode.quantityId == data.id ? (
-                      <Input
-                        defaultValue={data.quantity ? data.quantity : 0}
-                        className="stock"
-                        holder="0"
-                        onChange={(e) => {
-                          setInputValue({
-                            ...inputValue,
-                            quantity: e.target.value,
-                            id: data.id,
-                          });
-                          setToggleBtn({ quantity: true });
-                        }}
-                        onkeydown={(e) => EscapeFunc(e)}
-                      />
-                    ) : (
-                      <p
-                        style={{ width: "8rem" }}
-                        onClick={() =>
-                          setInputMode({
-                            QuantityStatus: true,
-                            quantityId: data.id,
-                          })
+                    <Input
+                      defaultValue={data.quantity}
+                      className="stock"
+                      holder="0"
+                      onChange={(e) => {
+                        setInputValue({
+                          ...inputValue,
+                          quantity: e.target.value,
+                          id: data.id,
+                        });
+                        setToggleBtn({ quantity: true });
+                      }}
+                      onBlur={() => {
+                        const copystockList = [...stockList];
+                        
+                        const index = stockList.findIndex((item) => {
+                          console.log("Id" ,  item.id === data.id);
+                          return item.id === data.id;
+                        });
+
+                        console.log(index);
+
+                        if (index !== -1) {
+                          copystockList[index] = inputValue;
+                          setStockList(copystockList)
+                        } else {
+                          setStockList([...stockList, inputValue]);
                         }
-                      >
-                        {data.quantity}
-                      </p>
-                    )}
+                      
+                      }}
+                    />
                   </td>
                 </tr>
               );

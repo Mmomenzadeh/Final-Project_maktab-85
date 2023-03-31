@@ -15,7 +15,7 @@ export const MainLayout = () => {
   const { productData } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
 
-  console.log(categoryData);
+  // console.log(categoryData);
 
   const dispatch = useDispatch();
   useEffect(() => {

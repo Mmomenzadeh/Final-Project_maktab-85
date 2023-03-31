@@ -1,4 +1,4 @@
 import { HttpService } from "Services/HttpService";
 
-export const EditeProductService = async (id, data) =>
-  await HttpService.patch(`/products/${id}`, { ...data, id: id });
+export const EditeProductService = async ( data) =>
+  await HttpService.put(`/products/${data.id}`, { ...data, id: data.id });

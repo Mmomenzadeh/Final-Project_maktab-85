@@ -66,7 +66,6 @@ const OrderSlice = createSlice({
     });
 
     builder.addCase(fetchFilterOrders.fulfilled, (state, action) => {
-      console.log(action.payload);  
       return {
         ...state,
         ordersData: action.payload,

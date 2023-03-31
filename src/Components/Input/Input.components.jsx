@@ -10,6 +10,7 @@ export const Input = ({
   className,
   validate ,
   onkeydown,
+  onBlur,
 
   name,
   onClick,
@@ -26,6 +27,7 @@ export const Input = ({
       defaultValue={defaultValue}
       onChange={onChange}
       accept={accept}
+      onBlur={onBlur}
       onKeyDown={onkeydown}
       name ={name}
       {...validate}

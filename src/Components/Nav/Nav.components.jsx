@@ -16,7 +16,7 @@ export const Nav = () => {
       <div
         className="nav__category"
         onMouseEnter={() => setShowMegaMenu(true)}
-        onMouseLeave={() => setShowMegaMenu(false)}
+        // onMouseLeave={() => setShowMegaMenu(false)}
       >
         <BiCategoryAlt className="nav__category__icon" />
         <span className="nav__category__title">دسته بندی کالاها</span>
