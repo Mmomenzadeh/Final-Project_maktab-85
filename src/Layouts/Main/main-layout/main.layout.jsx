@@ -33,11 +33,11 @@ export const MainLayout = () => {
 
       <div className="flex mt-10 j-c gap-10">
         <CategoryLogo
-          img="https://www.uplooder.net/img/image/44/de43a5ce0e6d888bf3834cebf72ee992/icons8-discount-100-(1).png"
+          img ="https://www.uplooder.net/img/image/65/2085ece06b8e0ae4c8fb05a87ada4504/icons8-discount-100-(2).png"
           txt="تخفیف ها"
-        />
+        />  
         <CategoryLogo
-          img="https://www.uplooder.net/img/image/74/e0ac1997526763abf1d1a5ad2cf9a829/icons8-ereader-100-(1).png"
+          img="https://www.uplooder.net/img/image/39/e376fb9b29a99014935255712024e9f7/icons8-ereader-100-(2).png"
           txt="وبلاگ"
         />
         {categoryData.map((item) => (
@@ -49,7 +49,7 @@ export const MainLayout = () => {
           />
         ))}
         <CategoryLogo
-        img="https://www.uplooder.net/img/image/38/71f30fea2f4abdf97bf583165f532bb7/icons8-vinyl-100-(1).png"
+        img="https://www.uplooder.net/img/image/82/b88443dd3f49c145405eaea2ac2106cb/icons8-vinyl-100-(3).png"
           txt="پادکست"
         />
       </div>
