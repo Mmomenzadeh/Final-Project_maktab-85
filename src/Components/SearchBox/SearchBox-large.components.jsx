@@ -1,10 +1,13 @@
-import { Input } from "Components";
+import { Input, Search } from "Components";
+import { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { EscBtn } from "Utils/EscBtn";
 import "../../Assets/Styles/Components/SearchBox/index.scss";
 
-export const SearchBoxLarge = () => {
+export const SearchBoxLarge = ({showSearchBox , setShowSearchBox}) => {
   return (
     <div className="searchBoxLarge">
+      {showSearchBox ? <Search  setShowSearchBox={setShowSearchBox}/> : null}
       <select className="searchBoxLarge__select">
         <option value="" className="searchBoxLarge__select__opt">انتخاب دسته بندی </option>
         <option value="1" className="searchBoxLarge__select__opt">گوشی موبایل</option>
@@ -17,6 +20,9 @@ export const SearchBoxLarge = () => {
         type="search "
         holder="جستجوی محصولات"
         inpType="searchBox-Home-large"
+        value={""}
+        onkeydown={(e)=>EscBtn(e , setShowSearchBox )}
+        onClick={()=>setShowSearchBox(true)}
       />
       <BiSearchAlt size="2.2rem" color="#444" className="searchBoxLarge__icon" />
     </div>

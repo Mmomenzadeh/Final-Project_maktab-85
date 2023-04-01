@@ -5,13 +5,15 @@ import {
   HeadingTitle,
   ProductsList,
 } from "Components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Layout/MainUser/index.scss";
 
-export const MainLayout = () => {
+export const MainLayout = ({showSearchBox , setShowSearchBox}) => {
+
+  //---------------------------------------------------------------
   const { productData } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
 
@@ -19,7 +21,7 @@ export const MainLayout = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts("_limit=40"));
     dispatch(fetchProductCategory());
   }, [dispatch]);
 
@@ -29,13 +31,15 @@ export const MainLayout = () => {
   const consoleGame = productData.filter((item) => item.category === "4");
   return (
     <main className="main ">
+      {showSearchBox ? <div className="Background" onClick={()=>setShowSearchBox(false)}></div> : null}
+
       <Banner />
 
       <div className="flex mt-10 j-c gap-10">
         <CategoryLogo
-          img ="https://www.uplooder.net/img/image/65/2085ece06b8e0ae4c8fb05a87ada4504/icons8-discount-100-(2).png"
+          img="https://www.uplooder.net/img/image/65/2085ece06b8e0ae4c8fb05a87ada4504/icons8-discount-100-(2).png"
           txt="تخفیف ها"
-        />  
+        />
         <CategoryLogo
           img="https://www.uplooder.net/img/image/39/e376fb9b29a99014935255712024e9f7/icons8-ereader-100-(2).png"
           txt="وبلاگ"
@@ -49,7 +53,7 @@ export const MainLayout = () => {
           />
         ))}
         <CategoryLogo
-        img="https://www.uplooder.net/img/image/82/b88443dd3f49c145405eaea2ac2106cb/icons8-vinyl-100-(3).png"
+          img="https://www.uplooder.net/img/image/82/b88443dd3f49c145405eaea2ac2106cb/icons8-vinyl-100-(3).png"
           txt="پادکست"
         />
       </div>
