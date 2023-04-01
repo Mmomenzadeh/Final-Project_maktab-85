@@ -7,20 +7,31 @@ import { Link } from "react-router-dom";
 
 import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
 
-export const Header = () => {
+export const Header = ({ showSearchBox, setShowSearchBox }) => {
   return (
     <>
+      {/* Question   onClick={()=>setShowSearchBox(false)} ?  */}
       <header>
         <div className="header-right">
           <Logo />
-          <SearchBoxLarge />
+          <SearchBoxLarge
+            showSearchBox={showSearchBox}
+            setShowSearchBox={setShowSearchBox}
+          />
+
+          {/* <SearchBox
+            showSearchBox={showSearchBox}
+            setShowSearchBox={setShowSearchBox}
+          /> */}
         </div>
         <div className="header-left">
           <Link className="header-left__icon">
             <VscAccount size="3rem" />
           </Link>
 
-          <Link to="/login" className="header-left__Link">ورود / ثبت نام</Link>
+          <Link to="/login" className="header-left__Link">
+            ورود / ثبت نام
+          </Link>
           <div className="line-h"></div>
           <BsHeart size="2.5rem" className="header-left__icon" />
           <div className="line-h"></div>
@@ -29,7 +40,9 @@ export const Header = () => {
           </Link>
         </div>
       </header>
-      <Nav/>
+      <div className="mt-10">
+        <Nav />
+      </div>
     </>
   );
 };

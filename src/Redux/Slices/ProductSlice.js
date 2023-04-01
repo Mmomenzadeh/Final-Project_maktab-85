@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { FilterData, GetProduct, PostProduct, UploadImgService } from "API";
 import { toast } from "react-toastify";
 
-export const fetchProducts = createAsyncThunk("fetch/productList", async () => {
+export const fetchProducts = createAsyncThunk("fetch/productList", async (params) => {
   try {
-    const res = await GetProduct();
+    const res = await GetProduct(params);
     return res.data;
   } catch (error) {
     console.log(error.message);
