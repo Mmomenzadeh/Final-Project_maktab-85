@@ -1,5 +1,5 @@
 import { GetSingleProduct } from "API";
-import { Button, HeadingTitle } from "Components";
+import { Button, HeadingTitle, Input } from "Components";
 import { Footer, Header } from "Layouts";
 import { useEffect, useState } from "react";
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-icons/ai";
 import { BsStars } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
-import { HiOutlineShare } from "react-icons/hi";
+import { HiMinusSm, HiOutlineShare, HiPlusSm } from "react-icons/hi";
 import { MdCompare, MdOutlineInventory } from "react-icons/md";
 import { TbBellRinging, TbTruck } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,7 +47,7 @@ export const SingleProduct = () => {
     }
   }
 
-  // console.log(productDetails?.img?.[0]);
+  console.log(productDetails.img);
   return (
     <div className="singleProduct">
       <Header />
@@ -66,7 +66,7 @@ export const SingleProduct = () => {
               </div>
               <img
                 className="singleProduct__body__img__imgSize"
-                src={`http://localhost:3002/files/${productDetails.img}`}
+                src={`http://localhost:3002/files/${productDetails?.img?.[0]}`}
                 alt={productDetails.name}
               />
             </div>
@@ -105,9 +105,15 @@ export const SingleProduct = () => {
                   <div className="flex col gap-1 mt-2">
                     {/* <span style={{ fontSize: "1.5rem" }}>رنگ : {productDetails.colors[0]}</span> */}
                     <div className="flex gap-1 mb-1 mt-1">
-                      {/* {productDetails.colors.map((item , index) => {
-                    return <div key={index} className="colors-item" style={{ backgroundColor: `${item}` }}></div>;
-                  })} */}
+                      {productDetails?.colors?.map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="colors-item"
+                            style={{ backgroundColor: `${item}` }}
+                          ></div>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -279,8 +285,29 @@ export const SingleProduct = () => {
                         </span>
                       </div>
                     </div>
+                    {addQuantity ? (
 
-                    <Button className="basketBtn">افزودن به سبد خرید</Button>
+                      <div className="flex gap-1 a-c">
+                      <div className="flex gap addQuantityBox ">
+                        <HiMinusSm size="2rem" className="pointer" />
+                        <Input className="addQuantity" defaultValue={1} />
+                        <HiPlusSm size="2rem" className="pointer" />
+                      </div>
+
+                        <div className="flex col gap-1">
+                          <span className="fs-08">در سبد شما </span>
+                          <div className="fs-08 flex gap ">
+                            <span >مشاهده</span>
+                            <span className="blue-100">سبد خرید </span>
+                          </div>
+                        </div>
+
+                      </div>
+                    ) : (
+                      <Button className="basketBtn" onClick={addToBasketHadle}>
+                        افزودن به سبد خرید
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
