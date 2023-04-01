@@ -16,6 +16,8 @@ import { MdCompare, MdOutlineInventory } from "react-icons/md";
 import { TbBellRinging, TbTruck } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { fetchProduct } from "Redux/Slices/SingleProductSlice";
 import "../../Assets/Styles/Pages/singleProduct/index.scss";
@@ -46,8 +48,26 @@ export const SingleProduct = () => {
       );
     }
   }
+  ////------------------------------------------------------------------
+  const [addQuantity, setAddQuantity] = useState(false);
+  const [productquantity, setProductQuantity] = useState(1);
+  const addToBasketHadle = () => {
+    setAddQuantity(true);
+  };
+  const AddProductQuantityHandle = (op) => {
+    if (op === "+") {
+      if (productquantity < productDetails.quantity) {
+        setProductQuantity(productquantity + 1);
+      }else{
+        toast.error(`افزودن بالایی ${productDetails.quantity} عدد غیر مجاز است`)
+      }
+    } else {
+      if (productquantity > 0) {
+        setProductQuantity(productquantity - 1);
+      }
+    }
+  };
 
-  console.log(productDetails.img);
   return (
     <div className="singleProduct">
       <Header />
@@ -286,22 +306,36 @@ export const SingleProduct = () => {
                       </div>
                     </div>
                     {addQuantity ? (
-
                       <div className="flex gap-1 a-c">
-                      <div className="flex gap addQuantityBox ">
-                        <HiMinusSm size="2rem" className="pointer" />
-                        <Input className="addQuantity" defaultValue={1} />
-                        <HiPlusSm size="2rem" className="pointer" />
-                      </div>
+                        <div className="flex gap addQuantityBox ">
+                          <HiMinusSm
+                            size="2rem"
+                            className="pointer"
+                            onClick={() => AddProductQuantityHandle("-")}
+                          />
+                          <Input
+                            className="addQuantity"
+                            value={productquantity}
+                            onChange={(e) =>
+                              setProductQuantity(+e.target.value)
+                            }
+                          />
+                          <HiPlusSm
+                            size="2rem"
+                            className="pointer"
+                            onClick={() => AddProductQuantityHandle("+")}
+                          />
+                        </div>
 
                         <div className="flex col gap-1">
                           <span className="fs-08">در سبد شما </span>
                           <div className="fs-08 flex gap ">
-                            <span >مشاهده</span>
-                            <span className="blue-100">سبد خرید </span>
+                            <span>مشاهده</span>
+                            <Link to={``} className="blue-100 link">
+                              سبد خرید{" "}
+                            </Link>
                           </div>
                         </div>
-
                       </div>
                     ) : (
                       <Button className="basketBtn" onClick={addToBasketHadle}>
@@ -349,9 +383,10 @@ export const SingleProduct = () => {
 
           <div
             className="singleProduct__body__description__txt"
-            dangerouslySetInnerHTML={{ __html:active.introduction ? productDetails.description : null  }}
-          >
-          </div>
+            dangerouslySetInnerHTML={{
+              __html: active.introduction ? productDetails.description : null,
+            }}
+          ></div>
         </div>
       </div>
       <Footer />
