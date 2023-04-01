@@ -331,7 +331,7 @@ export const SingleProduct = () => {
                           <span className="fs-08">در سبد شما </span>
                           <div className="fs-08 flex gap ">
                             <span>مشاهده</span>
-                            <Link to={``} className="blue-100 link">
+                            <Link to={`/basketShopping`} className="blue-100 link">
                               سبد خرید{" "}
                             </Link>
                           </div>

@@ -45,7 +45,7 @@ export const ProjectRoutes = () => {
       <Route path={BLOG} element={<Blog />} />
       <Route path={ABOUT} element={<About />} />
       <Route path={ALLPRODUCTS} element={<AllProducts />} />
-      <Route path={BASKETSHOPPING} element={<BasketShopping />} />
+      <Route path="/basketShopping" element={<BasketShopping />} />
       <Route path="/products/:id" element={<SingleProduct />} />
       {/* <Route path={PANLEMANAGEMENT} element={<RoutsManagementPanel/>} /> */}
       <Route path="/managementPanle" element={<AdminMain />}>
