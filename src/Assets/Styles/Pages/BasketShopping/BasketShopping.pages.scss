@@ -1,0 +1,13 @@
+.BasketShopping{
+
+    &__checkOutBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border: 0.1rem solid var(--gray-100);
+        padding: 1.2rem 1.5rem;
+        width: 22rem;
+        height: 17rem;
+        border-radius: 2rem;
+    }
+}
