@@ -192,6 +192,16 @@
 .mr-3{
   margin-right: 3rem;
 }
+
+.gray-100{
+  color: var(--gray-100);
+}
+
+
+.gray-150{
+  color: var(--gray-150);
+}
+
 .gray-200{
   color: var(--gray-200);
 }
@@ -209,4 +219,30 @@
 
 .blue-100{
   color: var(--blue-100);
+}
+
+.primary{
+  color: var(--primary);
+}
+
+
+.fs-2{
+  font-size: 2rem;
+}
+
+.fs-18{
+  font-size: 1.8rem;
+}
+
+.fs-3{
+  font-size: 3rem;
+}
+
+.textShadow{
+  text-shadow: 2px 2px 0 #faa9a9;
+
+}
+
+.primary-T{
+  color: #ef3a4f70;
 }

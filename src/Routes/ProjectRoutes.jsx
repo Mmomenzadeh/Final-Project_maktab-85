@@ -58,7 +58,7 @@ export const ProjectRoutes = () => {
       <Route path={NOTFOUND} element={<NotFound />} />
       <Route path={LOGIN} element={<LogIn />} />
       <Route path={CONTACTUS} element={<ContactUs />} />
-      <Route path={CHECKOUT} element={<Checkout />} />
+      <Route path={`/checkout`} element={<Checkout />} />
       <Route path={USERACCOUNT} element={<UserAccount />} />
       <Route path="/category/:id" element={<Categories />} />
       
