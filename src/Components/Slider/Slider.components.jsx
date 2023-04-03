@@ -57,13 +57,7 @@ export const Slider = () => {
           return (
             <SwiperSlide key={i}>
               <img src={item.img} alt="" />
-              {/* <span className="swiper-slide__name">{item.name}</span>
-              <p className="swiper-slide__heading">{item.heading}</p>
-              <div className="swiper-slide__btn">
-              <Button size="medium" outline="outline-banner">
-                {item.btnTxt}
-              </Button>
-              </div> */}
+           
             </SwiperSlide>
           );
         })}

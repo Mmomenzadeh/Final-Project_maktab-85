@@ -3,11 +3,13 @@ import { Nav } from "Components/Nav/Nav.components";
 import { BsHeart } from "react-icons/bs";
 import { IoBagOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
 
 export const Header = ({ showSearchBox, setShowSearchBox }) => {
+  const {cartItems} = useSelector(state => state.cartShopping)
   return (
     <>
       {/* Question   onClick={()=>setShowSearchBox(false)} ?  */}
@@ -35,8 +37,9 @@ export const Header = ({ showSearchBox, setShowSearchBox }) => {
           <div className="line-h"></div>
           <BsHeart size="2.5rem" className="header-left__icon" />
           <div className="line-h"></div>
-          <Link className="header-left__icon">
+          <Link className="header-left__icon " to="/basketShopping">
             <IoBagOutline size="2.8rem" />
+            {cartItems && cartItems.length === 0 ? null :  <span className="badge-header">{cartItems.length}</span>}
           </Link>
         </div>
       </header>
