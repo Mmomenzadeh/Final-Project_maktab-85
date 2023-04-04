@@ -26,8 +26,7 @@ import {
   LogIn,
   NotFound,
   Orders,
-  Payment,
-  RoutsManagementPanel,
+  PaymentRoutes,
   SingleProduct,
   UserAccount,
 } from "Pages";
@@ -36,6 +35,7 @@ import {
   ManagementPanleProducts,
   ManagementPanleStock,
 } from "Pages/Panle-management";
+
 import { Route, Routes } from "react-router-dom";
 
 export const ProjectRoutes = () => {
@@ -53,7 +53,10 @@ export const ProjectRoutes = () => {
         <Route path="products" element={<ManagementPanleProducts />} />
         <Route path="stock" element={<ManagementPanleStock />} />
       </Route>
-      <Route path={`/payment-result/:paymentCode`} element={<Payment />} />
+      <Route
+        path={`/payment-result/:paymentCode/*`}
+        element={<PaymentRoutes />}
+      />
       <Route path={ORDERS} element={<Orders />} />
       <Route path={NOTFOUND} element={<NotFound />} />
       <Route path={LOGIN} element={<LogIn />} />
@@ -61,7 +64,6 @@ export const ProjectRoutes = () => {
       <Route path={`/checkout`} element={<Checkout />} />
       <Route path={USERACCOUNT} element={<UserAccount />} />
       <Route path="/category/:id" element={<Categories />} />
-      
     </Routes>
   );
 };

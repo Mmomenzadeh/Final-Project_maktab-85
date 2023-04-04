@@ -15,6 +15,9 @@ export const Search = ({ setShowSearchBox }) => {
   const { productData } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
+
+  // name_like=${text} ---> answer
+
   // useEffect(() => {
   //   dispatch(FilterData(""))
   // }, []);

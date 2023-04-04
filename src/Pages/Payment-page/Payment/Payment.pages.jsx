@@ -2,7 +2,7 @@ import { PostOrder } from "API";
 import { Button } from "Components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../../Assets/Styles/Pages/Payment/index.scss";
+import "../../../Assets/Styles/Pages/Payment/index.scss";
 export const Payment = () => {
   const data = JSON.parse(localStorage.getItem("order"));
   const navigation = useNavigate();
@@ -11,7 +11,7 @@ export const Payment = () => {
     PostOrder({ ...data, ststusPayment: true })
       .then((res) => {
         console.log(res.data);
-        navigation("/payment-success");
+        navigation(`/payment-result/${data.paymentCode}/payment-success`);
       })
       .catch((error) => {
         console.log(error);
@@ -22,7 +22,7 @@ export const Payment = () => {
     PostOrder({ ...data, ststusPayment: false })
       .then((res) => {
         console.log(res.data);
-        navigation("/payment-failed");
+        navigation(`/payment-result/${data.paymentCode}/payment-failed`);
       })
       .catch((error) => {
         console.log(error);

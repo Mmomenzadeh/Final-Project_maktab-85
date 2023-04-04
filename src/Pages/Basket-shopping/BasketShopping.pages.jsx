@@ -18,9 +18,11 @@ import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../Assets/Styles/Pages/BasketShopping/index.scss";
 
 export const BasketShopping = () => {
-  const { cartItems } = useSelector((state) => state.cartShopping);
+  const { cartItems ,totalPrice } = useSelector((state) => state.cartShopping);
   const dispatch = useDispatch();
   let selectedProduct = {};
+
+  console.log(totalPrice);
 
   const DecreaseHandle_Basket = (product) => {
     dispatch(DECREASE(product));

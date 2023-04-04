@@ -111,7 +111,7 @@ export const Checkout = () => {
             </div>
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">تاریخ تحویل :</label>
-              <DatePicker round="x4" className="checkOut-dataPicker" />
+              <DatePicker round="x4"  />
               {/* <DatePicker round="x2" accentColor="#6374ae" range />   */}
             </div>
             <div className="flex col gap">

@@ -304,7 +304,7 @@ export const SingleProduct = () => {
                         </span>
                       </div>
                     </div>
-                    {addQuantity ? (
+                    {addQuantity || selectedProduct?.QTY === 1 ? (
                       <div className="flex gap-1 a-c">
                         <div className="flex gap a-c addQuantityBox ">
                           <HiMinusSm
