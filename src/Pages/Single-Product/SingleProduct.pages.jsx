@@ -13,12 +13,13 @@ import { BsStars } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiMinusSm, HiOutlineShare, HiPlusSm } from "react-icons/hi";
 import { MdCompare, MdOutlineInventory } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { TbBellRinging, TbTruck } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ADD, DECREASE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
+import { ADD, DECREASE, DELETE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { fetchProduct } from "Redux/Slices/SingleProductSlice";
 import "../../Assets/Styles/Pages/singleProduct/index.scss";
@@ -64,6 +65,9 @@ export const SingleProduct = () => {
     dispatch(INCERMENT(product));
   };
 
+  const DeleteHandle = (productId) => {
+    dispatch(DELETE(productId));
+  };
   const { cartItems } = useSelector((state) => state.cartShopping);
 
   const selectedProduct = cartItems.find((p) => p.id === productDetails.id);
@@ -307,17 +311,28 @@ export const SingleProduct = () => {
                     {addQuantity || selectedProduct?.QTY === 1 ? (
                       <div className="flex gap-1 a-c">
                         <div className="flex gap a-c addQuantityBox ">
-                          <HiMinusSm
-                            size="2rem"
-                            className="pointer"
-                            onClick={() => DecreaseHandle(productDetails)}
-                          />
-                          <p className="addQuantity">{selectedProduct?.QTY}</p>
                           <HiPlusSm
                             size="2rem"
                             className="pointer"
                             onClick={() => IncermentHandle(productDetails)}
                           />
+
+                          <p className="addQuantity">{selectedProduct?.QTY}</p>
+
+                          {selectedProduct?.QTY === 1 ? (
+                            <RiDeleteBin6Line
+                              size="1.8rem"
+                              className="pointer"
+                              color="var(--primary)"
+                              onClick={() => DeleteHandle(productDetails.id)}
+                            />
+                          ) : (
+                            <HiMinusSm
+                              size="2rem"
+                              className="pointer"
+                              onClick={() => DecreaseHandle(productDetails)}
+                            />
+                          )}
                         </div>
 
                         <div className="flex col gap-1">
