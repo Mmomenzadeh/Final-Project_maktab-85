@@ -63,6 +63,13 @@
     }
   }
 
+  &--checkOut{
+    padding: 1rem;
+    border: 0.1rem solid var(--gray-100);
+    border-radius: 1rem;
+    width: 37rem;
+  }
+
 
   
 }

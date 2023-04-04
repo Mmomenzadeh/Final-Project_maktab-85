@@ -2,6 +2,7 @@
   font-family: IRANSANS;
   border: none;
   cursor: pointer;
+  outline: none;
 
   // &--primary{
 
@@ -152,6 +153,11 @@
     border-radius: 1rem;
   }
 
-
-
+  &--orderBtn {
+    font-size: 1.2rem;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
 }
