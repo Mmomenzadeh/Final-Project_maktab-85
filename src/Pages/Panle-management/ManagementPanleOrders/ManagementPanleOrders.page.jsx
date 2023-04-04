@@ -11,7 +11,10 @@ import { fetchFilterOrders } from "../../../Redux/Slices/OrdersSlice";
 
 export const ManagementPanleOrders = () => {
   const [filterParams, setFilterParams] = useState(false);
-  const [showOrderModal , setshowOrderModal] = useState({status : false , ORDERDATA:{}})
+  const [showOrderModal, setshowOrderModal] = useState({
+    status: false,
+    ORDERDATA: {},
+  });
   const { ordersData } = useSelector((state) => state.orders);
 
   const dispatch = useDispatch();
@@ -20,10 +23,9 @@ export const ManagementPanleOrders = () => {
     dispatch(fetchFilterOrders(`orders?delivered=${filterParams}`));
   }, [dispatch, filterParams]);
 
-
-  const actionHandle = (data)=>{
-    setshowOrderModal({status: true , ORDERDATA : data})
-  }
+  const actionHandle = (data) => {
+    setshowOrderModal({ status: true, ORDERDATA: data });
+  };
 
   // --------------------------------------------------------------------------------------------------------
 
@@ -83,6 +85,7 @@ export const ManagementPanleOrders = () => {
                 name="delivered"
                 id="notDelivered"
                 onChange={() => setFilterParams(false)}
+                checked={filterParams ? false : true}
               />
             </div>
           </div>
@@ -105,20 +108,37 @@ export const ManagementPanleOrders = () => {
 
               let date = new Date(data.createdAt);
               date = date.toLocaleString("fa");
+              date = date.split(",").join("");
               return (
                 <tr key={data.id} className="adminTabel__tbody__tr">
-                  <td style={{ width: "45rem" }} className="adminTabel__tbody__tr__td ">
+                  <td
+                    style={{ width: "45rem" }}
+                    className="adminTabel__tbody__tr__td "
+                  >
                     {data.username + " " + data.lastname}
                   </td>
 
-                  <td className="adminTabel__tbody__tr__td" style={{ width: "35rem", paddingRight: "3rem" }}>
+                  <td
+                    className="adminTabel__tbody__tr__td"
+                    style={{ width: "35rem", paddingRight: "3rem" }}
+                  >
                     {data.prices} تومان
                   </td>
-                  <td className="adminTabel__tbody__tr__td" style={{ width: "35rem", paddingRight: "5rem" }}>
+                  <td
+                    className="adminTabel__tbody__tr__td"
+                    style={{ width: "35rem", paddingRight: "5rem" }}
+                  >
                     {date.substring(0, 10)}
                   </td>
-                  <td className="adminTabel__tbody__tr__td" style={{ width: "15rem" }}>
-                    <Button type="table-btn" outline="outline-blue" onClick={()=>actionHandle(data)}>
+                  <td
+                    className="adminTabel__tbody__tr__td"
+                    style={{ width: "15rem" }}
+                  >
+                    <Button
+                      type="table-btn"
+                      outline="outline-blue"
+                      onClick={() => actionHandle(data)}
+                    >
                       بررسی
                     </Button>
                   </td>
@@ -127,7 +147,6 @@ export const ManagementPanleOrders = () => {
             })}
           </tbody>
         </Table>
-
 
         <ReactPaginate
           breakLabel="..."
@@ -141,10 +160,13 @@ export const ManagementPanleOrders = () => {
           activeClassName="activePage  "
         />
 
-
-      {showOrderModal.status ? (<OrderModal setshowOrderModal={setshowOrderModal} showOrderModal={showOrderModal} />) : null}
+        {showOrderModal.status ? (
+          <OrderModal
+            setshowOrderModal={setshowOrderModal}
+            showOrderModal={showOrderModal}
+          />
+        ) : null}
       </div>
-
     </>
   );
 };

@@ -153,11 +153,23 @@
     border-radius: 1rem;
   }
 
-  &--orderBtn {
-    font-size: 1.2rem;
+  &--checkOutBtn{
     background-color: var(--primary);
     color: #fff;
-    padding: 0.8rem;
+    padding: 1rem;
+    font-weight: bolder;
+    border-radius: 1rem;
+  }
+
+  &--PaymentBtn {
+    width: 35rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+    color: #fff;
     border-radius: 0.8rem;
   }
+
+
 }

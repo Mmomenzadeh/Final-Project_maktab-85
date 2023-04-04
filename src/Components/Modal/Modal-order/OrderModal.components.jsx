@@ -125,7 +125,7 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                             style={{ width: "2rem", paddingRight: "3rem" }}
                             className="modalTable__tbody__tr__td"
                           >
-                            {data.count}
+                            {data.QTY}
                           </td>
                         </tr>
                       );

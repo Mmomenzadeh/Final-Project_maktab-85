@@ -11,7 +11,7 @@ export const Input = ({
   validate ,
   onkeydown,
   onBlur,
-
+  checked,
   name,
   onClick,
   ...rest
@@ -30,6 +30,7 @@ export const Input = ({
       onBlur={onBlur}
       onKeyDown={onkeydown}
       name ={name}
+      checked={checked}
       {...validate}
       {...rest}
     />

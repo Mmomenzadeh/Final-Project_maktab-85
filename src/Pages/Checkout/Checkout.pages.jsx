@@ -2,13 +2,14 @@ import { Button, Input } from "Components";
 import { SlBasket, SlWallet } from "react-icons/sl";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Assets/Styles/Pages/Checkout/index.scss";
 import { Calendar, CalendarProvider, DatePicker, TimePicker } from "zaman";
 import { useForm } from "react-hook-form";
+import { PostOrder } from "API";
 
 export const Checkout = () => {
-  const { cartItems } = useSelector((state) => state.cartShopping);
+  const { cartItems, totalPrice } = useSelector((state) => state.cartShopping);
   const shippingCost = 100000;
 
   const totalPay = cartItems.reduce((total, product) => {
@@ -20,9 +21,22 @@ export const Checkout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  //////----------------------------------------------
+  const navigation = useNavigate();
+  const paymentCode =Math.floor(Math.random()*1000000000) ;
   const onSubmit = (data) => {
-    
+
+    localStorage.setItem("order" , JSON.stringify({
+      ...data,
+      products: cartItems,
+      delivered: false,
+      prices: totalPay + shippingCost,
+      paymentCode 
+    }))
+    navigation(`/payment-result/${paymentCode}`)
+
+
+  
   };
   return (
     <div className="checkout">
@@ -106,11 +120,9 @@ export const Checkout = () => {
                 className="textarea"
                 cols="99"
                 rows="5"
-                validate={{
-                  ...register("address", {
-                    required: "وارد کردن ادرس الزامی ست ",
-                  }),
-                }}
+                {...register("address", {
+                  required: "وارد کردن ادرس الزامی ست ",
+                })}
               ></textarea>
               {errors.address && (
                 <p className="error">{errors.address.message}</p>
@@ -154,7 +166,7 @@ export const Checkout = () => {
             </p>
           </div>
 
-          <Button className="orderBtn">پرداخت</Button>
+          <Button className="checkOutBtn">پرداخت</Button>
         </div>
       </form>
     </div>
