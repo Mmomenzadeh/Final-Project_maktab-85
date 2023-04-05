@@ -18,7 +18,7 @@ $font-family: IRANSANS;
 html,
 body {
   font-size: 62.5%; // 10px
-  overflow-x: hidden;
+  // overflow-x: hidden;
   position: relative;
 
 }
@@ -36,7 +36,6 @@ body {
   width: 65rem;
   height: 75rem;
   overflow-y: scroll;
-  overflow-x: hidden;
   direction: ltr;
   z-index: 17;
 

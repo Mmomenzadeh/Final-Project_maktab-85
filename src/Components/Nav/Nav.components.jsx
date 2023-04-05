@@ -12,47 +12,55 @@ import { MegaMenu } from "Components/MegaMenu/MegaMenu.components";
 export const Nav = () => {
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   return (
-    <nav className="nav">
-      <div
-        className="nav__category"
-        onMouseEnter={() => setShowMegaMenu(true)}
-        // onMouseLeave={() => setShowMegaMenu(false)}
-      >
-        <BiCategoryAlt className="nav__category__icon" />
-        <span className="nav__category__title">دسته بندی کالاها</span>
-        {showMegaMenu ? <MegaMenu setShowMegaMenu={setShowMegaMenu} /> : null}
+    <nav className="nav flex a-c j-sb">
+      {/* --right-- */}
+
+      <div className="flex gap-3 a-c">
+        {/* --category icon-- */}
+        <div
+          className="flex a-c gap "
+          onMouseEnter={() => setShowMegaMenu(true)}
+          // onMouseLeave={() => setShowMegaMenu(false)}
+        >
+          <BiCategoryAlt size="3.5rem" />
+          <span className="fs-2">دسته بندی کالاها</span>
+          {showMegaMenu ? <MegaMenu setShowMegaMenu={setShowMegaMenu} /> : null}
+        </div>
+
+        <Link className="link fs-13 gray-300 flex gap a-c">
+          <IoHomeOutline size="2rem" />
+          <span className="">صحفه ی اصلی</span>
+        </Link>
+
+        <Link className="link fs-13 gray-300 flex gap a-c">
+          <HiOutlineShoppingCart size="2rem" />
+          <span className="">فروشگاه</span>
+        </Link>
+        <Link className="link fs-13 gray-300 flex gap a-c">
+          <FaRegNewspaper size="2rem" />
+          <span className="">وبلاگ</span>
+        </Link>
+        <Link className="link fs-13 gray-300 flex gap a-c">
+          <IoIosPeople size="2rem" />
+
+          <span className="">درباره ی ما</span>
+        </Link>
+        <Link className="link fs-13 gray-300 flex gap a-c">
+          <MdOutlinePhoneInTalk size="2rem" />
+          <span className="">تماس با ما</span>
+        </Link>
       </div>
 
-      <Link className="nav__link">
-        <IoHomeOutline className="nav__link__icons" />
-        <span className="nav__link__item">صحفه ی اصلی</span>
-      </Link>
+      {/* ---left */}
 
-      <Link className="nav__link">
-        <HiOutlineShoppingCart className="nav__link__icons" />
-        <span className="nav__link__item">فروشگاه</span>
-      </Link>
-      <Link className="nav__link">
-        <FaRegNewspaper className="nav__link__icons" />
-        <span className="nav__link__item">وبلاگ</span>
-      </Link>
-      <Link className="nav__link">
-        <IoIosPeople className="nav__link__icons" />
-
-        <span className="nav__link__item">درباره ی ما</span>
-      </Link>
-      <Link className="nav__link">
-        <MdOutlinePhoneInTalk className="nav__link__icons" />
-        <span className="nav__link__item">تماس با ما</span>
-      </Link>
-
-      <div className="nav__contact-us">
-        <div className="nav__contact-us__QA">سوالی دارید ؟ تماس بگرید</div>
-        <p style={{ fontSize: "1.3rem" }}>
-          <span style={{ color: "#ef3a4f" }}>071</span>-36322050
+      <div className="flex a-c gap-1 ">
+        <div className="fs-1 back-round-2 gray-300">سوالی دارید ؟ تماس بگرید</div>
+        <p className="fs-15 bold">
+          <span className="primary">071</span >
+          <span className="gray-400">-36322050</span>
         </p>
-        <div className="nav__contact-us__icon">
-          <MdOutlinePhoneInTalk className="nav__link__icons" />
+        <div className="back-round-50">
+          <MdOutlinePhoneInTalk className="fs-18 gray-300" />
         </div>
       </div>
     </nav>

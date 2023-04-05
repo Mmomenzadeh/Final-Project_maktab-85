@@ -5,7 +5,7 @@ export const Home = () => {
   const [showSearchBox, setShowSearchBox] = useState(false);
 
   return (
-    <div className="home">
+    <div >
       <Header
         showSearchBox={showSearchBox}
         setShowSearchBox={setShowSearchBox}

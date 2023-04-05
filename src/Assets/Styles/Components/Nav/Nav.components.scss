@@ -1,72 +1,28 @@
 .nav {
   font-family: IRANSANS;
   background-color: #f9f9f9;
-  width: 100%;
-  display: flex;
-  align-items: center;
   gap: 3rem;
   padding: 1rem 20rem;
   margin-top: 1rem;
   z-index: 12;
 
-  &__category {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 0.5rem;
-    &__icon{
-        font-size: 2.5rem;
-      color: var(--gray-400);
+  
  
-    }
-    &__title {
-      font-size: 1.8rem;
-      color: var(--gray-400);
-
-    }
-  }
-
-  &__link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-decoration: none;
-
-    cursor: pointer;
-    // & :hover {
-    //   color: #ef3a4f;
-    // }
-
-    &__item {
-      font-size: 1.2rem;
-      color: #8e8e8e;
-    }
-
-    &__icons {
-      font-size: 1.7rem;
-      color: #8e8e8e;
-    }
-  }
-
-  &__contact-us {
-    display: flex;
-    gap: 1.1rem;
-    align-items: center;
-    margin-right: 55rem;
-    &__QA {
-      font-size: 1rem;
-      background-color: #f1f1f2;
-      padding: 0.6rem;
-      border-radius: 1.5rem;
-    }
-    &__icon {
-      background-color: #f1f1f2;
-      padding: 0.6rem;
-      border-radius: 50%;
-    }
-  }
 }
+
+.back-round-2{
+  background-color: #e1dfdf7f;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+}
+
+
+.back-round-50{
+  background-color: #e1dfdf7f;
+  padding: 0.6rem 0.6rem;
+  border-radius: 50%;
+}
+
 
 // .nav__link :hover{
 
