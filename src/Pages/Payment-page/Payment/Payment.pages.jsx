@@ -12,6 +12,7 @@ export const Payment = () => {
       .then((res) => {
         console.log(res.data);
         navigation(`/payment-result/${data.paymentCode}/payment-success`);
+        localStorage.setItem("cart-shopping" , [])
       })
       .catch((error) => {
         console.log(error);
