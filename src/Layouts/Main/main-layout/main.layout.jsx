@@ -25,10 +25,10 @@ export const MainLayout = ({showSearchBox , setShowSearchBox}) => {
     dispatch(fetchProductCategory());
   }, [dispatch]);
 
-  const mobiles = productData.filter((item) => item.category === "1");
-  const laptops = productData.filter((item) => item.category === "2");
-  const headPhones = productData.filter((item) => item.category === "3");
-  const consoleGame = productData.filter((item) => item.category === "4");
+  const mobiles = productData?.filter((item) => item.category === "1");
+  const laptops = productData?.filter((item) => item.category === "2");
+  const headPhones = productData?.filter((item) => item.category === "3");
+  const consoleGame = productData?.filter((item) => item.category === "4");
   return (
     <main className="main ">
       {showSearchBox ? <div className="Background" onClick={()=>setShowSearchBox(false)}></div> : null}

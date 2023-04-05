@@ -9,23 +9,26 @@ import { Link } from "react-router-dom";
 import { EscBtn } from "Utils/EscBtn";
 import "../../Assets/Styles/Components/Search/index.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { FilterData } from "API";
+import { fetchFilterData } from "Redux/Slices/ProductSlice";
 
 export const Search = ({ setShowSearchBox }) => {
   const { productData } = useSelector((state) => state.products);
+  console.log(productData);
   const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
 
-  // useEffect(() => {
-  //   dispatch(FilterData(""))
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchFilterData(`name_like=${query}`))
+  }, [query]);
 
   const [searchItem, setsearchItem] = useState(false);
+
   const handleSearch = (e) => {
+    setQuery(e.target.value)
     setsearchItem(true);
     if (e.target.value === "") {
       setsearchItem(false);
     }
-    // console.log();
   };
 
   const closeHandle = () => {
@@ -41,6 +44,7 @@ export const Search = ({ setShowSearchBox }) => {
               type="search "
               holder="جستجوی محصولات"
               inpType="searchBox-Home-large"
+              value={query}
               onChange={(e) => handleSearch(e)}
               onkeydown={(e) => EscBtn(e, setShowSearchBox)}
             />
