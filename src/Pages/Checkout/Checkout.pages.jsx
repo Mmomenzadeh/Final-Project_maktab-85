@@ -137,8 +137,43 @@ export const Checkout = () => {
             </div>
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">تاریخ تحویل :</label>
-              <DatePicker round="x4" className="checkOut-dataPicker" />
-              {/* <DatePicker round="x2" accentColor="#6374ae" range />   */}
+              <Controller
+                control={control}
+                name="date"
+                rules={{ required: true }} //optional
+                render={({
+                  field: { onChange, name, value },
+                  fieldState: { invalid, isDirty }, //optional
+                  formState: { errors }, //optional, but necessary if you want to show an error message
+                }) => (
+                  <>
+                    <div style={{ direction: "rtl" }}>
+                      <DatePicker
+                        inputMode="none"
+                        className="test-calendar"
+                        containerClassName="test-container"
+                        value={value || ""}
+                        onChange={(date) => {
+                          onChange(date?.isValid ? date : "");
+                        }}
+                        render={<InputIcon />}
+                        weekDays={weekDays}
+                        calendar={persian}
+                        locale={persian_fa}
+                        calendarPosition="bottom-right"
+                      />
+                    </div>
+                    {errors &&
+                      errors[name] &&
+                      errors[name].type === "required" && (
+                        //if you want to show an error message
+                        <span className="error">
+                          انتخاب زمان ارسال الزامی ست{" "}
+                        </span>
+                      )}
+                  </>
+                )}
+              />
             </div>
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">ادرس :</label>
