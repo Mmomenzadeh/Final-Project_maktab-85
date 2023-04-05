@@ -2,7 +2,7 @@ import { PostOrder } from "API";
 import { Button } from "Components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../../Assets/Styles/Pages/Payment/index.scss";
+import "../../../Assets/Styles/Pages/Payment/index.scss";
 export const Payment = () => {
   const data = JSON.parse(localStorage.getItem("order"));
   const navigation = useNavigate();

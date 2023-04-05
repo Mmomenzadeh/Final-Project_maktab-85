@@ -56,9 +56,27 @@
   border-radius: 1rem;
 }
 
-.checkOut-dataPicker {
-  padding: 1rem;
+.custom-input {
+  border-radius: 15px;
+  border: 1px #0c8af8 solid;
+  padding: 4px 12px;
+  background-color: white;
+  height: 22px;
+  box-shadow: 0 0 2px #0074d9;
+}
+
+
+
+
+.test-container {
+  width: 39rem;
+}
+
+.test-container .rmdp-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
   border: 0.1rem solid var(--gray-100);
   border-radius: 1rem;
-  width: 37rem;
+
 }

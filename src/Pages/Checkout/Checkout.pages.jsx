@@ -4,12 +4,21 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "../../Assets/Styles/Pages/Checkout/index.scss";
-import { Calendar, CalendarProvider, DatePicker, TimePicker } from "zaman";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { PostOrder } from "API";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+
+import { useState } from "react";
+import InputIcon from "react-multi-date-picker/components/input_icon";
+
+// import "./style.css"
 
 export const Checkout = () => {
   const { cartItems, totalPrice } = useSelector((state) => state.cartShopping);
+  // console.log(cartItems);
+
   const shippingCost = 100000;
 
   const totalPay = cartItems.reduce((total, product) => {
@@ -19,25 +28,42 @@ export const Checkout = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
+
+  ///-------------------------------------------------------
+
+  const [submittedDate, setSubmittedDate] = useState();
+  const weekDays = [
+    "شنبه",
+    "یکشنبه",
+    "دوشنبه",
+    "سه شنبه",
+    "چهارشنبه",
+    "پنچ شنبه",
+    "جمعه",
+  ];
   //////----------------------------------------------
   const navigation = useNavigate();
-  const paymentCode =Math.floor(Math.random()*1000000000) ;
+  const paymentCode = Math.floor(Math.random() * 1000000000);
   const onSubmit = (data) => {
+    setSubmittedDate(new Date(data.date).getTime());
 
-    localStorage.setItem("order" , JSON.stringify({
-      ...data,
-      products: cartItems,
-      delivered: false,
-      prices: totalPay + shippingCost,
-      paymentCode 
-    }))
-    navigation(`/payment-result/${paymentCode}`)
-
-
-  
+    localStorage.setItem(
+      "order",
+      JSON.stringify({
+        ...data,
+        products: cartItems,
+        delivered: false,
+        prices: totalPay + shippingCost,
+        paymentCode,
+        expectAt: new Date(data.date).getTime(),
+      })
+    );
+    navigation(`/payment-result/${paymentCode}`);
   };
+
   return (
     <div className="checkout">
       <div className="checkout__top ">
@@ -65,7 +91,7 @@ export const Checkout = () => {
       </div>
       <form className="flex gap-1 mt-2" onSubmit={handleSubmit(onSubmit)}>
         <div className="checkout__main">
-          <div className="flex wrap gap-3">
+          <div className="flex a-c wrap gap-3">
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">نام :</label>
               <Input
@@ -111,8 +137,43 @@ export const Checkout = () => {
             </div>
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">تاریخ تحویل :</label>
-              <DatePicker round="x4" className="checkOut-dataPicker" />
-              {/* <DatePicker round="x2" accentColor="#6374ae" range />   */}
+              <Controller
+                control={control}
+                name="date"
+                rules={{ required: true }} //optional
+                render={({
+                  field: { onChange, name, value },
+                  fieldState: { invalid, isDirty }, //optional
+                  formState: { errors }, //optional, but necessary if you want to show an error message
+                }) => (
+                  <>
+                    <div style={{ direction: "rtl" }}>
+                      <DatePicker
+                        inputMode="none"
+                        className="test-calendar"
+                        containerClassName="test-container"
+                        value={value || ""}
+                        onChange={(date) => {
+                          onChange(date?.isValid ? date : "");
+                        }}
+                        render={<InputIcon />}
+                        weekDays={weekDays}
+                        calendar={persian}
+                        locale={persian_fa}
+                        calendarPosition="bottom-right"
+                      />
+                    </div>
+                    {errors &&
+                      errors[name] &&
+                      errors[name].type === "required" && (
+                        //if you want to show an error message
+                        <span className="error">
+                          انتخاب زمان ارسال الزامی ست{" "}
+                        </span>
+                      )}
+                  </>
+                )}
+              />
             </div>
             <div className="flex col gap">
               <label className="fs-1 gray-300 mr-1">ادرس :</label>
