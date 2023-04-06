@@ -7,6 +7,7 @@ export  function PaymentRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Payment/>} />
+      
       <Route path="payment-success" element={<PaymentSuccess/>} />
       <Route path="payment-failed" element={<PaymentFaild/>} />
 

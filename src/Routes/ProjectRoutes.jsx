@@ -26,7 +26,9 @@ import {
   LogIn,
   NotFound,
   Orders,
-  PaymentRoutes,
+  Payment,
+  PaymentFaild,
+  PaymentSuccess,
   SingleProduct,
   UserAccount,
 } from "Pages";
@@ -53,9 +55,14 @@ export const ProjectRoutes = () => {
         <Route path="products" element={<ManagementPanleProducts />} />
         <Route path="stock" element={<ManagementPanleStock />} />
       </Route>
+      <Route path={`/payment-result/:paymentCode`} element={<Payment />} />
       <Route
-        path={`/payment-result/:paymentCode/*`}
-        element={<PaymentRoutes />}
+        path="/payment-result/:paymentCode/payment-success"
+        element={<PaymentSuccess />}
+      />
+      <Route
+        path="/payment-result/:paymentCode/payment-failed"
+        element={<PaymentFaild />}
       />
       <Route path={ORDERS} element={<Orders />} />
       <Route path={NOTFOUND} element={<NotFound />} />

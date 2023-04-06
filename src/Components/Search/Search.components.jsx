@@ -73,15 +73,23 @@ export const Search = ({ setShowSearchBox }) => {
                       CATEGORYNAME = category.name;
                     }
                   });
+
                   return (
                     <div className="flex col gap-1 mb-3 pointer">
                       <Link className="flex gap-1 a-c  link gray-400">
                         <BiSearchAlt size="2rem" color="var(--gray-200)" />
-                        <p className="fs-12 line-h-2">{item.name}</p>
+                        <p className="fs-12 line-h-2">
+                          {item.name.length > 70
+                            ? `${item.name.substring(0, 70)}...`
+                            : item.name}
+                        </p>
                       </Link>
                       <Link className="mr-3 fs-1 gray-300 link">
                         در دسته{" "}
-                        <span className="fs-1 bold blue-100"> {CATEGORYNAME}</span>
+                        <span className="fs-1 bold blue-100">
+                          {" "}
+                          {CATEGORYNAME}
+                        </span>
                       </Link>
                     </div>
                   );

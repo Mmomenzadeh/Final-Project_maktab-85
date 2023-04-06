@@ -11,4 +11,6 @@ export * from "./Orders/Orders.pages";
 export * from "./Single-Product/SingleProduct.pages";
 export * from "./Categories/Categories.pages";
 export * from "./UserAccount/UserAccount.pages";
-export * from "./Payment-page/PaymentRoutes"
+export * from "./Payment-page/Payment/Payment.pages";
+export * from "./Payment-page/Payment-Failed/PaymentFaild.pages";
+export * from "./Payment-page/Payment-Success/PaymentSuccess.pages";

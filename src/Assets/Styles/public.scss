@@ -36,8 +36,6 @@ body {
   width: 65rem;
   height: 75rem;
   overflow-y: scroll;
-  direction: ltr;
-  z-index: 17;
 
 
 }
@@ -45,8 +43,6 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-  z-index: 17;
-  direction: ltr;
 
 
 }
@@ -54,6 +50,7 @@ body {
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
+  background-color: transparent;
 
 }
 
@@ -71,3 +68,11 @@ body {
 
 }
 
+
+
+
+// ::-webkit-scrollbar {
+//   display: none;
+
+
+// }
