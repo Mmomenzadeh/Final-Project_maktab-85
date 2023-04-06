@@ -32,13 +32,13 @@ export const ManagementPanleOrders = () => {
   //// بجایی ایتم جوابی که از سمت سرور گرفتیم میزاریم
   const [itemOffset, setItemOffset] = useState(0);
 
-  const endOffset = itemOffset + 12;
+  const endOffset = itemOffset + 8;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = ordersData.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(ordersData.length / 12);
+  const pageCount = Math.ceil(ordersData.length / 8);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * 12) % ordersData.length;
+    const newOffset = (event.selected * 8) % ordersData.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
