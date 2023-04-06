@@ -12,7 +12,7 @@ export const Payment = () => {
     PostOrder({ ...data, ststusPayment: true })
       .then((res) => {
         console.log(res.data);
-        navigation(`/payment-result/${data.paymentCode}/payment-success`);
+        navigation(`/payment-result/${res.data.id}/payment-success`);
         localStorage.setItem("cart-shopping" , [])
       })
       .catch((error) => {
@@ -24,7 +24,7 @@ export const Payment = () => {
     PostOrder({ ...data, ststusPayment: false })
       .then((res) => {
         console.log(res.data);
-        navigation(`/payment-result/${data.paymentCode}/payment-failed`);
+        navigation(`/payment-result/${res.data.id}/payment-failed`);
       })
       .catch((error) => {
         console.log(error);

@@ -12,6 +12,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 
 import { useState } from "react";
 import InputIcon from "react-multi-date-picker/components/input_icon";
+import { FormatDate } from "Utils";
 
 // import "./style.css"
 
@@ -57,11 +58,10 @@ export const Checkout = () => {
         products: cartItems,
         delivered: false,
         prices: totalPay + shippingCost,
-        paymentCode,
-        expectAt: new Date(data.date).getTime(),
+        expectAt: FormatDate(data.date),
       })
     );
-    navigation(`/payment-result/${paymentCode}`);
+    navigation(`/payment-result`);
   };
 
   return (

@@ -55,7 +55,7 @@ export const ProjectRoutes = () => {
         <Route path="products" element={<ManagementPanleProducts />} />
         <Route path="stock" element={<ManagementPanleStock />} />
       </Route>
-      <Route path={`/payment-result/:paymentCode`} element={<Payment />} />
+      <Route path={`/payment-result`} element={<Payment />} />
       <Route
         path="/payment-result/:paymentCode/payment-success"
         element={<PaymentSuccess />}
