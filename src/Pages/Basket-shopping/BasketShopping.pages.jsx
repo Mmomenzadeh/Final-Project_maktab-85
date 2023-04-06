@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { DECREASE, DELETE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
 import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../Assets/Styles/Pages/BasketShopping/index.scss";
+import { IncermentQTY } from "Utils";
 
 export const BasketShopping = () => {
   const { cartItems ,totalPrice } = useSelector((state) => state.cartShopping);
@@ -28,9 +29,9 @@ export const BasketShopping = () => {
     dispatch(DECREASE(product));
   };
 
-  const IncermentHandle_Basket = (product) => {
-    dispatch(INCERMENT(product));
-  };
+  // const IncermentHandle_Basket = (product) => {
+  //   dispatch(INCERMENT(product));
+  // };
 
   const DeleteHandle_Basket = (productId) => {
     dispatch(DELETE(productId));
@@ -130,7 +131,9 @@ export const BasketShopping = () => {
                                 <HiPlusSm
                                   size="2rem"
                                   className="pointer"
-                                  onClick={() => IncermentHandle_Basket(p)}
+                                  // onClick={() => IncermentHandle_Basket(p)}
+
+                                  onClick={()=>IncermentQTY(p , dispatch)}
                                 />
 
                                 <p className="addQuantity">

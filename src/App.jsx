@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Provider store={Store}>
-        <ToastContainer/>
+        <ToastContainer />
         <ProjectRoutes />
       </Provider>
     </BrowserRouter>
