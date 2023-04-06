@@ -7,12 +7,22 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
+import { useState } from "react";
 
-export const Header = ({ showSearchBox, setShowSearchBox }) => {
-  const {cartItems} = useSelector(state => state.cartShopping)
+export const Header = () => {
+
+  const [showSearchBox, setShowSearchBox] = useState(false);
+
+  const { cartItems } = useSelector((state) => state.cartShopping);
   return (
     <>
-      {/* Question   onClick={()=>setShowSearchBox(false)} ?  */}
+      {showSearchBox ? (
+        <div
+          className="Background"
+          onClick={() => setShowSearchBox(false)}
+        ></div>
+      ) : null}
+
       <header>
         <div className="header-right">
           <Logo />
@@ -39,7 +49,9 @@ export const Header = ({ showSearchBox, setShowSearchBox }) => {
           <div className="line-h"></div>
           <Link className="header-left__icon " to="/basketShopping">
             <IoBagOutline size="2.8rem" />
-            {cartItems && cartItems.length === 0 ? null :  <span className="badge-header">{cartItems.length}</span>}
+            {cartItems && cartItems.length === 0 ? null : (
+              <span className="badge-header">{cartItems.length}</span>
+            )}
           </Link>
         </div>
       </header>

@@ -7,7 +7,7 @@ import "../../Assets/Styles/Components/SearchBox/index.scss";
 export const SearchBoxLarge = ({showSearchBox , setShowSearchBox}) => {
   return (
     <div className="searchBoxLarge">
-      {showSearchBox ? <Search  setShowSearchBox={setShowSearchBox}/> : null}
+      {showSearchBox ? <Search  setShowSearchBox={setShowSearchBox} showSearchBox={showSearchBox}/> : null}
       <select className="searchBoxLarge__select">
         <option value="" className="searchBoxLarge__select__opt">انتخاب دسته بندی </option>
         <option value="1" className="searchBoxLarge__select__opt">گوشی موبایل</option>

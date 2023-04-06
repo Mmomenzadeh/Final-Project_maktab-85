@@ -47,7 +47,7 @@ header {
 .badge-header {
   // width: 1.5rem;
   // height: 1.5rem;
-  padding: 0.6rem  0.6rem;
+  padding: 0.6rem 0.6rem;
   border-radius: 50%;
   background-color: var(--primary);
   color: var(--white);
@@ -57,4 +57,22 @@ header {
   position: absolute;
   left: 0rem;
   bottom: 1;
+}
+
+.Background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #0007;
+  z-index: 10;
+}
+
+
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+
+
 }

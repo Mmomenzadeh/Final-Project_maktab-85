@@ -11,7 +11,7 @@ import "../../Assets/Styles/Components/Search/index.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchProduct } from "Redux/Slices/SearchProductSlice";
 
-export const Search = ({ setShowSearchBox }) => {
+export const Search = ({ setShowSearchBox , showSearchBox }) => {
   const { FilteredData } = useSelector((state) => state.SreachData);
   const { categoryData } = useSelector((state) => state.category);
 
@@ -37,10 +37,9 @@ export const Search = ({ setShowSearchBox }) => {
   const closeHandle = () => {
     setShowSearchBox(false);
   };
-
   return (
     <>
-      <div className="SearchModal">
+      <div className={showSearchBox ? " SearchModal hideScrollbar" : "SearchModal"}>
         <div className="SearchModal__Container">
           <div className="flex j-sb">
             <Input

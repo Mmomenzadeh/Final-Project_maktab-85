@@ -31,7 +31,6 @@ export const MainLayout = ({showSearchBox , setShowSearchBox}) => {
   const consoleGame = productData?.filter((item) => item.category === "4");
   return (
     <main className="main ">
-      {showSearchBox ? <div className="Background" onClick={()=>setShowSearchBox(false)}></div> : null}
 
       <Banner />
 
