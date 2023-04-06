@@ -156,7 +156,7 @@ export const ManagementPanleStock = () => {
                     className="adminTabel__tbody__tr__td"
                   >
                     <Input
-                      defaultValue={data.price}
+                      defaultValue={data.price.toLocaleString()}
                       holder="0"
                       className="stock"
                       onChange={(e) => {

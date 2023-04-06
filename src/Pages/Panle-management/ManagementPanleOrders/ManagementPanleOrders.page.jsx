@@ -122,7 +122,7 @@ export const ManagementPanleOrders = () => {
                     className="adminTabel__tbody__tr__td"
                     style={{ width: "35rem", paddingRight: "3rem" }}
                   >
-                    {data.prices} تومان
+                    {data.prices.toLocaleString()} تومان
                   </td>
                   <td
                     className="adminTabel__tbody__tr__td"

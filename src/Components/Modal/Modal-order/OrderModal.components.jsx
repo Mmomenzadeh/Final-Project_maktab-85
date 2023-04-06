@@ -108,10 +108,10 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                           >
                             <Link
                               to={``}
-                              className="link"
+                              className="link line-h-2"
                               style={{ color: "#444" }}
                             >
-                              {data.name.substring(30) + "...."}
+                              {data.name.length > 50 ?`${ data.name.substring(0 , 50) }...`: data.name}
                             </Link>
                           </td>
 
@@ -119,7 +119,7 @@ export const OrderModal = ({ showOrderModal, setshowOrderModal }) => {
                             style={{ width: "2rem" }}
                             className="modalTable__tbody__tr__td"
                           >
-                            {data.price}
+                            {data.price.toLocaleString()}
                           </td>
                           <td
                             style={{ width: "2rem", paddingRight: "3rem" }}
