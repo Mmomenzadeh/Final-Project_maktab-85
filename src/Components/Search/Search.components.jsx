@@ -9,22 +9,25 @@ import { Link } from "react-router-dom";
 import { EscBtn } from "Utils/EscBtn";
 import "../../Assets/Styles/Components/Search/index.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFilterData } from "Redux/Slices/ProductSlice";
+import { SearchProduct } from "Redux/Slices/SearchProductSlice";
 
 export const Search = ({ setShowSearchBox }) => {
-  const { productData } = useSelector((state) => state.products);
-  console.log(productData);
+  const { FilteredData } = useSelector((state) => state.SreachData);
+  const { categoryData } = useSelector((state) => state.category);
+
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    dispatch(fetchFilterData(`name_like=${query}`))
+    if (query) {
+      dispatch(SearchProduct(`/products?name_like=${query}&_limit=5`));
+    }
   }, [query]);
 
   const [searchItem, setsearchItem] = useState(false);
 
   const handleSearch = (e) => {
-    setQuery(e.target.value)
+    setQuery(e.target.value);
     setsearchItem(true);
     if (e.target.value === "") {
       setsearchItem(false);
@@ -62,25 +65,27 @@ export const Search = ({ setShowSearchBox }) => {
 
           {searchItem ? (
             <div className="SearchModal__Container__searchItems">
-              <div className="flex col gap-1 mb-3 pointer">
-                <div className="flex gap-1 a-c">
-                  <BiSearchAlt size="2rem" color="var(--gray-200)" />
-                  <p className="fs-12">intel kaby cpu</p>
-                </div>
-                <p className="mr-3 fs-1 gray-300">
-                  در دسته <span className="fs-1 bold blue-100"> لپ تاپ </span>
-                </p>
-              </div>
-
-              <div className="flex col gap-1 mb-3 pointer">
-                <Link className="flex gap-1 a-c  link gray-400">
-                  <BiSearchAlt size="2rem" color="var(--gray-200)" />
-                  <p className="fs-12">intel kaby cpu</p>
-                </Link>
-                <Link className="mr-3 fs-1 gray-300 link">
-                  در دسته <span className="fs-1 bold blue-100"> لپ تاپ </span>
-                </Link>
-              </div>
+              {FilteredData &&
+                FilteredData.map((item) => {
+                  let CATEGORYNAME = "";
+                  categoryData.forEach((category) => {
+                    if (category.id === item.category) {
+                      CATEGORYNAME = category.name;
+                    }
+                  });
+                  return (
+                    <div className="flex col gap-1 mb-3 pointer">
+                      <Link className="flex gap-1 a-c  link gray-400">
+                        <BiSearchAlt size="2rem" color="var(--gray-200)" />
+                        <p className="fs-12 line-h-2">{item.name}</p>
+                      </Link>
+                      <Link className="mr-3 fs-1 gray-300 link">
+                        در دسته{" "}
+                        <span className="fs-1 bold blue-100"> {CATEGORYNAME}</span>
+                      </Link>
+                    </div>
+                  );
+                })}
             </div>
           ) : (
             <div className="flex col mt-2">
@@ -91,28 +96,28 @@ export const Search = ({ setShowSearchBox }) => {
               <div className="flex gap">
                 <Link
                   className=" SearchModal__Container__hotSearch  flex gap a-c mt-2"
-                  to={``}
+                  to={`/products/1`}
                 >
                   <p className="fs-1 bold">گوشی Galaxy A53 5G</p>
                   <IoIosArrowBack size="1.5rem" />
                 </Link>
                 <Link
                   className=" SearchModal__Container__hotSearch flex gap a-c mt-2"
-                  to={``}
+                  to={`/products/6`}
                 >
                   <p className="fs-1 bold">لپ تاپ ZenBook Flip 13</p>
                   <IoIosArrowBack size="1.5rem" />
                 </Link>
                 <Link
                   className=" SearchModal__Container__hotSearch flex gap a-c mt-2"
-                  to={``}
+                  to={`/products/5`}
                 >
-                  <p className="fs-1 bold"> گوشی iphone 11 </p>
+                  <p className="fs-1 bold"> گوشی Iphone 11 </p>
                   <IoIosArrowBack size="1.5rem" />
                 </Link>
                 <Link
                   className=" SearchModal__Container__hotSearch flex gap a-c mt-2"
-                  to={``}
+                  to={`/products/27123698514237`}
                 >
                   <p className="fs-1 bold">هدفون Earbuds2</p>
                   <IoIosArrowBack size="1.5rem" />

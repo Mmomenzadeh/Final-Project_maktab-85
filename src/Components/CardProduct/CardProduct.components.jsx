@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import "../../Assets/Styles/Components/CardProduct/index.scss";
 
 export const CardProduct = ({  size ,product }) => {
+
+  // const addToBasketHadle_card = (product) => {
+  //   dispatch(ADD(product));
+  // };
   // console.log(product.img[0]);
+
+
+  // onClick={()=>addToBasketHadle_card(product)}
   return (
     <Link to={`/products/${product.id}`} className={`CardProduct${size} pointer`}>
       <div className={`CardProduct${size}__head`}>
@@ -25,7 +32,7 @@ export const CardProduct = ({  size ,product }) => {
           <span style={{ color: "#EF3A4F" }}>{product.price}</span> تومان
         </p>
         <div className={`CardProduct${size}__footer__btn`}>
-          <Button size="small" type="productCard">
+          <Button size="small" type="productCard" >
             <HiOutlineShoppingCart size="1.5rem" color="white" />
             خرید محصول
           </Button>

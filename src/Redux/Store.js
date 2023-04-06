@@ -4,6 +4,7 @@ import ProductCategorySlice from "./Slices/ProductCategorySlice";
 import ProductSlice from "./Slices/ProductSlice";
 import SingleProductSlice from "./Slices/SingleProductSlice";
 import SubCategorySlice from "./Slices/SubCategorySlice";
+import SearchProductSlice from "./Slices/SearchProductSlice";
 
 export const Store = configureStore({
     reducer : {
@@ -12,5 +13,6 @@ export const Store = configureStore({
         orders : OrdersSlice,
         subCategory : SubCategorySlice,
         singleProduct : SingleProductSlice,
+        SreachData : SearchProductSlice,
     }
 })
