@@ -60,7 +60,7 @@ export const SingleProduct = () => {
   const { cartItems } = useSelector((state) => state.cartShopping);
 
   const selectedProduct = cartItems.find((p) => p.id === productDetails.id);
-  
+
   return (
     <div className="singleProduct">
       <Header />
@@ -316,9 +316,10 @@ export const SingleProduct = () => {
                               size="1.8rem"
                               className="pointer"
                               color="var(--primary)"
-                              onClick={() =>
-                                DeleteBasketItem(productDetails.id, dispatch)
-                              }
+                              onClick={() => {
+                                DeleteBasketItem(productDetails.id, dispatch);
+                                setAddQuantity(false);
+                              }}
                             />
                           ) : (
                             <HiMinusSm
