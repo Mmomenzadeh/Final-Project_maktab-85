@@ -19,7 +19,7 @@ export const Categories = () => {
 
   useEffect(() => {
     dispatch(fetchProductCategory());
-    dispatch(fetchFilterData(`products?category=${id}`))
+    dispatch(fetchFilterData(`/products?category=${id}`))
   }, [dispatch , id]);
 
   const categoryImg = [];

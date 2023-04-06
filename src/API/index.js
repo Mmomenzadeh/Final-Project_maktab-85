@@ -11,3 +11,4 @@ export * from "./Shop/GetSingleProduct";
 export * from "./Shop/EditeStockService";
 export * from "./Shop/UploadImg";
 export * from "./Shop/PostOrder";
+export * from "./Shop/SearchProductAPI";

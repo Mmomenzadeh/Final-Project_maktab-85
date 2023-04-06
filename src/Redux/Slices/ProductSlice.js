@@ -13,17 +13,6 @@ export const fetchProducts = createAsyncThunk("fetch/productList", async (params
 
 
 
-
-// export const PostImg = createAsyncThunk("post/productList", async (data) => {
-//   try {
-//     const res = await UploadImgService(data);
-//     console.log(res.data);
-//     return res.data;
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
-
 export const fetchFilterData = createAsyncThunk(
   "filterData/productList",
   async (params) => {
