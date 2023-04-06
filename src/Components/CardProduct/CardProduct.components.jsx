@@ -2,8 +2,8 @@ import { Button } from "Components";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import "../../Assets/Styles/Components/CardProduct/index.scss";
-import { AddToBasket } from "Utils/AddToBasket";
 import { useDispatch } from "react-redux";
+import { AddToBasket } from "Utils";
 
 export const CardProduct = ({ size, product }) => {
   const dispatch = useDispatch();

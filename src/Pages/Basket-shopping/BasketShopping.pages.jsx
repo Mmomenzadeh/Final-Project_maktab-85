@@ -16,28 +16,17 @@ import { Link } from "react-router-dom";
 import { DECREASE, DELETE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
 import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../Assets/Styles/Pages/BasketShopping/index.scss";
-import { IncermentQTY } from "Utils";
+import { DecreaseQTY, DeleteBasketItem, IncermentQTY } from "Utils";
 
 export const BasketShopping = () => {
   const { cartItems ,totalPrice } = useSelector((state) => state.cartShopping);
   const dispatch = useDispatch();
   let selectedProduct = {};
 
-  console.log(totalPrice);
 
-  const DecreaseHandle_Basket = (product) => {
-    dispatch(DECREASE(product));
-  };
-
-  // const IncermentHandle_Basket = (product) => {
-  //   dispatch(INCERMENT(product));
-  // };
-
-  const DeleteHandle_Basket = (productId) => {
-    dispatch(DELETE(productId));
-  };
 
   const { productData } = useSelector((state) => state.products);
+
   useEffect(() => {
     dispatch(fetchProducts("_limit=5"));
   }, [dispatch]);
@@ -145,13 +134,13 @@ export const BasketShopping = () => {
                                     size="1.8rem"
                                     className="pointer"
                                     color="var(--primary)"
-                                    onClick={() => DeleteHandle_Basket(p.id)}
+                                    onClick={() => DeleteBasketItem(p.id , dispatch)}
                                   />
                                 ) : (
                                   <HiMinusSm
                                     size="2rem"
                                     className="pointer"
-                                    onClick={() => DecreaseHandle_Basket(p)}
+                                    onClick={() => DecreaseQTY(p , dispatch)}
                                   />
                                 )}
                               </div>

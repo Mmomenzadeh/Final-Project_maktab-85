@@ -18,11 +18,15 @@ import { TbBellRinging, TbTruck } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { ADD, DECREASE, DELETE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { fetchProduct } from "Redux/Slices/SingleProductSlice";
 import "../../Assets/Styles/Pages/singleProduct/index.scss";
+import {
+  AddToBasket,
+  DecreaseQTY,
+  DeleteBasketItem,
+  IncermentQTY,
+} from "Utils";
 
 export const SingleProduct = () => {
   const [active, setActive] = useState({
@@ -50,27 +54,13 @@ export const SingleProduct = () => {
       );
     }
   }
-  ////------------------------------------------------------------------
+  ////----------------------Product Quantity and add to cart--------------------------------------------
   const [addQuantity, setAddQuantity] = useState(false);
-  const addToBasketHadle = (product) => {
-    setAddQuantity(true);
-    dispatch(ADD(product));
-  };
 
-  const DecreaseHandle = (product) => {
-    dispatch(DECREASE(product));
-  };
-
-  const IncermentHandle = (product) => {
-    dispatch(INCERMENT(product));
-  };
-
-  const DeleteHandle = (productId) => {
-    dispatch(DELETE(productId));
-  };
   const { cartItems } = useSelector((state) => state.cartShopping);
 
   const selectedProduct = cartItems.find((p) => p.id === productDetails.id);
+  
   return (
     <div className="singleProduct">
       <Header />
@@ -314,7 +304,9 @@ export const SingleProduct = () => {
                           <HiPlusSm
                             size="2rem"
                             className="pointer"
-                            onClick={() => IncermentHandle(productDetails)}
+                            onClick={() =>
+                              IncermentQTY(productDetails, dispatch)
+                            }
                           />
 
                           <p className="addQuantity">{selectedProduct?.QTY}</p>
@@ -324,13 +316,17 @@ export const SingleProduct = () => {
                               size="1.8rem"
                               className="pointer"
                               color="var(--primary)"
-                              onClick={() => DeleteHandle(productDetails.id)}
+                              onClick={() =>
+                                DeleteBasketItem(productDetails.id, dispatch)
+                              }
                             />
                           ) : (
                             <HiMinusSm
                               size="2rem"
                               className="pointer"
-                              onClick={() => DecreaseHandle(productDetails)}
+                              onClick={() =>
+                                DecreaseQTY(productDetails, dispatch)
+                              }
                             />
                           )}
                         </div>
@@ -351,7 +347,10 @@ export const SingleProduct = () => {
                     ) : (
                       <Button
                         className="basketBtn"
-                        onClick={() => addToBasketHadle(productDetails)}
+                        onClick={() => {
+                          AddToBasket(productDetails, dispatch);
+                          setAddQuantity(true);
+                        }}
                       >
                         افزودن به سبد خرید
                       </Button>
