@@ -160,6 +160,8 @@ export const Checkout = () => {
                         weekDays={weekDays}
                         calendar={persian}
                         locale={persian_fa}
+                        minDate={ new Date().setDate(7)}
+                        maxDate={ new Date().setDate(17)}
                         calendarPosition="bottom-right"
                       />
                     </div>
