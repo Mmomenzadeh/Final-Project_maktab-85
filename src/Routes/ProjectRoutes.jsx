@@ -65,7 +65,7 @@ export const ProjectRoutes = () => {
         element={<PaymentFaild />}
       />
       <Route path={ORDERS} element={<Orders />} />
-      <Route path={`/NotFound`} element={<NotFound />} />
+      <Route path={`*`} element={<NotFound />} />
       <Route path={LOGIN} element={<LogIn />} />
       <Route path={CONTACTUS} element={<ContactUs />} />
       <Route path={`/checkout`} element={<Checkout />} />
