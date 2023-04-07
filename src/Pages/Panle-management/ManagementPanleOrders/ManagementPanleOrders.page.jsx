@@ -20,7 +20,7 @@ export const ManagementPanleOrders = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(fetchOrders());
-    dispatch(fetchFilterOrders(`orders?delivered=${filterParams}`));
+    dispatch(fetchFilterOrders(`orders?_sort=createdAt&_order=desc&delivered=${filterParams}`));
   }, [dispatch, filterParams]);
 
   const actionHandle = (data) => {
