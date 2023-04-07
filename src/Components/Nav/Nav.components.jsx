@@ -19,8 +19,10 @@ export const Nav = () => {
         {/* --category icon-- */}
         <div
           className="flex a-c gap "
-          onMouseEnter={() => setShowMegaMenu(true)}
-          // onMouseLeave={() => setShowMegaMenu(false)}
+          onMouseEnter={() => {
+            document.body.style.overflow ="hidden"
+            setShowMegaMenu(true)
+          }}
         >
           <BiCategoryAlt size="3.5rem" />
           <span className="fs-2">دسته بندی کالاها</span>
