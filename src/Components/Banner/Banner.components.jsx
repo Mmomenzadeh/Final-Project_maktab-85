@@ -29,10 +29,13 @@ export const Banner = () => {
       </div>
       <BannerVertical
         name="       لپ تاپ های گیمینگ 2023"
-        img={`https://helios-i.mashable.com/imagery/reviews/02X2Et9XTr1SlmoCtZiCRcV/hero-image.fill.size_1200x1200.v1619019588.jpg`}
+        img={`https://cdn.vox-cdn.com/thumbor/j-OPrWT7vl1Kqj_QZW8JW__nOtQ=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23231676/cfaulkner_141231_5006_0012.jpg`}
         heading="خرید با 30 درصد تخفیف "
         btnTxt="الان بخرید "
       />
     </div>
   );
 };
+
+
+// https://cdn.vox-cdn.com/thumbor/U2noiNWQzde7-swhdB4oDMGFlkE=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/13674363/vpavic_190102_3148_0136.jpg
