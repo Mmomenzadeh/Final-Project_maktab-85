@@ -5,9 +5,11 @@ import { IoMdClose } from 'react-icons/io';
 export const PaymentFaild = () => {
   const navigation = useNavigate();
 
-  // setTimeout(() => {
-  //   navigation("/");
-  // }, 3000);
+  setTimeout(() => {
+    navigation("/checkout");
+    navigation(0);
+
+  }, 3000);
 
 
   return (
