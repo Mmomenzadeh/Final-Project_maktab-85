@@ -20,6 +20,7 @@ export const Search = ({ setShowSearchBox, showSearchBox }) => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
 
+  /// srach process
   useEffect(() => {
     let timeOut;
     clearTimeout(timeOut);
@@ -63,9 +64,11 @@ export const Search = ({ setShowSearchBox, showSearchBox }) => {
               holder="جستجوی محصولات"
               inpType="searchBox-Home-large"
               value={query}
-              onChange={(e) => handleSearch(e)}
+              onChange={(e) => {
+                document.body.style.overflow = "hidden";
+                handleSearch(e);
+              }}
               onkeydown={(e) => {
-                document.body.style.overflow = "scroll";
                 EscBtn(e, setShowSearchBox);
               }}
             />
