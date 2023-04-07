@@ -10,7 +10,6 @@ import "../../../Assets/Styles/Layout/HeaderUser/index.scss";
 import { useState } from "react";
 
 export const Header = () => {
-
   const [showSearchBox, setShowSearchBox] = useState(false);
 
   const { cartItems } = useSelector((state) => state.cartShopping);
@@ -19,7 +18,10 @@ export const Header = () => {
       {showSearchBox ? (
         <div
           className="Background"
-          onClick={() => setShowSearchBox(false)}
+          onClick={() => {
+            document.body.style.overflowY = "unset";
+            setShowSearchBox(false);
+          }}
         ></div>
       ) : null}
 
