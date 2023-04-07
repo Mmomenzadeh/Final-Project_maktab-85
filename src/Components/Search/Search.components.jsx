@@ -42,13 +42,20 @@ export const Search = ({ setShowSearchBox, showSearchBox }) => {
   };
 
   const closeHandle = () => {
+    document.body.style.overflowY = "unset";
     setShowSearchBox(false);
   };
+
+  // if (showSearchBox) {
+  //   document.body.style.overflow = "hidden";
+  // }else{
+  //   document.body.style.overflow = "unset";
+
+  // }
+
   return (
     <>
-      <div
-        className={showSearchBox ? " SearchModal hideScrollbar" : "SearchModal"}
-      >
+      <div>
         <div className="SearchModal__Container">
           <div className="flex j-sb">
             <Input
@@ -57,7 +64,10 @@ export const Search = ({ setShowSearchBox, showSearchBox }) => {
               inpType="searchBox-Home-large"
               value={query}
               onChange={(e) => handleSearch(e)}
-              onkeydown={(e) => EscBtn(e, setShowSearchBox)}
+              onkeydown={(e) => {
+                document.body.style.overflow = "scroll";
+                EscBtn(e, setShowSearchBox);
+              }}
             />
             {searchItem ? (
               <RiCloseCircleLine

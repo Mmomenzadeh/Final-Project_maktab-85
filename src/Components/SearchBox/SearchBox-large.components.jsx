@@ -22,7 +22,12 @@ export const SearchBoxLarge = ({showSearchBox , setShowSearchBox}) => {
         inpType="searchBox-Home-large"
         value={""}
         onkeydown={(e)=>EscBtn(e , setShowSearchBox )}
-        onClick={()=>setShowSearchBox(true)}
+        onClick={()=>{
+          setShowSearchBox(true)
+    document.body.style.overflow = "hidden";
+       
+
+        }}
       />
       <BiSearchAlt size="2.2rem" color="#444" className="searchBoxLarge__icon" />
     </div>
