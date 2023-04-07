@@ -11,16 +11,23 @@ import "../../Assets/Styles/Components/Search/index.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchProduct } from "Redux/Slices/SearchProductSlice";
 
-export const Search = ({ setShowSearchBox , showSearchBox }) => {
+export const Search = ({ setShowSearchBox, showSearchBox }) => {
   const { FilteredData } = useSelector((state) => state.SreachData);
   const { categoryData } = useSelector((state) => state.category);
+
+  // console.log(FilteredData);
 
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+    let timeOut;
+    clearTimeout(timeOut);
+
     if (query) {
-      dispatch(SearchProduct(`/products?name_like=${query}&_limit=5`));
+      timeOut = setTimeout(() => {
+        dispatch(SearchProduct(`/products?name_like=${query}&_limit=5`));
+      }, 500);
     }
   }, [query]);
 
@@ -39,7 +46,9 @@ export const Search = ({ setShowSearchBox , showSearchBox }) => {
   };
   return (
     <>
-      <div className={showSearchBox ? " SearchModal hideScrollbar" : "SearchModal"}>
+      <div
+        className={showSearchBox ? " SearchModal hideScrollbar" : "SearchModal"}
+      >
         <div className="SearchModal__Container">
           <div className="flex j-sb">
             <Input
