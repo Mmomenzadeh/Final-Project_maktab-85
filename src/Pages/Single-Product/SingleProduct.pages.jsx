@@ -116,7 +116,7 @@ export const SingleProduct = () => {
                   </div>
 
                   <div className="flex col gap-1 mt-2">
-                    {/* <span style={{ fontSize: "1.5rem" }}>رنگ : {productDetails.colors[0]}</span> */}
+                    <span style={{ fontSize: "1.5rem" }}>رنگ : {productDetails?.colors?.[0] && productDetails?.colors?.[0]}</span>
                     <div className="flex gap-1 mb-1 mt-1">
                       {productDetails?.colors?.map((item, index) => {
                         return (
@@ -288,7 +288,7 @@ export const SingleProduct = () => {
                       <div className="flex gap">
                         <span className="fs-15 bolder">
                           {" "}
-                          {productDetails.price}
+                          {productDetails?.price?.toLocaleString()}
                         </span>
                         <span
                           className="fs-09"

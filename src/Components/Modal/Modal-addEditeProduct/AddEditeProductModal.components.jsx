@@ -39,7 +39,7 @@ export const AddEditeProductModal = ({
     } else {
       const imgName = await UploadImg(Object.values(data.img));
 
-      EditeProductService({ ...data, img: imgName })
+      EditeProductService({ ...data, img: imgName , price : +data.price , colors : [data.colors] })
         .then(() => {
           toast.success("با موفقیت ویرایش شد");
         })
