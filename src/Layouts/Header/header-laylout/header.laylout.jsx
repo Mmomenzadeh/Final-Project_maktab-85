@@ -31,10 +31,6 @@ export const Header = () => {
             setShowSearchBox={setShowSearchBox}
           />
 
-          {/* <SearchBox
-            showSearchBox={showSearchBox}
-            setShowSearchBox={setShowSearchBox}
-          /> */}
         </div>
         <div className="header-left">
           <Link className="header-left__icon">
