@@ -6,9 +6,10 @@ export const PaymentSuccess = () => {
 
   const navigation = useNavigate();
 
-  // setTimeout(() => {
-  //   navigation("/");
-  // }, 3000);
+  setTimeout(() => {
+    navigation("/");
+    navigation(0);
+  }, 3000);
 
 
   return (
