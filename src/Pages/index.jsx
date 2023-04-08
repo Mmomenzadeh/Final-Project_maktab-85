@@ -5,7 +5,7 @@ export * from "./Basket-shopping/BasketShopping.pages";
 export * from "./Blog/Blog.pages";
 export * from "./Checkout/Checkout.pages";
 export * from "./ContactUs/ContactUs.pages";
-export * from "./Home/Home.pages";
+export { Home as default } from "./Home/Home.pages";
 export * from "./Nofound/NotFound.pages";
 export * from "./Orders/Orders.pages";
 export * from "./Single-Product/SingleProduct.pages";

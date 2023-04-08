@@ -1,3 +1,4 @@
+
 export * from "./CardProduct/CardProduct.components";
 export * from "./ProductsList/ProductsList.components";
 export * from "./Input/Input.components";
@@ -17,5 +18,6 @@ export * from "./TextEditor/TextEditor";
 export * from "./CategorasMenu/CategorasMenu.components";
 export * from "./Banner/BannerHorizontal/BannerHorizontal.components";
 export * from "./CategoryLogo/CategoryLogo.components";
-export * from "./Search/Search.components"
-export * from "./Slider/ScrollbarSlider.components"
+export * from "./Search/Search.components";
+export * from "./Slider/ScrollbarSlider.components";
+export * from "./Loading/Loading.components";

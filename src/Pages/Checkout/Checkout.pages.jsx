@@ -16,7 +16,7 @@ import { FormatDate } from "Utils";
 
 // import "./style.css"
 
-export const Checkout = () => {
+export  const Checkout  = () => {
   const { cartItems, totalPrice } = useSelector((state) => state.cartShopping);
   // console.log(cartItems);
 
