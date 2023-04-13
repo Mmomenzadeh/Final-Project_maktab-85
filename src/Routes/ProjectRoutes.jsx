@@ -37,13 +37,80 @@ import {
   ManagementPanleProducts,
   ManagementPanleStock,
 } from "Pages/Panle-management";
+import { useEffect } from "react";
 import { Suspense, lazy } from "react";
 
-import { Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { PrivetRoutes } from "./PrivetRoutes";
 const Home = lazy(() => import("../Pages"));
+
 export const ProjectRoutes = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === "/login" && localStorage.getItem("accessToken")) {
+      navigate("/managementPanle");
+    }
+  }, [pathname]);
+
   return (
     <Routes>
+      {/* private Route */}
+
+      <Route element={<PrivetRoutes />}>
+        <Route
+          path="/managementPanle"
+          element={
+            <Suspense fallback={<Loading type="ripple" />}>
+              <AdminMain />
+            </Suspense>
+          }
+        >
+          <Route index element={<ManagementPanleOrders />} />
+          <Route path="products" element={<ManagementPanleProducts />} />
+          <Route path="stock" element={<ManagementPanleStock />} />
+        </Route>
+
+        <Route path="/basketShopping" element={<BasketShopping />} />
+
+        <Route
+          path={`/checkout`}
+          element={
+            <Suspense fallback={<Loading type="ripple" />}>
+              <Checkout />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path={`/payment-result`}
+          element={
+            <Suspense fallback={<Loading type="ripple" />}>
+              <Payment />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/payment-result/:paymentCode/payment-success"
+          element={<PaymentSuccess />}
+        />
+        <Route
+          path="/payment-result/:paymentCode/payment-failed"
+          element={<PaymentFaild />}
+        />
+
+        <Route path={USERACCOUNT} element={<UserAccount />} />
+      </Route>
+
+      {/* Public Route */}
+
       <Route
         path={HOME}
         element={
@@ -55,7 +122,6 @@ export const ProjectRoutes = () => {
       <Route path={BLOG} element={<Blog />} />
       <Route path={ABOUT} element={<About />} />
       <Route path={ALLPRODUCTS} element={<AllProducts />} />
-      <Route path="/basketShopping" element={<BasketShopping />} />
       <Route
         path="/products/:id"
         element={
@@ -64,34 +130,7 @@ export const ProjectRoutes = () => {
           </Suspense>
         }
       />
-      <Route
-        path="/managementPanle"
-        element={
-          <Suspense fallback={<Loading type="ripple" />}>
-            <AdminMain />
-          </Suspense>
-        }
-      >
-        <Route index element={<ManagementPanleOrders />} />
-        <Route path="products" element={<ManagementPanleProducts />} />
-        <Route path="stock" element={<ManagementPanleStock />} />
-      </Route>
-      <Route
-        path={`/payment-result`}
-        element={
-          <Suspense fallback={<Loading type="ripple" />}>
-            <Payment />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/payment-result/:paymentCode/payment-success"
-        element={<PaymentSuccess />}
-      />
-      <Route
-        path="/payment-result/:paymentCode/payment-failed"
-        element={<PaymentFaild />}
-      />
+
       <Route path={ORDERS} element={<Orders />} />
       <Route path={`*`} element={<NotFound />} />
       <Route
@@ -110,15 +149,7 @@ export const ProjectRoutes = () => {
           </Suspense>
         }
       />
-      <Route
-        path={`/checkout`}
-        element={
-          <Suspense fallback={<Loading type="ripple" />}>
-            <Checkout />
-          </Suspense>
-        }
-      />
-      <Route path={USERACCOUNT} element={<UserAccount />} />
+
       <Route
         path="/category/:id"
         element={

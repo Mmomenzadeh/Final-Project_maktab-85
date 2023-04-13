@@ -20,8 +20,10 @@ export const LogIn = () => {
     /// authentication process
     AuthService(data)
       .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res.data.accessToken));
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         navigation("/managementPanle");
+       
       })
       .catch(() => {
         navigation("/home");
@@ -57,11 +59,13 @@ export const LogIn = () => {
               inpType="login"
               type="password"
               holder="رمز عبور خود را وارد نمایید"
-            validate={  {...register("password", {
-                required: true,
-                // minLength: 8,
-                // pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
-              })}}
+              validate={{
+                ...register("password", {
+                  required: true,
+                  // minLength: 8,
+                  // pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                }),
+              }}
             />
             <BsEyeFill className="login-icon" />
           </div>

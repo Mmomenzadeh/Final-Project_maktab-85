@@ -8,6 +8,8 @@ import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 
 export const ManagementPanleStock = () => {
+  const [stockData, setStockData] = useState({});
+
   ///----------------------------------state for change txt to input--------------------------
   // const [inputMode, setInputMode] = useState({
   //   Pricestatus: false,
@@ -28,6 +30,7 @@ export const ManagementPanleStock = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    setStockData(productData);
   }, [dispatch]);
 
   // -----------------------------------------Pagination---------------------------------------------------------------
@@ -169,9 +172,9 @@ export const ManagementPanleStock = () => {
                       }}
                       onBlur={() => {
                         const copystockList = [...stockList];
-                        
+
                         const index = stockList.findIndex((item) => {
-                          console.log("Id" ,  item.id === data.id);
+                          console.log("Id", item.id === data.id);
                           return item.id === data.id;
                         });
 
@@ -179,7 +182,7 @@ export const ManagementPanleStock = () => {
 
                         if (index !== -1) {
                           copystockList[index] = inputValue;
-                          setStockList(copystockList)
+                          setStockList(copystockList);
                         } else {
                           setStockList([...stockList, inputValue]);
                         }
@@ -204,9 +207,9 @@ export const ManagementPanleStock = () => {
                       }}
                       onBlur={() => {
                         const copystockList = [...stockList];
-                        
+
                         const index = stockList.findIndex((item) => {
-                          console.log("Id" ,  item.id === data.id);
+                          console.log("Id", item.id === data.id);
                           return item.id === data.id;
                         });
 
@@ -214,11 +217,10 @@ export const ManagementPanleStock = () => {
 
                         if (index !== -1) {
                           copystockList[index] = inputValue;
-                          setStockList(copystockList)
+                          setStockList(copystockList);
                         } else {
                           setStockList([...stockList, inputValue]);
                         }
-                      
                       }}
                     />
                   </td>
