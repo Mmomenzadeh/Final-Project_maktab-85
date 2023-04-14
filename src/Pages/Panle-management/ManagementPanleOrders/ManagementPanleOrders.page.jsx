@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFilterData } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
 import { fetchFilterOrders } from "../../../Redux/Slices/OrdersSlice";
+import { SearchDataHandler } from "Utils";
 
 export const ManagementPanleOrders = () => {
   const [filterParams, setFilterParams] = useState(false);
@@ -20,8 +21,12 @@ export const ManagementPanleOrders = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(fetchOrders());
-    dispatch(fetchFilterOrders(`orders?_sort=createdAt&_order=desc&delivered=${filterParams}`));
-  }, [dispatch, filterParams]);
+    dispatch(
+      fetchFilterOrders(
+        `orders?_sort=createdAt&_order=desc&ststusPayment=true&delivered=${filterParams}`
+      )
+    );
+  }, [dispatch, filterParams ]);
 
   const actionHandle = (data) => {
     setshowOrderModal({ status: true, ORDERDATA: data });
@@ -33,16 +38,30 @@ export const ManagementPanleOrders = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + 8;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = ordersData.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(ordersData.length / 8);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 8) % ordersData.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
+  };
+
+  // ----------------------------search--------------------------------------
+
+  const SearchHandler = (queryString) => {
+    console.log(queryString);
+    let timeOut;
+
+    clearTimeout(timeOut);
+    if (queryString) {
+      timeOut = setTimeout(() => {
+        dispatch(
+          fetchFilterOrders(
+            `orders?username_like=${queryString}&ststusPayment=true&delivered=${filterParams}`
+          )
+        );
+      }, 500);
+    }
   };
 
   return (
@@ -58,6 +77,9 @@ export const ManagementPanleOrders = () => {
                 type="search"
                 holder={`${ordersData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
+                onChange={(e) =>
+                  SearchHandler(e.target.value)
+                }
               />
             </div>
 

@@ -29,7 +29,7 @@ export const Nav = () => {
           {showMegaMenu ? <MegaMenu setShowMegaMenu={setShowMegaMenu} /> : null}
         </div>
 
-        <Link className="link fs-13 gray-300 flex gap a-c">
+        <Link to={`/`} className="link fs-13 gray-300 flex gap a-c">
           <IoHomeOutline size="2rem" />
           <span className="">صحفه ی اصلی</span>
         </Link>

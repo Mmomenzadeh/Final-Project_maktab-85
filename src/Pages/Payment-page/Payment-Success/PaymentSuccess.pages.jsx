@@ -7,8 +7,9 @@ export const PaymentSuccess = () => {
   const navigation = useNavigate();
 
   setTimeout(() => {
-    navigation("/");
-    navigation(0);
+    window.location.href = "http://localhost:3000/"
+    // navigation("/");
+    // navigation(0);
   }, 3000);
 
 

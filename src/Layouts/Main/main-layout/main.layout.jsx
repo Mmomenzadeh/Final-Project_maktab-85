@@ -21,6 +21,8 @@ export const MainLayout = () => {
 
   // console.log(categoryData);
 
+
+  ////edite *******
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts("_limit=40"));

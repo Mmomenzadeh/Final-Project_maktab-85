@@ -13,7 +13,7 @@ export const fetchOrders = createAsyncThunk("fetch/ordersList", async () => {
 export const fetchFilterOrders = createAsyncThunk(
   "filterDataOrder/ordersList",
   async (params) => {
-    console.log(params);
+    // console.log(params);
     try { 
       const res = await FilterData(params);
       return res.data;

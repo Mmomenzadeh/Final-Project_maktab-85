@@ -6,56 +6,38 @@ export const HttpService = axios.create({
   timeout: 30000,
 });
 
-const refreshTokenFunc = async () => {
-  try {
-    HttpService.defaults.headers.refreshToken =
-      localStorage.getItem("refreshToken");
-    const response = await HttpService.post("/auth/refresh-token");
-    return response.data;
-  } catch (error) {
-    console.log(error);
+
+HttpService.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken !== undefined) {
+      config.headers.token = accessToken;
+      config.timeout = 800000;
+    }
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
   }
-};
+);
 
-HttpService.interceptors.request.use((req) => {
+/////--------------------------------------------
 
-  if (req.url === "/auth/refresh-token") {
-    
-    const token = localStorage.getItem("refreshToken");
-    req.headers.refreshToken = token;
-  } else if (req.url !== "/auth/login") {
-    console.log(req.url);
-    const token = localStorage.getItem("accessToken");
-    req.headers.token = token;
-  }
-  return req;
-});
-
-// instance.interceptors.request.use(
-//   config => {
-//       const authToken = localStorage.getItem('token');
-//       ///اگر توکن داشتیم
-//       if (authToken !== undefined) {
-//           // همون accesstoken
-//           config.headers.token = authToken;
-//           config.timeout = 800000;
-//       }
-//       return config;
-//   }, (err) => {
-//       return Promise.reject(err);
-//   }
-// );
+let isSent = false;
 
 HttpService.interceptors.response.use(
-  (response) => response,
-  async (error) => {
+  (response) => {
+    return response;
+  },
+  (error) => {
+    const {
+      response: { status },
+    } = error;
+
     if (error.response.status !== 401) {
       return Promise.reject(error);
     }
     const originalRequest = error.config;
-    console.log(originalRequest);
-
-    /// اینجا باید دوباره لاگین انجام بدیم
     if (
       error.response.status === 401 &&
       originalRequest.url === "/auth/refresh-token"
@@ -64,28 +46,21 @@ HttpService.interceptors.response.use(
     }
 
 
-    console.log("originalRequest._retry");
-
-    if (!originalRequest._retry) {
-      originalRequest._retry = true;
-      try {
-        await refreshTokenFunc()
-          .then((res) => {
-            localStorage.setItem("accessToken", res.accessToken);
-            return res;
-          })
-          .catch((err) => console.log(err));
-
-        const res = await axios.request(originalRequest);
-        return Promise.resolve(res);
-      } catch (error) {
-        return error.message;
+    if (status === 401) {
+      if(!isSent && error.config.url !== "/auth/refresh-token"){
+        isSent = true      
+        HttpService.defaults.headers.refreshToken = localStorage.getItem("refreshToken");
+        HttpService.post("/auth/refresh-token").then(({ data }) => {
+          const { accessToken } = data;
+          localStorage.setItem("accessToken", accessToken);
+        });
       }
+    } else {
+      return Promise.reject(error);
     }
   }
 );
 
-// try {
-//   // const res = await axios.request(originalRequest);
-//   return Promise.resolve(res);
-// } catch (e) {}
+
+
+

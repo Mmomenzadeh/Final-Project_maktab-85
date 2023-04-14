@@ -27,8 +27,8 @@ const CartShoppingSlice = createSlice({
         : [...state.cartItems, { ...action.payload, QTY: 1 }];
       ///total
       // debugger
-      console.log(hasProduct);
-      console.table(state)
+      // console.log(hasProduct);
+      // console.table(state)
       if (hasProduct) {
         state.totalPrice += hasProduct.price * hasProduct.QTY;
       }

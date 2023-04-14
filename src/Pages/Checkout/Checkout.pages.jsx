@@ -61,7 +61,7 @@ export  const Checkout  = () => {
         expectAt: FormatDate(data.date),
       })
     );
-    navigation(`/payment-result`);
+    window.location.href =`/payment-result`;
   };
 
   return (

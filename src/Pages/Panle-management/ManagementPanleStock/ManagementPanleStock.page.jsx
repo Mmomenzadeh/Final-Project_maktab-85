@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { fetchFilterData, fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../../Assets/Styles/Pages/ManagementPanle/index.scss";
+import { SearchDataHandler } from "Utils";
 
 export const ManagementPanleStock = () => {
   const [stockData, setStockData] = useState({});
@@ -64,10 +65,6 @@ export const ManagementPanleStock = () => {
       });
   };
 
-  ////------------------------------searchBox------------------------------------------------
-
-  const searchHandler = (queryString) => {};
-
   //--------------------------------------EscapeFunc-------------------------------------------
   // const EscapeFunc = (e) => {
   //   let KEYCODE = e.keyCode;
@@ -91,7 +88,7 @@ export const ManagementPanleStock = () => {
                 type="search"
                 holder={`${productData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
-                onChange={(e) => searchHandler(e.target.value)}
+                onChange={(e) => SearchDataHandler(e.target.value, dispatch)}
               />
             </div>
             <div className="flex gap-1 a-c">
@@ -165,7 +162,7 @@ export const ManagementPanleStock = () => {
                       onChange={(e) => {
                         setInputValue({
                           ...inputValue,
-                          price: e.target.value,
+                          price:Number( e.target.value),
                           id: data.id,
                         });
                         setToggleBtn({ price: true });
@@ -200,7 +197,7 @@ export const ManagementPanleStock = () => {
                       onChange={(e) => {
                         setInputValue({
                           ...inputValue,
-                          quantity: e.target.value,
+                          quantity: Number( e.target.value),
                           id: data.id,
                         });
                         setToggleBtn({ quantity: true });

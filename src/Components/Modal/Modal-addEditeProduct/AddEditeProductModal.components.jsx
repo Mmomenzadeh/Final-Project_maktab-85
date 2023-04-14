@@ -34,12 +34,26 @@ export const AddEditeProductModal = ({
       ////send request to endponit /upload and pick up filename from response
       const imgName = await UploadImg(Object.values(data.img));
 
-      dispatch(createProduct({ ...data, img: imgName }));
+      dispatch(
+        createProduct({
+          ...data,
+          img: imgName,
+          price: Number(data.price),
+          quantity: Number(data.quantity),
+          colors: [data.colors],
+        })
+      );
       setShowProductModal({ ...showProductModal, status: false });
     } else {
       const imgName = await UploadImg(Object.values(data.img));
 
-      EditeProductService({ ...data, img: imgName , price : +data.price , colors : [data.colors] })
+      EditeProductService({
+        ...data,
+        img: imgName,
+        price: Number(data.price),
+        quantity: Number(data.quantity),
+        colors: [data.colors],
+      })
         .then(() => {
           toast.success("با موفقیت ویرایش شد");
         })
@@ -209,7 +223,7 @@ export const AddEditeProductModal = ({
             >
               <label className="modalContainer__body__lbl"> قیمت کالا :</label>
               <Input
-                type="text"
+                type="number"
                 holder="0 "
                 className="modal"
                 validate={{

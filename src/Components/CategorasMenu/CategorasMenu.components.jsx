@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { fetchProductCategory } from "../../Redux/Slices/ProductCategorySlice";
 import "../../Assets/Styles/Components/CategorasMenu/index.scss";
 
-export const  CategorasMenu = () => {
+export const CategorasMenu = () => {
   const { categoryData } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
@@ -14,12 +14,16 @@ export const  CategorasMenu = () => {
 
   return (
     <div className="categorasMenu" data-id="categorasMenu">
-      {
-      categoryData.map((item) => (
+      {categoryData.map((item) => (
         <li key={item.id} className="categorasMenu__li">
           <NavLink
             to={`/category/${item.id}`}
-            className={(navData) => navData.isActive ?`navActive categorasMenu__li__link` : "nonNavActive categorasMenu__li__link "}
+            className={(navData) =>
+              navData.isActive
+                ? `navActive categorasMenu__li__link`
+                : "nonNavActive categorasMenu__li__link "
+            }
+            onClick={() => (document.body.style.overflow = "unset")}
           >
             <img
               className="categorasMenu__li__link__img"
@@ -31,15 +35,17 @@ export const  CategorasMenu = () => {
           <ul className="categorasMenu__li__brands">
             {item.brands.map((brand) => (
               <li key={brand.id}>
-                <NavLink className={`categorasMenu__li__brands__link`} to={`brand/${brand.id}`}>{brand.name_en}</NavLink>
+                <NavLink
+                  className={`categorasMenu__li__brands__link`}
+                  to={`brand/${brand.id}`}
+                >
+                  {brand.name_en}
+                </NavLink>
               </li>
             ))}
           </ul>
         </li>
-      ))
-      
-      
-      }
+      ))}
     </div>
   );
 };

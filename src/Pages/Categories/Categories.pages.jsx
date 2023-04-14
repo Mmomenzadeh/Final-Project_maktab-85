@@ -19,8 +19,8 @@ export const Categories = () => {
 
   useEffect(() => {
     dispatch(fetchProductCategory());
-    dispatch(fetchFilterData(`/products?category=${id}`))
-  }, [dispatch , id]);
+    dispatch(fetchFilterData(`/products?category=${id}`));
+  }, [dispatch, id]);
 
   const categoryImg = [];
   const categoryTxt = [];
@@ -49,6 +49,14 @@ export const Categories = () => {
     setItemOffset(newOffset);
   };
 
+  const [filtering, setFiltering] = useState({
+    expensive: false,
+    cheapest: false,
+    Bestselling: true,
+    newest: false,
+    mostVisited: false,
+  });
+
 
   return (
     <div className="categoriePage">
@@ -63,14 +71,12 @@ export const Categories = () => {
                 img={`http://localhost:3002/files/${categoryImg[0]}`}
                 size="large"
                 className={categoryStyle[0]}
-
               />
 
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[1]}`}
                 size="large"
                 className={categoryStyle[1]}
-
               />
             </div>
 
@@ -87,30 +93,73 @@ export const Categories = () => {
                 size="small"
                 // txt=" هدفون بی‌سیم سامسونگ;صدای خوب و دیگر هیچ"
                 className={categoryStyle[3]}
-
               />
               <BannerHorizontal
                 img={`http://localhost:3002/files/${categoryImg[4]}`}
                 size="small"
                 // txt="خرید دسته‌ بازی سونی; جذاب ولی گران‌قیمت"
                 className={categoryStyle[4]}
-
               />
             </div>
           </div>
         </div>
         <div className="fs-1 mt-8 mb-1 gray-300 flex gap-2">
-          <span className="">پرفروش ترین</span>
-          <span className="">گران ترین </span>
-          <span className="">ارزان ترین </span>
-          <span className="">جدیدترین</span>
-          <span className="">پر بازدیدترین</span>
+          <span
+            className={filtering.Bestselling ? `pointer  active` : `pointer`}
+            onClick={() => {
+              setFiltering({ Bestselling: true });
+              dispatch(fetchFilterData(`/products?category=${id}`))
+
+            }}
+          >
+            پرفروش ترین
+          </span>
+          <span
+            className={filtering.expensive ? `pointer  active` : `pointer`}
+            onClick={() => {
+              setFiltering({ expensive: true });
+              dispatch(fetchFilterData(`/products?_sort=price&_order=desc&category=${id}`))
+           
+            }}
+          >
+            گران ترین{" "}
+          </span>
+          <span
+            className={filtering.cheapest ? `pointer  active` : `pointer`}
+            onClick={() => {
+              setFiltering({ cheapest: true });
+              dispatch(fetchFilterData(`/products?_sort=price&_order=asc&category=${id}`))
+
+            }}
+          >
+            ارزان ترین{" "}
+          </span>
+          <span
+            className={filtering.newest ? `pointer  active` : `pointer`}
+            onClick={() => {
+              setFiltering({ newest: true });
+              dispatch(fetchFilterData(`/products?_sort=createdAt&_order=desc&category=${id}`))
+
+            }}
+          >
+            جدیدترین
+          </span>
+          <span
+            className={filtering.mostVisited ? `pointer  active` : `pointer`}
+            onClick={() => {
+              setFiltering({ mostVisited: true });
+              dispatch(fetchFilterData(`/products?_sort=createdAt&_order=asc&category=${id}`))
+
+            }}
+
+          >
+            پر بازدیدترین
+          </span>
         </div>
         <div className="line "></div>
         {/* product card part */}
         <div className="">
           <ProductsList productData={currentItems} />
-     
         </div>
 
         <ReactPaginate

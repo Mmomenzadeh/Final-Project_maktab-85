@@ -10,6 +10,7 @@ import ReactPaginate from "react-paginate";
 import { fetchSubCategory } from "Redux/Slices/SubCategorySlice";
 import { AddEditeProductModal, DeleteModal } from "Components/Modal";
 import { useForm } from "react-hook-form";
+import { SearchDataHandler } from "Utils";
 
 export const ManagementPanleProducts = () => {
   const [showProductModal, setShowProductModal] = useState({
@@ -27,12 +28,17 @@ export const ManagementPanleProducts = () => {
   const { categoryData } = useSelector((state) => state.category);
   const { subcategoryData } = useSelector((state) => state.subCategory);
   const dispatch = useDispatch();
+
+
+
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchProductCategory());
     dispatch(fetchSubCategory());
-    // dispatch(fetchFilterData(`products?_page=1&_limit=3`));
-  }, [dispatch]);
+
+  
+
+  }, [dispatch ]);
 
   // --------------------------------------------------------------------------------------------------------
 
@@ -63,6 +69,9 @@ export const ManagementPanleProducts = () => {
   const handleDeleteProduct = (id) => {
     setShowDeleteModal({ status: true, id });
   };
+
+  
+
   return (
     <div className="managementPanle">
       <div className="flex col">
@@ -76,6 +85,7 @@ export const ManagementPanleProducts = () => {
                 type="search"
                 holder={`${productData.length} رکورد ....`}
                 inpType="searchBoxAdmin"
+                onChange={(e) => SearchDataHandler(e.target.value , dispatch )}
               />
             </div>
             <div className="flex gap-1 a-c">
