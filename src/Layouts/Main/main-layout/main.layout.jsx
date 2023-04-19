@@ -27,6 +27,8 @@ export const MainLayout = () => {
   useEffect(() => {
     dispatch(fetchProducts("_limit=40"));
     dispatch(fetchProductCategory());
+    document.body.style.overflow = "unset";
+
   }, [dispatch]);
 
   const mobiles = productData?.filter((item) => item.category === "1");

@@ -44,6 +44,8 @@ export const SingleProduct = () => {
   useEffect(() => {
     dispatch(fetchProduct(id));
     dispatch(fetchProductCategory());
+    document.body.style.overflow = "unset";
+
   }, [dispatch]);
 
   let brandLogo = {};
