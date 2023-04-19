@@ -1,6 +1,6 @@
 import { BannerVertical } from "./BannerVertical/BannerVertical.components";
 import DualSense from "../../Assets/Images/Banner/DualSense.jpg";
-import gamingLaptop from "../../Assets/Images/Banner/laptop2.jpg";
+import gamingLaptop from "../../Assets/Images/Banner/BannerLaptop.jpg";
 import headphone2 from "../../Assets/Images/Banner/headphone2.jpg";
 import headphone5 from "../../Assets/Images/Banner/headphone5.png";
 
@@ -29,7 +29,7 @@ export const Banner = () => {
       </div>
       <BannerVertical
         name="       لپ تاپ های گیمینگ 2023"
-        img={`https://cdn.vox-cdn.com/thumbor/j-OPrWT7vl1Kqj_QZW8JW__nOtQ=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23231676/cfaulkner_141231_5006_0012.jpg`}
+        img ={gamingLaptop}
         heading="خرید با 30 درصد تخفیف "
         btnTxt="الان بخرید "
       />
@@ -37,5 +37,6 @@ export const Banner = () => {
   );
 };
 
+// img={`https://cdn.vox-cdn.com/thumbor/j-OPrWT7vl1Kqj_QZW8JW__nOtQ=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23231676/cfaulkner_141231_5006_0012.jpg`}
 
 // https://cdn.vox-cdn.com/thumbor/U2noiNWQzde7-swhdB4oDMGFlkE=/0x0:2040x1360/1400x1400/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/13674363/vpavic_190102_3148_0136.jpg
