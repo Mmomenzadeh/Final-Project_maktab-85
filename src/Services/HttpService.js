@@ -6,12 +6,13 @@ export const HttpService = axios.create({
   timeout: 30000,
 });
 
+//---------------------------------------------------interceptors--------------------------------------------------------
 
 HttpService.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken !== undefined) {
-      config.headers.token = accessToken;
+    const access_token = localStorage.getItem("access_token");
+    if (access_token !== undefined) {
+      config.headers.token = access_token;
       config.timeout = 800000;
     }
     return config;
@@ -21,9 +22,9 @@ HttpService.interceptors.request.use(
   }
 );
 
-/////--------------------------------------------
+//---------------------------------------------------response------------------------------------------------
 
-let isSent = false;
+let sent = false;
 
 HttpService.interceptors.response.use(
   (response) => {
@@ -32,35 +33,44 @@ HttpService.interceptors.response.use(
   (error) => {
     const {
       response: { status },
+      config,
     } = error;
 
-    if (error.response.status !== 401) {
-      return Promise.reject(error);
-    }
-    const originalRequest = error.config;
-    if (
-      error.response.status === 401 &&
-      originalRequest.url === "/auth/refresh-token"
-    ) {
-      return Promise.reject(error);
-    }
+    if (status === 401 && config.url !== "/auth/refresh-token" && !sent) {
+      if (config.url.startsWith("/products") && config.method === "get") {
+        localStorage.removeItem("access_token");
+        config.headers.token = undefined;
 
+        HttpService.defaults.headers.refreshToken =
+          localStorage.getItem("refresh_token");
 
-    if (status === 401) {
-      if(!isSent && error.config.url !== "/auth/refresh-token"){
-        isSent = true      
-        HttpService.defaults.headers.refreshToken = localStorage.getItem("refreshToken");
         HttpService.post("/auth/refresh-token").then(({ data }) => {
-          const { accessToken } = data;
-          localStorage.setItem("accessToken", accessToken);
+          const { access_token } = data;
+          localStorage.setItem("access_token", access_token);
+          window.location.reload();
         });
+
+        return HttpService(config);
       }
+
+      sent = true;
+      localStorage.removeItem("access_token");
+
+      HttpService.defaults.headers.refreshToken =
+        localStorage.getItem("refresh_token");
+
+      HttpService.post("/auth/refresh-token").then(({ data }) => {
+        const { access_token } = data;
+        localStorage.setItem("access_token", access_token);
+        window.location.reload();
+      });
+    } else if (config.url === "/auth/refresh-token") {
+      localStorage.removeItem("refresh_token");
+      window.location.href = "/login";
+    } else if (status === 404 || status === 500) {
+      window.location.href = "/*";
     } else {
       return Promise.reject(error);
     }
   }
 );
-
-
-
-

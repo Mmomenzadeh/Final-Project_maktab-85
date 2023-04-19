@@ -20,8 +20,8 @@ export const LogIn = () => {
     /// authentication process
     AuthService(data)
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-        localStorage.setItem("refreshToken", res.data.refreshToken);
+        localStorage.setItem("access_token", res.data.accessToken);
+        localStorage.setItem("refresh_token", res.data.refreshToken);
         navigation("/managementPanle");
        
       })

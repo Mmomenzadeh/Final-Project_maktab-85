@@ -54,7 +54,7 @@ export const ProjectRoutes = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (pathname === "/login" && localStorage.getItem("accessToken")) {
+    if (pathname === "/login" && localStorage.getItem("access_token")) {
       navigate("/managementPanle");
     }
   }, [pathname]);
@@ -63,8 +63,8 @@ export const ProjectRoutes = () => {
     <Routes>
       {/* private Route */}
 
-      {localStorage.getItem("accessToken") ||
-      localStorage.getItem("refreshToken") ? (
+      {localStorage.getItem("access_token") ||
+      localStorage.getItem("refresh_token") ? (
         <>
           <Route path="/managementPanle" element={<AdminMain />}>
             <Route index element={<ManagementPanleOrders />} />
