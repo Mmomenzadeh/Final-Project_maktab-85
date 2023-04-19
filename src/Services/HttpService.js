@@ -3,16 +3,17 @@ import { BASE_URL } from "Config";
 
 export const HttpService = axios.create({
   baseURL: BASE_URL,
-  timeout: 30000,
+  timeout: 80000,
 });
 
 //---------------------------------------------------interceptors--------------------------------------------------------
+let sent = false;
 
 HttpService.interceptors.request.use(
   (config) => {
-    const access_token = localStorage.getItem("access_token");
-    if (access_token !== undefined) {
-      config.headers.token = access_token;
+    const authToken = localStorage.getItem("access_token");
+    if (authToken !== undefined) {
+      config.headers.token = authToken;
       config.timeout = 800000;
     }
     return config;
@@ -21,10 +22,6 @@ HttpService.interceptors.request.use(
     return Promise.reject(err);
   }
 );
-
-//---------------------------------------------------response------------------------------------------------
-
-let sent = false;
 
 HttpService.interceptors.response.use(
   (response) => {
@@ -45,14 +42,13 @@ HttpService.interceptors.response.use(
           localStorage.getItem("refresh_token");
 
         HttpService.post("/auth/refresh-token").then(({ data }) => {
-          const { access_token } = data;
-          localStorage.setItem("access_token", access_token);
+          const { accessToken } = data;
+          localStorage.setItem("access_token", accessToken);
           window.location.reload();
         });
 
         return HttpService(config);
       }
-
       sent = true;
       localStorage.removeItem("access_token");
 
@@ -60,13 +56,15 @@ HttpService.interceptors.response.use(
         localStorage.getItem("refresh_token");
 
       HttpService.post("/auth/refresh-token").then(({ data }) => {
-        const { access_token } = data;
-        localStorage.setItem("access_token", access_token);
+        const { accessToken } = data;
+        localStorage.setItem("access_token", accessToken);
         window.location.reload();
       });
     } else if (config.url === "/auth/refresh-token") {
-      localStorage.removeItem("refresh_token");
-      window.location.href = "/login";
+      if (window.location.href.includes("admin")) {
+        localStorage.removeItem("refresh_token");
+        window.location.href = "/login";
+      }
     } else if (status === 404 || status === 500) {
       window.location.href = "/*";
     } else {
