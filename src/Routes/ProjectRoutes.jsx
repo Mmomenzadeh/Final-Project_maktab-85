@@ -49,7 +49,7 @@ import {
 } from "react-router-dom";
 const Home = lazy(() => import("../Pages"));
 
-export const ProjectRoutes = () => {
+ const ProjectRoutes = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -108,3 +108,6 @@ export const ProjectRoutes = () => {
     </Routes>
   );
 };
+
+
+export default ProjectRoutes

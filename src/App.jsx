@@ -1,9 +1,9 @@
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { Store } from "Redux/Store";
-import { ProjectRoutes } from "Routes";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProjectRoutes from "Routes/ProjectRoutes";
 
 function App() {
   return (
