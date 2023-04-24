@@ -1,5 +1,5 @@
  <a href="">
-      <img src="public/image/HomePage.png" alt="Home Page">
+      <img src="./public/image/HomePage.png" alt="Home Page">
     </a>
 
 ## Getting Started with Create React App
