@@ -1,7 +1,8 @@
  <a href="">
-      <img src="./image/HomePage.png" alt="Home Page">
+      <img src="public/image/HomePage.png" alt="Home Page">
     </a>
-# Getting Started with Create React App
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
