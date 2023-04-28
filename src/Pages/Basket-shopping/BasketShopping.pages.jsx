@@ -17,6 +17,7 @@ import { DECREASE, DELETE, INCERMENT } from "Redux/Slices/CartShoppingSlice";
 import { fetchProducts } from "Redux/Slices/ProductSlice";
 import "../../Assets/Styles/Pages/BasketShopping/index.scss";
 import { DecreaseQTY, DeleteBasketItem, IncermentQTY } from "Utils";
+import { BASE_URL } from "Config";
 
 export const BasketShopping = () => {
   const { cartItems ,totalPrice } = useSelector((state) => state.cartShopping);
@@ -93,7 +94,7 @@ export const BasketShopping = () => {
                       <div className="BasketShopping__orderList__item">
                         <div className="BasketShopping__orderList__item__img">
                           <img
-                            src={`http://localhost:3002/files/${p.img}`}
+                            src={`${BASE_URL}/files/${p.img}`}
                             alt={p.name}
                             style={{ width: "12rem", height: "12rem" }}
                           />
