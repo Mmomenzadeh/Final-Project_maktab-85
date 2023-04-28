@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { fetchProductCategory } from "Redux/Slices/ProductCategorySlice";
 import { fetchFilterData } from "Redux/Slices/ProductSlice";
 import "../../Assets/Styles/Pages/Categories/index.scss";
+import { BASE_URL } from "Config";
 
 export const Categories = () => {
   const { id } = useParams();
@@ -68,13 +69,13 @@ export const Categories = () => {
             {/* large */}
             <div className="flex gap-3 j-c">
               <BannerHorizontal
-                img={`http://localhost:3002/files/${categoryImg[0]}`}
+                img={`${BASE_URL}/files/${categoryImg[0]}`}
                 size="large"
                 className={categoryStyle[0]}
               />
 
               <BannerHorizontal
-                img={`http://localhost:3002/files/${categoryImg[1]}`}
+                img={`${BASE_URL}/files/${categoryImg[1]}`}
                 size="large"
                 className={categoryStyle[1]}
               />
@@ -83,19 +84,19 @@ export const Categories = () => {
             {/* small */}
             <div className="flex gap-3">
               <BannerHorizontal
-                img={`http://localhost:3002/files/${categoryImg[2]}`}
+                img={`${BASE_URL}/files/${categoryImg[2]}`}
                 // txt=" لپتاپ لنوو Legion 5؛ تقریبا بی‌نقص، اما گران‌قیمت"
                 size="small"
                 className={categoryStyle[2]}
               />
               <BannerHorizontal
-                img={`http://localhost:3002/files/${categoryImg[3]}`}
+                img={`${BASE_URL}/files/${categoryImg[3]}`}
                 size="small"
                 // txt=" هدفون بی‌سیم سامسونگ;صدای خوب و دیگر هیچ"
                 className={categoryStyle[3]}
               />
               <BannerHorizontal
-                img={`http://localhost:3002/files/${categoryImg[4]}`}
+                img={`${BASE_URL}/files/${categoryImg[4]}`}
                 size="small"
                 // txt="خرید دسته‌ بازی سونی; جذاب ولی گران‌قیمت"
                 className={categoryStyle[4]}

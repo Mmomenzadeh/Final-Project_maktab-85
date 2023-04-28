@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../../Assets/Styles/Components/CardProduct/index.scss";
 import { useDispatch } from "react-redux";
 import { AddToBasket } from "Utils";
+import { BASE_URL } from "Config";
 
 export const CardProduct = ({ size, product }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const CardProduct = ({ size, product }) => {
         <div className={`CardProduct${size}__head`}>
           <img
             className={`CardProduct${size}__head__img`}
-            src={`http://localhost:3002/files/${product.img[0]}`}
+            src={`${BASE_URL}/files/${product.img[0]}`}
             alt={product.name}
           />
         </div>

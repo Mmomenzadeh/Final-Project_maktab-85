@@ -27,6 +27,7 @@ import {
   DeleteBasketItem,
   IncermentQTY,
 } from "Utils";
+import { BASE_URL } from "Config";
 
 export const SingleProduct = () => {
   const [active, setActive] = useState({
@@ -81,7 +82,7 @@ export const SingleProduct = () => {
               </div>
               <img
                 className="singleProduct__body__img__imgSize"
-                src={`http://localhost:3002/files/${productDetails?.img?.[0]}`}
+                src={`${BASE_URL}/files/${productDetails?.img?.[0]}`}
                 alt={productDetails.name}
               />
             </div>
